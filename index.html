@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Add your products easily with AluraGeek. A user-friendly platform for managing your product inventory.">
+    <meta name="keywords" content="AluraGeek, product management, inventory, add products, user-friendly">
+    <meta name="author" content="AluraGeek Team">
+    <title>Challange Alura Geek</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/sheetStyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>
+    <header class="header header__content">
+        <img src="img/hearts.svg" alt="Three hearts icon representing customer satisfaction" loading="lazy">
+        <h1 class="product-header__title title">AluraGeek</h1>
+    </header>
+    <main  class="main">
+
+        <form action="" class="product-form" aria-labelledby="add-product-title">
+            <h2 id="add-product-title" class="product-form__title title">ADD PRODUCTS:</h2>
+
+            <input type="text" name="product-name" placeholder="Name..." class="product-form__input" required
+                aria-required="true">
+            <input type="text" name="product-price" placeholder="Price..." class="product-form__input" required
+                aria-required="true">
+            <input type="text" name="product-image" placeholder="Image-URL..." class="product-form__input" required
+                aria-required="true">
+
+            <div class="product-form__button-section">
+                <button type="submit" class="product-form__button product-form__button--submit">Send</button>
+                <button type="reset" class="product-form__button product-form__button--reset">Clean</button>
+            </div>
+        </form>
+
+        <section aria-labelledby="product-list-title" class="my-products">
+
+            <h2 id="product-list-title" class="product-list__title title">MY PRODUCTS:</h2>
+            <div class="input-search">
+                <i class="fas fa-search"></i>
+                <input type="text" name="search-product" placeholder="Find your product">
+            </div>
+            <ul class="product-list">
+                <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
+                    <img src="img/product_1.svg" alt="Product 1 - Description of product" class="product-list__image"
+                        itemprop="image">
+                    <h3 class="product-list__name" itemprop="name">Product Name 1</h3>
+                    <p class="product-list__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        <span itemprop="price" content="USD">$19.99</span>
+                        <i class="fas fa-trash-can"></i>
+                    </p>
+                </li>
+
+                <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
+                    <img src="img/product_2.svg" alt="Product 1 - Description of product" class="product-list__image"
+                        itemprop="image">
+                    <h3 class="product-list__name" itemprop="name">Product Name 1</h3>
+                    <p class="product-list__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        <span itemprop="price" content="USD">$19.99</span>
+                        <i class="fas fa-trash-can"></i>
+                    </p>
+                </li>
+
+                <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
+                    <img src="img/product_1.svg" alt="Product 1 - Description of product" class="product-list__image"
+                        itemprop="image">
+                    <h3 class="product-list__name" itemprop="name">Product Name 1</h3>
+                    <p class="product-list__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        <span itemprop="price" content="USD">$19.99</span>
+                        <i class="fas fa-trash-can"></i>
+                    </p>
+                </li>
+                <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
+                    <img src="img/product_1.svg" alt="Product 1 - Description of product" class="product-list__image"
+                        itemprop="image">
+                    <h3 class="product-list__name" itemprop="name">Product Name 1</h3>
+                    <p class="product-list__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        <span itemprop="price" content="USD">$19.99</span>
+                        <i class="fas fa-trash-can"></i>
+                    </p>
+                </li>
+                <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
+                    <img src="img/product_1.svg" alt="Product 1 - Description of product" class="product-list__image"
+                        itemprop="image">
+                    <h3 class="product-list__name" itemprop="name">Product Name 1</h3>
+                    <p class="product-list__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        <span itemprop="price" content="USD">$19.99</span>
+                        <i class="fas fa-trash-can"></i>
+                    </p>
+                </li>
+                <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
+                    <img src="img/product_1.svg" alt="Product 1 - Description of product" class="product-list__image"
+                        itemprop="image">
+                    <h3 class="product-list__name" itemprop="name">Product Name 1</h3>
+                    <p class="product-list__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        <span itemprop="price" content="USD">$19.99</span>
+                        <i class="fas fa-trash-can"></i>
+                    </p>
+                </li>
+            </ul>
+            <section class="paginacion">
+                    <a href="#">&laquo;</a>
+                    <a href="#">1</a>
+                    <a href="#" class="activo">2</a>
+                    <a href="#">3</a>
+                    <a href="#">&raquo;</a>
+            </section>
+        </section>
+
+    </main>
+    <footer class="footer-content">
+        <p>Developed by Alejandro Corrales M.</p>
+        <nav>
+            <ul class="footer-link">
+                <li class="footer-link__item"><a href="#about"><i class="fa-brands fa-github-alt"></i>GitHub</a></li>
+                <li class="footer-link__item"><a href="#contact"><i class="fa-brands fa-instagram"></i>Instagram</a></li>
+                <li class="footer-link__item"><a href="#privacy"><i class="fa-brands fa-linkedin"></i>LinkedIn</a></li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+
+</html>
