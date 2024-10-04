@@ -22,21 +22,50 @@
     </header>
     <main  class="main">
 
-        <form action="" class="product-form" aria-labelledby="add-product-title">
+        <form action="" class="product-form" aria-labelledby="add-product-title" method="POST" role="form">
             <h2 id="add-product-title" class="product-form__title title">ADD PRODUCTS:</h2>
-
-            <input type="text" name="product-name" placeholder="Name..." class="product-form__input" required
-                aria-required="true">
-            <input type="text" name="product-price" placeholder="Price..." class="product-form__input" required
-                aria-required="true">
-            <input type="text" name="product-image" placeholder="Image-URL..." class="product-form__input" required
-                aria-required="true">
-
-            <div class="product-form__button-section">
-                <button type="submit" class="product-form__button product-form__button--submit">Send</button>
-                <button type="reset" class="product-form__button product-form__button--reset">Clean</button>
+        
+            <input 
+                type="text" 
+                name="product-name" 
+                placeholder="Name..." 
+                class="product-form__input" 
+                required 
+                aria-required="true" 
+                aria-label="Product Name"
+            >
+            
+            <input 
+                type="text" 
+                name="product-price" 
+                placeholder="Price..." 
+                class="product-form__input" 
+                required 
+                aria-required="true" 
+                aria-label="Product Price"
+            >
+            
+            <input 
+                type="text" 
+                name="product-image" 
+                placeholder="Image-URL..." 
+                class="product-form__input" 
+                required 
+                aria-required="true" 
+                aria-label="Product Image URL"
+            >
+            
+            <div class="button_pair">
+                <button type="submit" class="bttn_send bttn_base" aria-label="Send Product">
+                    Send
+                </button>
+                
+                <button type="reset" class="bttn_clear bttn_base" aria-label="Clear Form">
+                    Clear
+                </button>
             </div>
         </form>
+        
 
         <section aria-labelledby="product-list-title" class="my-products">
 
@@ -47,7 +76,7 @@
             </div>
             <ul class="product-list">
                 <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
-                    <img src="img/product_1.svg" alt="Product 1 - Description of product" class="product-list__image"
+                    <img src="img/productos-geek.png" alt="Product 1 - Description of product" class="product-list__image"
                         itemprop="image">
                     <h3 class="product-list__name" itemprop="name">Product Name 1</h3>
                     <p class="product-list__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">

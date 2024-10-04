@@ -1,136 +1,147 @@
-/* Press Start 2P */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-/* IBM Plex Mono */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 :root {
-    --font-size-large: 22px; 
-    --font-size-medium: 16px; 
+    /* Font Weight Variables */
+    --font-weight-normal: 400;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
 
-    --header-footer-color: #c21b1b;  
-    --product-card-color: #075b07;   
+    /* Font Size Variables */
+    --font-size-large: 1.375rem; /* 22px */
+    --font-size-medium: 1rem; /* 16px */
+
+    /* Color Variables */
+    --header-footer-color: #c21b1b;
+    --product-card-color: #035f03;
     --add-product-section-color: #03318C;
 
-   
+    /* Font Family Variables */
+    --font-family-press-start: 'Press Start 2P', system-ui;
+    --font-family-ibm-plex: 'IBM Plex Mono', monospace;
+}
 
-    --header-footer-color: #c21b1b;  
-    --product-card-color: #035f03;   
-    --add-product-section-color: #03318C;
+body {
+    background-image: url('../img/clouds.png');
 }
 
 /* ! GLOBAL */
-.title{
-    font: 400 var(--font-size-large) "Press Start 2P", system-ui;
+.title {
+    font: var(--font-weight-normal) var(--font-size-large) var(--font-family-press-start);
     height: 3.19rem;
     align-content: center;
     color: #075b07;
 }
 
 /* Estilo para el formulario de productos y listado de productos */
-.product-form, .my-products {
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    padding: 3rem 2rem; 
-    gap: 2rem; 
-    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.3); 
+.product-form,
+.my-products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 2rem;
+    gap: 2rem;
+    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.3);
 }
 
 /* ! HEADER SECTION */
-/* Estilo para el encabezado de la página */
 .header__content {
-    display: flex; 
-    background-color: var(--header-footer-color); 
-    height: 6rem; 
-    justify-content: center; 
-    align-items: center; 
-    padding: 1rem; 
-    border: 0.5rem outset #c21b1b;
+    display: flex;
+    background-color: var(--header-footer-color);
+    height: 6rem;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border: 0.5rem outset var(--header-footer-color);
 }
-
 
 /* ! ADD PRODUCTS SECTION */
-.product-header__title{
-    color: #E5E5E5; 
+.product-header__title {
+    color: #E5E5E5;
 }
 
-
-
-.product-form__title{
+.product-form__title {
     color: var(--add-product-section-color);
 }
 
-
 /* Estilo para los campos de entrada del formulario */
 .product-form__input {
-    border: 0.1875rem solid #03318C; 
-    border-radius: 1.875rem; 
+    border: 0.1875rem solid var(--add-product-section-color);
+    border-radius: 1.875rem;
     color: #03318C;
-    height: 3.625rem; 
-    font: 600 1.5rem "IBM Plex Mono", monospace ;
-    padding: 0 1rem; 
-    transition: border-color 0.3s ease; 
+    height: 3.625rem;
+    font: var(--font-weight-semibold) 1.5rem var(--font-family-ibm-plex);
+    padding: 0 1rem;
+    transition: border-color 0.3s ease;
 }
 
-/* Efecto de enfoque en los campos de entrada */
-.product-form__input:focus {
-    border-color: #ccc; 
-    outline: none; 
+.product-form__input:focus, .input-search:focus-within{
+    border-color: #ccc;
+    outline: none;
 }
-
 
 /* Estilo para contenedor de los botones */
-.product-form__button-section {
-    display: flex; 
-    justify-content: space-around; 
-    gap:  0.8125rem;
+.button_pair {
+    display: flex;
+    column-gap: 1.5rem;
+    font: var(--font-weight-medium) var(--font-size-medium) var(--font-family-ibm-plex);
+    color: white;
+    padding-top: 0.9rem;
+    letter-spacing: 0.075rem;
+    font-size: var(--font-size-small);
+    transition: 0.1s ease-in-out;
 }
 
-/* Estilo para los botones */
-.product-form__button-section * {
-    width: 10.25rem; 
-    border: none; 
-    border-radius: 0.9375rem; 
-    padding: 1rem 2rem; 
-    font: 500 1.25rem "IBM Plex Mono", monospace ;
-    cursor: pointer; 
-    transition: background-color 0.3s ease; 
+.bttn_base {
+    width: 9.7rem;
+    height: 3.7rem;
+    border-radius: 0.625rem;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
 }
 
-.product-form__button-section :first-child {
-    background-color: #03318C;
-    color: #FFFFFF;
+/* Botones */
+.bttn_send {
+    background-color: var(--add-product-section-color);
+    box-shadow: rgba(0, 0, 0, 0.377) 0.625rem 0.625rem 0.5rem, #2c4bfb 0.125rem 0.125rem 0.625rem inset, #0256d4 -0.25rem -0.25rem 0.0625rem inset;
 }
-.product-form__button-section :last-child {
+
+.bttn_clear {
     background-color: #FFFFFF;
-    color: #03318C;
-    border: 0.1875rem solid #03318C;
+    box-shadow: rgba(0, 0, 0, 0.377) 0.625rem 0.625rem 0.5rem, #a8a6a4 0.09375rem 0.09375rem 0.0625rem inset, #545251 -0.2rem -0.2rem 0.5rem inset;
+    color: #000000;
 }
 
-/* Efecto de hover en los botones */
-.product-form__button-section *:hover {
-    background-color: #c490ff; 
-    
+.bttn_send:active,
+.bttn_clear:active {
+    box-shadow: rgba(0, 0, 0, 0.377) 0 0 0, inset 0.03125rem 0.03125rem 0.25rem #000000;
+    transform: translateY(0.5px);
 }
 
 /* ! MY PRODUCTS SECTION */
-
-.input-search{
+.input-search {
     display: flex;
     flex-direction: row;
-    border: 0.1875rem solid var(--product-card-color); 
-    border-radius: 1.875rem; 
+    border: 0.1875rem solid var(--product-card-color);
+    border-radius: 1.875rem;
     color: var(--product-card-color);
-    height: 3.625rem; 
-    font: 600 1.5rem "IBM Plex Mono", monospace ;
+    font: var(--font-weight-semibold) 1.5rem var(--font-family-ibm-plex);
     padding: 0 1rem;
     align-items: center;
     gap: 0.5rem;
     margin-bottom: 1rem;
+    background-color: #FFFFFF;
+    transition: border-color 0.3s ease;
+
 }
 
-/* TODO: It can be a global format */
-.product-list{
+.input-search input {
+    height: 3.625rem;
+    border-radius: 1.875rem;
+}
+
+
+.product-list {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -138,43 +149,45 @@
     gap: 1rem;
 }
 
-.product-list__item{
+.product-list__item {
     display: flex;
     flex-direction: column;
-    width: 9rem; /* 11rem */
+    width: 9rem;
     height: 16.125rem;
-    box-shadow: -5px 6px 3.3px 0px #00000040;
-    border-radius: 0.625rem; 
+    box-shadow: -0.3125rem 0.375rem 0.20625rem 0px #00000040;
+    border-radius: 0.625rem;
     padding: 0rem 0.5rem 0.5rem 0.5rem;
     gap: 0.5rem;
-    font: var(--font-size-medium) "IBM Plex Mono", monospace ;
+    font: var(--font-size-medium) var(--font-family-ibm-plex);
     background-color: var(--product-card-color);
     color: #FFFFFF;
 }
 
-.product-list__image{
-    width: 9rem; /* 11rem */
-    height: 8.875rem; /*  10.875rem; */
+.product-list__image {
+    width: 9rem;
+    height: 8.875rem;
     align-self: center;
     border-radius: 0.625rem 0.625rem 0rem 0rem;
 }
 
-.product-list__price span{
-    margin-right: 2.9rem; /* 4.563rem */
-    font-weight: 700;
+.product-list__price span {
+    margin-right: 2.9rem;
+    font-weight: var(--font-weight-bold); /* Aplicando la variable de font-weight aquí */
 }
 
-.product-list__item h3{
+.product-list__item h3 {
     border-bottom: 1px solid #ccc;
     padding-bottom: 0.5rem;
 }
 
-.fa-trash-can:hover{
+.fa-trash-can:hover {
     color: #ff0000;
 }
 
 
-.footer-content{
+/* ! FOOTER */
+
+.footer-content {
     align-content: center;
     background-color: var(--header-footer-color);
     height: 8.5rem;
@@ -183,64 +196,76 @@
     color: #E5E5E5;
 }
 
-.footer-content p{
-    font: 600 var(--font-size-medium) "IBM Plex Mono", monospace;
+.footer-content p {
+    font: var(--font-weight-semibold) var(--font-size-medium) var(--font-family-ibm-plex);
     height: 2.188rem;
     align-content: center;
     text-align: center;
     margin-bottom: 1rem;
 }
 
-.footer-link{
+.footer-link {
     display: flex;
     gap: 1rem;
     justify-content: center;
 }
 
-.footer-link__item a i{
-    padding-right: 0.5rem;
+.footer-link__item a {
+    font-size: var(--font-size-medium);
+    font-family: var(--font-family-ibm-plex); /* Aplicando la variable de fuente aquí */
+    font-weight: var(--font-weight-normal); /* Aplicando la variable de font-weight aquí */
 }
 
-.footer-link__item a{
-    font-size: var(--font-size-medium);
+.footer-link__item a i {
+    padding-right: 0.5rem;
 }
 
 .paginacion {
     display: inline-block;
-  }
-  .paginacion a {
+}
+
+.paginacion a {
     color: black;
     float: left;
-    padding: 8px 16px;
-  }
-  .paginacion a.activo {
-    background-color: green;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-family: var(--font-family-ibm-plex); /* Aplicando la variable de fuente aquí */
+    margin: 0.5rem;
+    transition: 0.1s ease-in-out;
+    background-color: #FFFFFF;
+    box-shadow: rgba(0, 0, 0, 0.377) 0.625rem 0.625rem 0.5rem,
+        #a8a6a4 0.094rem 0.094rem 0.0625rem inset, #545251 -0.2rem -0.2rem 0.5rem inset;
+}
+
+.paginacion a.activo {
+    background-color: #16890B;
     color: white;
-  }
-  .paginacion a:hover:not(.activo){
-    background-color: gray;
-  }
+}
+
+.paginacion a:hover:not(.activo) {
+    background-color: #16890B;
+    color: #FFFFFF;
+}
+
+.paginacion a:active {
+    box-shadow: rgba(0, 0, 0, 0.377) 0 0 0, inset 0.03125rem 0.03125rem 0.25rem #000000,
+        #05d402 -0.2rem -0.2rem 0.5rem inset;
+    transform: translateY(0.03125rem);
+}
 
 @media (min-width: 834px) {
-    .main{
+    .main {
         display: flex;
         flex-direction: row-reverse;
         justify-content: space-between;
-        gap: 0.5rem; 
-        
+        gap: 0.5rem;
     }
 
-    .product-form{
+    .product-form {
         width: 46%;
     }
 
-    .my-products{
+    .my-products {
         width: 54%;
     }
 }
-
-
-
-
-
-
