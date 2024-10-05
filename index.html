@@ -22,7 +22,7 @@
     </header>
     <main  class="main">
 
-        <form action="" class="product-form" aria-labelledby="add-product-title" method="POST" role="form">
+        <form action="" class="product-form" aria-labelledby="add-product-title" method="POST" role="form" data-form>
             <h2 id="add-product-title" class="product-form__title title">ADD PRODUCTS:</h2>
         
             <input 
@@ -33,6 +33,7 @@
                 required 
                 aria-required="true" 
                 aria-label="Product Name"
+                data-prodName
             >
             
             <input 
@@ -43,6 +44,7 @@
                 required 
                 aria-required="true" 
                 aria-label="Product Price"
+                data-prodPrice
             >
             
             <input 
@@ -53,6 +55,7 @@
                 required 
                 aria-required="true" 
                 aria-label="Product Image URL"
+                data-prodUrl
             >
             
             <div class="button_pair">
@@ -72,14 +75,14 @@
             <h2 id="product-list-title" class="product-list__title title">MY PRODUCTS:</h2>
             <div class="input-search">
                 <i class="fas fa-search"></i>
-                <input type="text" name="search-product" placeholder="Find your product">
+                <input id="input-filter" type="search" placeholder="Find your product" data-search>
             </div>
-            <ul class="product-list">
-                <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
+            <ul class="product-list" data-list>
+                <!-- <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
                     <img src="img/productos-geek.png" alt="Product 1 - Description of product" class="product-list__image"
                         itemprop="image">
                     <h3 class="product-list__name" itemprop="name">Product Name 1</h3>
-                    <p class="product-list__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                    <p class="card-footer" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                         <span itemprop="price" content="USD">$19.99</span>
                         <i class="fas fa-trash-can"></i>
                     </p>
@@ -88,49 +91,13 @@
                 <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
                     <img src="img/product_2.svg" alt="Product 1 - Description of product" class="product-list__image"
                         itemprop="image">
-                    <h3 class="product-list__name" itemprop="name">Product Name 1</h3>
-                    <p class="product-list__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <span itemprop="price" content="USD">$19.99</span>
-                        <i class="fas fa-trash-can"></i>
+                    <h3 class="product-list__name" itemprop="name">Product Name</h3>
+                    <hr class="card-divider">
+                    <p class="card-footer" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                            <span itemprop="price" content="USD">$19.9999</span>
+                            <i class="fas fa-trash-can"></i> 
                     </p>
-                </li>
-
-                <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
-                    <img src="img/product_1.svg" alt="Product 1 - Description of product" class="product-list__image"
-                        itemprop="image">
-                    <h3 class="product-list__name" itemprop="name">Product Name 1</h3>
-                    <p class="product-list__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <span itemprop="price" content="USD">$19.99</span>
-                        <i class="fas fa-trash-can"></i>
-                    </p>
-                </li>
-                <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
-                    <img src="img/product_1.svg" alt="Product 1 - Description of product" class="product-list__image"
-                        itemprop="image">
-                    <h3 class="product-list__name" itemprop="name">Product Name 1</h3>
-                    <p class="product-list__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <span itemprop="price" content="USD">$19.99</span>
-                        <i class="fas fa-trash-can"></i>
-                    </p>
-                </li>
-                <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
-                    <img src="img/product_1.svg" alt="Product 1 - Description of product" class="product-list__image"
-                        itemprop="image">
-                    <h3 class="product-list__name" itemprop="name">Product Name 1</h3>
-                    <p class="product-list__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <span itemprop="price" content="USD">$19.99</span>
-                        <i class="fas fa-trash-can"></i>
-                    </p>
-                </li>
-                <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
-                    <img src="img/product_1.svg" alt="Product 1 - Description of product" class="product-list__image"
-                        itemprop="image">
-                    <h3 class="product-list__name" itemprop="name">Product Name 1</h3>
-                    <p class="product-list__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <span itemprop="price" content="USD">$19.99</span>
-                        <i class="fas fa-trash-can"></i>
-                    </p>
-                </li>
+                </li> -->
             </ul>
             <section class="paginacion">
                     <a href="#">&laquo;</a>
@@ -152,6 +119,10 @@
             </ul>
         </nav>
     </footer>
+
+    <script src="js/conexionDB.js" type="module"></script>
+    <script src="js/getProducts.js" type="module"></script>
+    <script src="js/postProducts.js" type="module"></script>
 </body>
 
 </html>
