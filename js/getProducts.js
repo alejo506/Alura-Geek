@@ -1,12 +1,13 @@
 import { conexionDB } from "./conexionDB.js";
 import { createPagination } from "./pagination.js";
+import { handleDeleteButtonClick } from "./deleteProducts.js"; // Importar la función
 
 const ulList = document.querySelector("[data-list]");
 const itemsPerPage = 6; // Número de productos por página
 let currentPage = 1; // Página actual
 
 // Función para crear una tarjeta de producto
-export default function createProductCard(productName, productPrice, productUrl) {
+export default function createProductCard(productName, productPrice, productUrl, productId) {
     const product = document.createElement('li');
     product.className = "product-list__item";
 
@@ -16,23 +17,44 @@ export default function createProductCard(productName, productPrice, productUrl)
         <hr class="card-divider">
         <p class="card-footer" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
             <span itemprop="price" content="USD">$${productPrice}</span>
-            <i class="fas fa-trash-can"></i> 
+            <a href="" class="delete-button" data-id="${productId}">
+                <i class="fas fa-trash-can"></i>
+            </a>
         </p>
     `;
+
     return product;
 }
 
 // Función para renderizar los productos de acuerdo a la página
-async function renderProducts(page = 1) {
+export async function renderProducts(page = 1) {
     const data = await conexionDB.listProducts(page, itemsPerPage); // Obtenemos los productos para la página solicitada
 
     ulList.innerHTML = ""; // Limpiar la lista antes de renderizar
 
-    data.products.forEach(productItem => ulList.appendChild(createProductCard(
-        productItem.productName, 
-        productItem.productPrice, 
-        productItem.productUrl
-    )));
+    // Renderizar cada producto
+    data.products.forEach(productItem => {
+        const productCard = createProductCard(
+            productItem.productName, 
+            productItem.productPrice, 
+            productItem.productUrl,
+            productItem.id // Asegúrate de pasar el ID del producto
+        );
+
+        // Añadir evento de clic al botón de eliminar para pasar el productId a la función de eliminar
+        const deleteButton = productCard.querySelectorAll(".delete-button");
+
+        deleteButton.forEach((button) => {
+            button.addEventListener("click", (event) => {
+                event.preventDefault();  // Prevenir la acción predeterminada
+                handleDeleteButtonClick(productItem.id);// Llamar a la función con el ID del producto
+
+            });
+        });
+
+
+        ulList.appendChild(productCard); // Añadir la tarjeta del producto a la lista
+    });
 
     // Llamar a la función de paginación
     createPagination(data.totalItems, itemsPerPage, page, (newPage) => {

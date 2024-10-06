@@ -1,6 +1,5 @@
 
 // ! 1. GET PRODUCTS
-// ! 1. GET PRODUCTS
 async function listProducts(offset = 1, limit = 6) {
     const response = await fetch(`http://localhost:3001/products?_page=${offset}&_limit=${limit}`, {
         method: "GET",
@@ -50,7 +49,7 @@ async function sendProducts(productName, productPrice, productUrl) {
 }
 
 
-// ! FILTER PRODUCTS BY NAME
+// ! 3. FILTER PRODUCTS BY NAME
 
 async function filterProducts(keyWord) {
     // Cambia a productName_like para hacer una búsqueda parcial
@@ -60,9 +59,32 @@ async function filterProducts(keyWord) {
 }
 
 
+// Función para eliminar un producto
+// Función para eliminar un producto
+export async function deleteProduct(productId) {
+    const response = await fetch(`http://localhost:3001/products/${productId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+
+    if (response.ok) {
+        console.log("Producto eliminado con éxito");
+        return true;  // Devuelve `true` si el producto fue eliminado exitosamente
+    } else {
+        console.error("Error al eliminar el producto");
+        return false; // Devuelve `false` si hubo un error
+    }
+}
+
+
+
+
 // ! EXPORTS FUNCTIONS
 export const conexionDB = {
     listProducts,
     sendProducts,
-    filterProducts
-}
+    filterProducts,
+    deleteProduct
+}  

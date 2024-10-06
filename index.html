@@ -75,19 +75,21 @@
             <h2 id="product-list-title" class="product-list__title title">MY PRODUCTS:</h2>
             <div class="input-search">
                 <i class="fas fa-search"></i>
-                <input id="input-filter" type="search" placeholder="Find your product" data-search>
+                <input id="input-filter" type="search" placeholder="Find your product" data-search autocomplete="off">
             </div>
             <ul class="product-list" data-list>
-                <!-- <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
+                <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
                     <img src="img/productos-geek.png" alt="Product 1 - Description of product" class="product-list__image"
                         itemprop="image">
                     <h3 class="product-list__name" itemprop="name">Product Name 1</h3>
                     <p class="card-footer" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                         <span itemprop="price" content="USD">$19.99</span>
-                        <i class="fas fa-trash-can"></i>
+                        <a href="" class="delete-button" data-id>
+                            <i class="fas fa-trash-can"></i>
+                        </a>
                     </p>
                 </li>
-
+<!--
                 <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
                     <img src="img/product_2.svg" alt="Product 1 - Description of product" class="product-list__image"
                         itemprop="image">
@@ -120,11 +122,14 @@
         </nav>
     </footer>
 
+    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
     <script src="js/conexionDB.js" type="module"></script>
     <script src="js/getProducts.js" type="module"></script>
     <script src="js/postProducts.js" type="module"></script>
+    <script src="js/deleteProducts.js" type="module"></script>
     <script src="js/filterProduct.js" type="module"></script>
     <script src="js/pagination.js" type="module"></script>
+
 </body>
 
 </html>
