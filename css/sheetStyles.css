@@ -304,6 +304,7 @@ body {
   }
 
   .mensaje__titulo{
-    font: var(--font-weight-bold) 20rem var(--font-family-press-start);
+    font: var(--font-weight-bold) 1rem var(--font-family-press-start);
     color: var(--header-footer-color);
+    line-height: 1.5;
   }

@@ -1,15 +1,24 @@
 
 // ! 1. GET PRODUCTS
-async function listProducts() {
-    const conexion = await fetch("http://localhost:3001/products", {
-        method:"GET",
-        headers:{
-        "Content-type":"application/json"
+// ! 1. GET PRODUCTS
+async function listProducts(offset = 1, limit = 6) {
+    const response = await fetch(`http://localhost:3001/products?_page=${offset}&_limit=${limit}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
         }
     });
-    const conexionConvertida = await conexion.json(); // Obtiene la respuesta de la petición HTTP en formato JSON y la asigna a la variable products
-    return conexionConvertida;
+    const data = await response.json();
+
+    // Obtener el total de productos desde los headers de la respuesta
+    const totalItems = response.headers.get('x-total-count');
+    
+    return {
+        products: data,
+        totalItems: totalItems ? parseInt(totalItems) : 0
+    };
 }
+
 
 
 

@@ -99,12 +99,12 @@
                     </p>
                 </li> -->
             </ul>
-            <section class="paginacion">
-                    <a href="#">&laquo;</a>
-                    <a href="#">1</a>
-                    <a href="#" class="activo">2</a>
-                    <a href="#">3</a>
-                    <a href="#">&raquo;</a>
+            <section class="paginacion" data-pagination>
+                <a href="#" class="prev">&laquo;</a>
+                <a href="#" class="page" data-page>1</a>
+                <a href="#" class="page activo" data-page>2</a>
+                <a href="#" class="page" data-page>3</a>
+                <a href="#" class="next">&raquo;</a>
             </section>
         </section>
 
@@ -123,6 +123,8 @@
     <script src="js/conexionDB.js" type="module"></script>
     <script src="js/getProducts.js" type="module"></script>
     <script src="js/postProducts.js" type="module"></script>
+    <script src="js/filterProduct.js" type="module"></script>
+    <script src="js/pagination.js" type="module"></script>
 </body>
 
 </html>

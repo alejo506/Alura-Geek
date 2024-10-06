@@ -7,8 +7,10 @@ async function sendProduct(e) {
     e.preventDefault();
     
     const productName = document.querySelector("[data-prodName]").value;
-    const productPrice = document.querySelector("[data-prodPrice]").value;
+    const productPrice = Number(document.querySelector("[data-prodPrice]").value);
     const productUrl = document.querySelector("[data-prodUrl]").value;
+
+    
      
     // TODO: Add automatic count
 
