@@ -1,6 +1,8 @@
 
 // ! Configuración de la API
-const API_URL = "http://localhost:3001/"; // URL base para la API de productos
+// const API_URL = "http://localhost:3001/"; // URL base para la API de productos
+
+const API_URL = "https://67099631af1a3998baa1e796.mockapi.io/products_geek/"
 
 // ! 1. Obtener productos (GET)
 // offset = 1
