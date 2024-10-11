@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/sheetStyles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
 <body>
@@ -20,7 +21,7 @@
         <img src="img/hearts.svg" alt="Three hearts icon representing customer satisfaction" loading="lazy">
         <h1 class="product-header__title title">AluraGeek</h1>
     </header>
-    <main  class="main">
+    <main class="main">
 
         <form action="" class="product-form" aria-labelledby="add-product-title" method="POST" role="form" data-form>
             <h2 id="add-product-title" class="product-form__title title">ADD PRODUCTS:</h2>
@@ -81,13 +82,15 @@
                 <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
                     <img src="img/productos-geek.png" alt="Product 1 - Description of product" class="product-list__image"
                         itemprop="image">
-                    <h3 class="product-list__name" itemprop="name">Product Name 1</h3>
-                    <p class="card-footer" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <span itemprop="price" content="USD">$19.99</span>
-                        <a href="" class="delete-button" data-id>
-                            <i class="fas fa-trash-can"></i>
-                        </a>
-                    </p>
+                    <section>
+                        <h3 class="product-list__name" itemprop="name">Product Name 1</h3>
+                        <p class="card-footer" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                            <span itemprop="price" content="USD">$19.99</span>
+                            <a class="delete-button" data-id>
+                                <i class="fas fa-trash-can"></i>
+                            </a>
+                        </p>
+                    </section>
                 </li>
 <!--
                 <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
@@ -121,14 +124,14 @@
             </ul>
         </nav>
     </footer>
-
-    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/conexionDB.js" type="module"></script>
     <script src="js/getProducts.js" type="module"></script>
     <script src="js/postProducts.js" type="module"></script>
     <script src="js/deleteProducts.js" type="module"></script>
     <script src="js/filterProduct.js" type="module"></script>
     <script src="js/pagination.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 </body>
 

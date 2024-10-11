@@ -1,90 +1,93 @@
 
-// ! 1. GET PRODUCTS
-async function listProducts(offset = 1, limit = 6) {
-    const response = await fetch(`http://localhost:3001/products?_page=${offset}&_limit=${limit}`, {
+// ! Configuración de la API
+const API_URL = "http://localhost:3001/"; // URL base para la API de productos
+
+// ! 1. Obtener productos (GET)
+// offset = 1
+// limit = 6
+async function listProducts(offset, limit) {
+    // Envía una solicitud para obtener productos con paginación
+    const response = await fetch(`${API_URL}products?_page=${offset}&_limit=${limit}`, {
         method: "GET",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json" // Tipo de contenido JSON
         }
     });
+
+    // Convierte la respuesta en formato JSON
     const data = await response.json();
 
-    // Obtener el total de productos desde los headers de la respuesta
+    // Obtiene el total de productos desde los encabezados de la respuesta
     const totalItems = response.headers.get('x-total-count');
-    
+    // console.log(response.headers.get('x-total-count'));
+ 
+    // Retorna los productos y el total de productos
     return {
-        products: data,
-        totalItems: totalItems ? parseInt(totalItems) : 0
+        products: data, // Lista de productos
+        totalItems: totalItems ? parseInt(totalItems) : 0 // Total de productos como número
     };
 }
 
-
-
-
-// ! 2. POST PRODUCTS
-
+// ! 2. Enviar un nuevo producto (POST)
 async function sendProducts(productName, productPrice, productUrl) {
-    
-    const conexion = await fetch("http://localhost:3001/products", {
-        method:"POST",
-        headers:{
-            "Content-type":"application/json"
+    // Crea un nuevo producto en formato JSON
+    const newProduct = {
+        productName: productName,
+        productPrice: productPrice,
+        productUrl: productUrl
+    };
+
+    // Envía una solicitud para crear un nuevo producto
+    const response = await fetch(`${API_URL}products`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json" // Tipo de contenido JSON
         },
+        body: JSON.stringify(newProduct) // Envía el producto en formato JSON
+    });
 
-        // Contenido que enviamos a la base de datos
-        body: JSON.stringify({
-            productName: productName,
-            productPrice: productPrice,
-            productUrl: productUrl
-        })});
+    // Verifica si la solicitud fue exitosa
+    if (!response.ok) {
+        throw new Error(`Error al enviar el producto: ${response.status}`); // Lanza error si falla
+    }
 
-
-        if(!conexion.ok){
-            throw new Error(`An error occurred while submitting the product: ${conexion.status}`);
-        }
-
-        const conexionConvertida = await conexion.json();
-        
-        return conexionConvertida;
+    // Convierte la respuesta a formato JSON
+    return await response.json(); // Retorna el producto creado
 }
 
-
-// ! 3. FILTER PRODUCTS BY NAME
-
+// ! 3. Filtrar productos por nombre (GET)
 async function filterProducts(keyWord) {
-    // Cambia a productName_like para hacer una búsqueda parcial
-    const conexion = await fetch(`http://localhost:3001/products?q=${keyWord}`);
-    const conexionConvertida = await conexion.json();
-    return conexionConvertida;
+    // Envía una solicitud para buscar productos por nombre
+    const response = await fetch(`${API_URL}products?q=${keyWord}`);
+
+    // Convierte la respuesta a formato JSON
+    return await response.json(); // Retorna la lista de productos filtrados
 }
 
-
-// Función para eliminar un producto
-// Función para eliminar un producto
+// ! 4. Eliminar un producto (DELETE)
 export async function deleteProduct(productId) {
-    const response = await fetch(`http://localhost:3001/products/${productId}`, {
+    // Envía una solicitud para eliminar un producto por ID
+    const response = await fetch(`${API_URL}products/${productId}`, {
         method: "DELETE",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json" // Tipo de contenido JSON
         }
     });
 
+    // Verifica si la eliminación fue exitosa
     if (response.ok) {
-        console.log("Producto eliminado con éxito");
-        return true;  // Devuelve `true` si el producto fue eliminado exitosamente
+        console.log("Producto eliminado con éxito"); // Mensaje de éxito
+        return true; // Retorna true si fue exitoso
     } else {
-        console.error("Error al eliminar el producto");
-        return false; // Devuelve `false` si hubo un error
+        console.error("Error al eliminar el producto"); // Mensaje de error
+        return false; // Retorna false si hubo un error
     }
 }
 
-
-
-
-// ! EXPORTS FUNCTIONS
+// ! Exportar funciones para ser utilizadas en otras partes de la aplicación
 export const conexionDB = {
-    listProducts,
-    sendProducts,
-    filterProducts,
-    deleteProduct
-}  
+    listProducts,   // Función para listar productos
+    sendProducts,   // Función para enviar un nuevo producto
+    filterProducts, // Función para filtrar productos por nombre
+    deleteProduct   // Función para eliminar un producto
+};

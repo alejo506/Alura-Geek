@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/alejo506/Challange-AluraGeek#readme",
   "dependencies": {
-    "json-server": "^0.17.4"
+    "json-server": "^0.17.4",
+    "toastify-js": "^1.12.0"
   }
 }
