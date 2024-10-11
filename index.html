@@ -26,24 +26,31 @@
         <form action="" class="product-form" aria-labelledby="add-product-title" method="POST" role="form" data-form>
             <h2 id="add-product-title" class="product-form__title title">ADD PRODUCTS:</h2>
 
-            <input type="text" name="product-name" placeholder="Name..." class="product-form__input" required
-                aria-required="true" aria-label="Product Name" data-prodName>
+            <input type="text" name="product-name" placeholder="Name..." class="product-form__input" 
+                 aria-label="Product Name" data-prodName>
 
-            <input type="text" name="product-price" placeholder="Price..." class="product-form__input" required
-                aria-required="true" aria-label="Product Price" data-prodPrice>
+            <input type="text" name="product-price" placeholder="Price..." class="product-form__input" 
+                 aria-label="Product Price" data-prodPrice>
 
-            <input type="text" name="product-image" placeholder="Image-URL..." class="product-form__input" required
-                aria-required="true" aria-label="Product Image URL" data-prodUrl>
+            <input type="text" name="product-image" placeholder="Image-URL..." class="product-form__input" 
+               aria-label="Product Image URL" data-prodUrl>
 
             <div class="button_pair">
-                <button type="submit" class="bttn_send bttn_base" aria-label="Send Product">
+                <button type="submit" id="submitBtn" class="bttn_send bttn_base" aria-label="Send Product">
                     Send
                 </button>
 
-                <button type="reset" class="bttn_clear bttn_base" aria-label="Clear Form">
+                <button type="reset" class="bttn_clear bttn_base" aria-label="Clear Form" >
                     Clear
                 </button>
             </div>
+
+            <section class="validationSection">
+                <span id="nameError" class="error"><i class="fa-normal fa-asterisk"></i> El nombre del producto debe tener hasta 12 caracteres y solo contener letras, números, -, / o '.</span><br>
+                <span id="priceError" class="error"><i class="fa-normal fa-asterisk"></i> El precio del producto debe ser un número entero positivo.</span><br>
+                <span id="urlError" class="error"><i class="fa-normal fa-asterisk"></i> Por favor, introduce una URL válida.</span><br>
+            </section>
+
         </form>
 
 
@@ -107,6 +114,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/conexionDB.js" type="module"></script>
     <script src="js/getProducts.js" type="module"></script>
+    <script src="js/validate.js" type="module"></script>
     <script src="js/postProducts.js" type="module"></script>
     <script src="js/deleteProducts.js" type="module"></script>
     <script src="js/filterProduct.js" type="module"></script>

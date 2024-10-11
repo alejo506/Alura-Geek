@@ -97,16 +97,22 @@
       "id": "mqWzPxr"
     },
     {
-      "productName": "Bottle",
-      "productPrice": 80,
-      "productUrl": "https://images.unsplash.com/photo-1626463667906-ee4fbcf6bebd?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "id": "vi6Gimn"
+      "productName": "Robot",
+      "productPrice": 50,
+      "productUrl": "https://media.istockphoto.com/id/1487282188/es/foto/una-botella-lisa-adecuada-para-maqueta-aislada-sobre-blanco.jpg?s=1024x1024&w=is&k=20&c=x3fiHc4b-LHQ_6kEF4uRXs4qmnix3s_-BNCa3MTTrJU=",
+      "id": "bFQ5PWv"
     },
     {
-      "productName": "Chess game",
-      "productPrice": 10,
-      "productUrl": "https://images.unsplash.com/photo-1659650928788-931c01c98d46?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "id": "Zsf3PnO"
+      "productName": "Robot",
+      "productPrice": 100,
+      "productUrl": "https://images.unsplash.com/photo-1626463667906-ee4fbcf6bebd?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "id": "TSMj6Dl"
+    },
+    {
+      "productName": "Robot",
+      "productPrice": 100,
+      "productUrl": "https://media.istockphoto.com/id/1130019159/es/foto/robots-de-padre-e-hijo-en-monocromo-blanco.jpg?s=1024x1024&w=is&k=20&c=9IYA9GBXJeK0x0VeMFgAJV0vl8U-O2i5m0rP21x2LAg=",
+      "id": "8nN3oSN"
     }
   ]
 }

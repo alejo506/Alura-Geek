@@ -166,7 +166,7 @@ body {
 
 .product-list__image {
     width: 9rem;
-    max-height: 8.875rem;
+    min-height: 8.875rem;
     align-self: center;
     border: 1px #c6bfbf solid;
     border-radius: 0.625rem 0.625rem 0rem 0rem;
@@ -334,3 +334,22 @@ body {
     line-height: 3rem;
   }
 
+  .validationSection{
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .error {
+    color: rgb(14, 13, 13); /* Color para los mensajes de error */
+    font-family: var(--font-weight-normal) var(--font-size-small) var(--font-family-ibm-plex); /* Aplicando la variable de fuente aquí */
+
+
+}
+
+.error.bold {
+    color: red;
+    font-weight: bold; /* Peso de fuente negrita cuando hay un error */
+}
+
+  
