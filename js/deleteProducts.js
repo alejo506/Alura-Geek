@@ -26,14 +26,14 @@ export async function handleDeleteButtonClick(productId, currntPage) {
         // Verificar si la eliminación fue exitosa
         if (wasDeleted) {
             // Mostrar un mensaje de éxito con SweetAlert2
+            // Aquí podrías renderizar los productos actualizados
+            renderProducts(currntPage); // Actualizar la lista de productos
             await Swal.fire(
                 '¡Eliminado!',
                 'El producto ha sido eliminado con éxito.',
                 'success'
             );
             
-            // Aquí podrías renderizar los productos actualizados
-            renderProducts(currntPage); // Actualizar la lista de productos
         } else {
             // Mostrar un mensaje de error si no se eliminó
             await Swal.fire(
