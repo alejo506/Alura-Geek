@@ -48,13 +48,11 @@ export async function renderProducts(visiblePage=1) {
 
         deleteButton.addEventListener("click", async (event) => {
             event.preventDefault();  // Prevenir la acción predeterminada
-            event.stopPropagation();
 
             // Llamar a la función de eliminación y verificar si se eliminó correctamente
-            const wasDeleted = await handleDeleteButtonClick(productItem.id);
+            const wasDeleted = await handleDeleteButtonClick(productItem.id, currentPage);
             if (wasDeleted) {
                 // Eliminar la tarjeta del DOM si la eliminación fue exitosa
-                renderProducts(visiblePage);
                 productCard.remove();
 
             } else {

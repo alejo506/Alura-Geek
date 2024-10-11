@@ -2,7 +2,7 @@ import { conexionDB } from './conexionDB.js';  // Importar el módulo de conexi�
 import { renderProducts } from './getProducts.js'; // Importar la función que renderiza los productos
 // import Swal from 'sweetalert2'; // Importar SweetAlert2 (si usas módulos)
 
-export async function handleDeleteButtonClick(productId) {
+export async function handleDeleteButtonClick(productId, currntPage) {
     try {
         // Confirmar eliminación del producto con SweetAlert2
         const confirmDelete = await Swal.fire({
@@ -33,7 +33,7 @@ export async function handleDeleteButtonClick(productId) {
             );
             
             // Aquí podrías renderizar los productos actualizados
-            // renderProducts(); // Actualizar la lista de productos
+            renderProducts(currntPage); // Actualizar la lista de productos
         } else {
             // Mostrar un mensaje de error si no se eliminó
             await Swal.fire(

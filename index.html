@@ -25,51 +25,27 @@
 
         <form action="" class="product-form" aria-labelledby="add-product-title" method="POST" role="form" data-form>
             <h2 id="add-product-title" class="product-form__title title">ADD PRODUCTS:</h2>
-        
-            <input 
-                type="text" 
-                name="product-name" 
-                placeholder="Name..." 
-                class="product-form__input" 
-                required 
-                aria-required="true" 
-                aria-label="Product Name"
-                data-prodName
-            >
-            
-            <input 
-                type="text" 
-                name="product-price" 
-                placeholder="Price..." 
-                class="product-form__input" 
-                required 
-                aria-required="true" 
-                aria-label="Product Price"
-                data-prodPrice
-            >
-            
-            <input 
-                type="text" 
-                name="product-image" 
-                placeholder="Image-URL..." 
-                class="product-form__input" 
-                required 
-                aria-required="true" 
-                aria-label="Product Image URL"
-                data-prodUrl
-            >
-            
+
+            <input type="text" name="product-name" placeholder="Name..." class="product-form__input" required
+                aria-required="true" aria-label="Product Name" data-prodName>
+
+            <input type="text" name="product-price" placeholder="Price..." class="product-form__input" required
+                aria-required="true" aria-label="Product Price" data-prodPrice>
+
+            <input type="text" name="product-image" placeholder="Image-URL..." class="product-form__input" required
+                aria-required="true" aria-label="Product Image URL" data-prodUrl>
+
             <div class="button_pair">
                 <button type="submit" class="bttn_send bttn_base" aria-label="Send Product">
                     Send
                 </button>
-                
+
                 <button type="reset" class="bttn_clear bttn_base" aria-label="Clear Form">
                     Clear
                 </button>
             </div>
         </form>
-        
+
 
         <section aria-labelledby="product-list-title" class="my-products">
 
@@ -80,8 +56,8 @@
             </div>
             <ul class="product-list" data-list>
                 <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
-                    <img src="img/productos-geek.png" alt="Product 1 - Description of product" class="product-list__image"
-                        itemprop="image">
+                    <img src="img/productos-geek.png" alt="Product 1 - Description of product"
+                        class="product-list__image" itemprop="image">
                     <section>
                         <h3 class="product-list__name" itemprop="name">Product Name 1</h3>
                         <p class="card-footer" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
@@ -92,17 +68,20 @@
                         </p>
                     </section>
                 </li>
-<!--
+                
                 <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
-                    <img src="img/product_2.svg" alt="Product 1 - Description of product" class="product-list__image"
-                        itemprop="image">
-                    <h3 class="product-list__name" itemprop="name">Product Name</h3>
+                    <img src="https://media.istockphoto.com/id/1130019159/es/foto/robots-de-padre-e-hijo-en-monocromo-blanco.jpg?s=1024x1024&w=is&k=20&c=9IYA9GBXJeK0x0VeMFgAJV0vl8U-O2i5m0rP21x2LAg=" alt="Product 1 - Description of product" class="product-list__image" itemprop="image">
+                    <section class="card-footer-section">
+                    <h3 class="product-list__name" itemprop="name">ProductName</h3>
                     <hr class="card-divider">
                     <p class="card-footer" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                            <span itemprop="price" content="USD">$19.9999</span>
-                            <i class="fas fa-trash-can"></i> 
+                        <span itemprop="price" content="USD">1000</span>
+                        <button type="button" class="delete-button" data-id="${productId}">
+                            <i class="fas fa-trash-can"></i>
+                        </button>
                     </p>
-                </li> -->
+                    </section>
+                </li>
             </ul>
             <section class="paginacion" data-pagination>
                 <a href="#" class="prev">&laquo;</a>
@@ -119,7 +98,8 @@
         <nav>
             <ul class="footer-link">
                 <li class="footer-link__item"><a href="#about"><i class="fa-brands fa-github-alt"></i>GitHub</a></li>
-                <li class="footer-link__item"><a href="#contact"><i class="fa-brands fa-instagram"></i>Instagram</a></li>
+                <li class="footer-link__item"><a href="#contact"><i class="fa-brands fa-instagram"></i>Instagram</a>
+                </li>
                 <li class="footer-link__item"><a href="#privacy"><i class="fa-brands fa-linkedin"></i>LinkedIn</a></li>
             </ul>
         </nav>
