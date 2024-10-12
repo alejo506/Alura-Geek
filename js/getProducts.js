@@ -19,7 +19,7 @@ export default function createProductCard(productName, productPrice, productUrl,
             <section class="card-footer" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                 <span itemprop="price" content="USD">$${productPrice}</span>
                     <section>
-                        <button type="button" class="delete-button" data-id="${productId}">
+                        <button type="button" class="update-button" data-id="${productId}">
                             <lord-icon
                                 src="https://cdn.lordicon.com/exymduqj.json"
                                 trigger="hover"
