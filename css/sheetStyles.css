@@ -354,7 +354,7 @@ body {
     flex-direction: column;
     gap: 0.1rem;
     border: 0.5rem inset #ff262617;
-    width: 30rem;
+    width: 23rem;
     padding: 1rem;
     background: #ff000008;
     color: var(--add-product-section-color);
