@@ -14,14 +14,33 @@ export default function createProductCard(productName, productPrice, productUrl,
     product.innerHTML = `
         <img src="${productUrl}" alt="Product 1 - Description of product" class="product-list__image" itemprop="image">
         <section class="card-footer-section">
-        <h3 class="product-list__name" itemprop="name">${productName}</h3>
-        <hr class="card-divider">
-        <p class="card-footer" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-            <span itemprop="price" content="USD">$${productPrice}</span>
-            <button type="button" class="delete-button" data-id="${productId}">
-                <i class="fas fa-trash-can"></i>
-            </button>
-        </p>
+            <h3 class="product-list__name" itemprop="name">${productName}</h3>
+            <hr class="card-divider">
+            <section class="card-footer" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                <span itemprop="price" content="USD">$${productPrice}</span>
+                    <section>
+                        <button type="button" class="delete-button" data-id="${productId}">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/exymduqj.json"
+                                trigger="hover"
+                                stroke="bold"
+                                colors="primary:#242424,secondary:#848484"
+                                style="width:25px;height:25px">
+                            </lord-icon>
+                        </button>
+                        <button type="button" class="delete-button" data-id="${productId}">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/vlnvqvew.json"
+                                trigger="hover"
+                                stroke="bold"
+                                colors="primary:#848484,secondary:#000000"
+                                style="width:25px;height:25px">
+                            </lord-icon>
+                        </button>
+                    
+                    </section>
+
+            </section>
         </section>
     `;
 

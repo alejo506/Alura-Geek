@@ -360,15 +360,13 @@ body {
     color: var(--add-product-section-color);
 }
 
-.validationSection span {
-    color: var(--add-product-section-color);
-}
 
 .error {
-    color: rgb(14, 13, 13);
+    color: var(--add-product-section-color);
     /* Color para los mensajes de error */
     font-family: var(--font-weight-normal) var(--font-size-small) var(--font-family-ibm-plex);
     /* Aplicando la variable de fuente aquí */
+    margin-left: 1rem;
 
 
 }
@@ -392,7 +390,7 @@ body {
 
 .input-container i {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 10px; /* Ajusta esta distancia según el diseño */
     transform: translateY(-50%); /* Centra verticalmente el ícono */
     color: var(--add-product-section-color); /* Color del ícono */
@@ -404,3 +402,4 @@ body {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     transform: scale(1.08); /* Incremento leve en tamaño */
 }
+

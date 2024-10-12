@@ -19,7 +19,7 @@
 <body>
     <header class="header header__content">
         <img src="img/hearts.svg" alt="Three hearts icon representing customer satisfaction" loading="lazy">
-        <h1 class="product-header__title title">AluraGeek</h1>
+        <h1 class="product-header__title title" id="myTitle">AluraGeek</h1>
     </header>
     <main class="main">
 
@@ -28,20 +28,30 @@
 
             <div class="input-container">
                 <i class="fa-brands fa-product-hunt fa-lg"></i>
-                <input type="text" name="product-name" placeholder="Producto..." class="product-form__input" 
-                     aria-label="Product Name" data-prodName>
+                <input type="text" name="product-name" placeholder="Producto..." class="product-form__input"
+                    aria-label="Product Name" data-prodName>
+                <br>
+                <span id="nameError" class="error"><i class="fa-normal fa-asterisk"></i> Mínimo 3 maximo 13
+                    caracteres,letras, números, - ó '.</span><br>
             </div>
 
             <div class="input-container">
                 <i class="fa-solid fa-dollar-sign fa-xl"></i>
-                <input type="text" name="product-price" placeholder="Precio..." class="product-form__input" 
+                <input type="text" name="product-price" placeholder="Precio..." class="product-form__input"
                     aria-label="Product Price" data-prodPrice>
+                <br>
+                <span id="priceError" class="error"><i class="fa-normal fa-asterisk"></i> El precio del producto debe
+                    ser un número entero positivo.</span><br>
+
             </div>
 
             <div class="input-container">
                 <i class="fa-solid fa-image fa-lg"></i>
-                <input type="text" name="product-image" placeholder="Imagen-URL..." class="product-form__input" 
-                aria-label="Product Image URL" data-prodUrl>
+                <input type="text" name="product-image" placeholder="Imagen-URL..." class="product-form__input"
+                    aria-label="Product Image URL" data-prodUrl>
+                <br>
+                <span id="urlError" class="error"><i class="fa-normal fa-asterisk"></i> Por favor, introduce una URL
+                    válida.</span><br>
             </div>
 
             <div class="button_pair">
@@ -49,16 +59,10 @@
                     Enviar
                 </button>
 
-                <button type="reset" class="bttn_clean bttn_base" aria-label="Clear Form" >
+                <button type="reset" class="bttn_clean bttn_base" aria-label="Clear Form">
                     Limpiar
                 </button>
             </div>
-
-            <section class="validationSection">
-                <span id="nameError" class="error"><i class="fa-normal fa-asterisk"></i> El nombre del producto debe tener mínimo 3 caracteres y hasta un máximo de 12 caracteres y solo contener letras, números, -, /, '.</span><br>
-                <span id="priceError" class="error"><i class="fa-normal fa-asterisk"></i> El precio del producto debe ser un número entero positivo.</span><br>
-                <span id="urlError" class="error"><i class="fa-normal fa-asterisk"></i> Por favor, introduce una URL válida.</span><br>
-            </section>
 
         </form>
 
@@ -79,23 +83,27 @@
                         <p class="card-footer" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                             <span itemprop="price" content="USD">$19.99</span>
                             <a class="delete-button" data-id>
-                                <i class="fas fa-trash-can"></i>
+                                <lord-icon src="https://cdn.lordicon.com/hwjcdycb.json" trigger="morph"
+                                    state="morph-trash-in" colors="primary:#911710,secondary:#c7166f"
+                                    style="width:25px;height:25px">
+                                </lord-icon>
                             </a>
                         </p>
                     </section>
                 </li>
-                
+
                 <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
-                    <img src="https://media.istockphoto.com/id/1130019159/es/foto/robots-de-padre-e-hijo-en-monocromo-blanco.jpg?s=1024x1024&w=is&k=20&c=9IYA9GBXJeK0x0VeMFgAJV0vl8U-O2i5m0rP21x2LAg=" alt="Product 1 - Description of product" class="product-list__image" itemprop="image">
+                    <img src="https://media.istockphoto.com/id/1130019159/es/foto/robots-de-padre-e-hijo-en-monocromo-blanco.jpg?s=1024x1024&w=is&k=20&c=9IYA9GBXJeK0x0VeMFgAJV0vl8U-O2i5m0rP21x2LAg="
+                        alt="Product 1 - Description of product" class="product-list__image" itemprop="image">
                     <section class="card-footer-section">
-                    <h3 class="product-list__name" itemprop="name">ProductName</h3>
-                    <hr class="card-divider">
-                    <p class="card-footer" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <span itemprop="price" content="USD">1000</span>
-                        <button type="button" class="delete-button" data-id="${productId}">
-                            <i class="fas fa-trash-can"></i>
-                        </button>
-                    </p>
+                        <h3 class="product-list__name" itemprop="name">ProductName</h3>
+                        <hr class="card-divider">
+                        <p class="card-footer" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                            <span itemprop="price" content="USD">1000</span>
+                            <button type="button" class="delete-button" data-id="${productId}">
+                                <i class="fas fa-trash-can"></i>
+                            </button>
+                        </p>
                     </section>
                 </li>
             </ul>
@@ -114,7 +122,8 @@
         <nav>
             <ul class="footer-link">
                 <li class="footer-link__item"><a href="#about"><i class="fa-brands fa-github-alt"></i>GitHub</a></li>
-                <li class="footer-link__item"><a href="#contact"><i class="fa-brands fa-instagram"></i>Instagram</a></li>
+                <li class="footer-link__item"><a href="#contact"><i class="fa-brands fa-instagram"></i>Instagram</a>
+                </li>
                 <li class="footer-link__item"><a href="#privacy"><i class="fa-brands fa-linkedin"></i>LinkedIn</a></li>
             </ul>
         </nav>
@@ -128,6 +137,9 @@
     <script src="js/filterProduct.js" type="module"></script>
     <script src="js/pagination.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="js/effects/title.js" type="module"></script>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+
 
 </body>
 

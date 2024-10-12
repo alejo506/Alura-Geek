@@ -1,6 +1,6 @@
 
 export function validateName(name) {
-    const nameRegex = /^[a-z A-Z 0-9\-\/ ']{3,13}$/; // Regex para validar el nombre
+    const nameRegex = /^[a-z A-Z 0-9\- ']{3,13}$/; // Regex para validar el nombre
     const errorMessage = document.getElementById('nameError');
 
     // Verifica si el nombre es válido
