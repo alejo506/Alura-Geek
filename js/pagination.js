@@ -3,7 +3,7 @@ const paginationElement = document.querySelector("[data-pagination]");
 // Función para crear la paginación
 export function createPagination(totalItems, itemsPerPage, currentPage, onPageChange) {
     const totalPages = Math.ceil(totalItems / itemsPerPage);
-    
+
     // Limpiar la paginación existente
     paginationElement.innerHTML = "";
 

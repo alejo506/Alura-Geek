@@ -1,5 +1,6 @@
 import { conexionDB } from "./conexionDB.js";
 import { validateForm, validateName, validatePrice, validateUrl } from "./validate.js";
+import { renderProducts } from "./getProducts.js";
 
 const formProduct = document.querySelector("[data-form]");
 const submitBtn = document.querySelector(".bttn_send"); // Selecciona el botón de envío
@@ -24,16 +25,18 @@ async function sendProduct(e) {
     try {
         // Enviar el producto a la base de datos
         await conexionDB.sendProducts(productName, productPrice, productUrl);
-
+        
         // Mostrar alerta de éxito si se envió correctamente
         Swal.fire({
             title: '¡Éxito!',
             text: 'El producto se ha añadido correctamente.',
             icon: 'success',
-            confirmButtonText: 'Aceptar',
-            timer: 3000, // Duración en milisegundos (3 segundos)
+            // confirmButtonText: 'Aceptar',
+            timer: 2000, // Duración en milisegundos (3 segundos)
             timerProgressBar: true
         });
+        
+        renderProducts();
         
         // Limpiar el formulario después de enviar
         formProduct.reset();

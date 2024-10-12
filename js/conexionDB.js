@@ -2,14 +2,21 @@
 // ! Configuración de la API
 // const API_URL = "http://localhost:3001/"; // URL base para la API de productos
 
-const API_URL = "https://67099631af1a3998baa1e796.mockapi.io/products_geek/"
+const API_URL = "https://67099631af1a3998baa1e796.mockapi.io/products_geek/";
+
+async function getTotalProducts() {
+    const response = await fetch(`${API_URL}products`);
+    const data = await response.json();
+    return data.length; // Devuelve el conteo total de productos
+}
+
 
 // ! 1. Obtener productos (GET)
 // offset = 1
 // limit = 6
 async function listProducts(offset, limit) {
     // Envía una solicitud para obtener productos con paginación
-    const response = await fetch(`${API_URL}products?_page=${offset}&_limit=${limit}`, {
+    const response = await fetch(`${API_URL}products?page=${offset}&limit=${limit}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json" // Tipo de contenido JSON
@@ -19,9 +26,10 @@ async function listProducts(offset, limit) {
     // Convierte la respuesta en formato JSON
     const data = await response.json();
 
-    // Obtiene el total de productos desde los encabezados de la respuesta
-    const totalItems = response.headers.get('x-total-count');
-    // console.log(response.headers.get('x-total-count'));
+    // Obtiene el total de productos
+    const totalItems = await getTotalProducts();
+    console.log(totalItems)
+    
  
     // Retorna los productos y el total de productos
     return {
@@ -29,6 +37,8 @@ async function listProducts(offset, limit) {
         totalItems: totalItems ? parseInt(totalItems) : 0 // Total de productos como número
     };
 }
+
+
 
 // ! 2. Enviar un nuevo producto (POST)
 async function sendProducts(productName, productPrice, productUrl) {
@@ -60,7 +70,7 @@ async function sendProducts(productName, productPrice, productUrl) {
 // ! 3. Filtrar productos por nombre (GET)
 async function filterProducts(keyWord) {
     // Envía una solicitud para buscar productos por nombre
-    const response = await fetch(`${API_URL}products?q=${keyWord}`);
+    const response = await fetch(`${API_URL}products?productName=${keyWord}`);
 
     // Convierte la respuesta a formato JSON
     return await response.json(); // Retorna la lista de productos filtrados
