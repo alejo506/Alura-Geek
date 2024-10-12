@@ -1,6 +1,9 @@
 import { conexionDB } from "./conexionDB.js";
-import { validateForm, validateName, validatePrice, validateUrl } from "./validate.js";
-import { renderProducts } from "./getProducts.js";
+import { validateForm, validateName, validatePrice, validateUrl, cleanForm } from "./validate.js";
+import { getCurrentPage, renderProducts } from "./getProducts.js";
+import { speechMessage } from "./speech.js";
+
+
 
 const formProduct = document.querySelector("[data-form]");
 const submitBtn = document.querySelector(".bttn_send"); // Selecciona el botón de envío
@@ -35,8 +38,16 @@ async function sendProduct(e) {
             timer: 2000, // Duración en milisegundos (3 segundos)
             timerProgressBar: true
         });
+
+        const page =  getCurrentPage();
+
         
-        renderProducts();
+        renderProducts(page);
+
+        // Speech System message
+        const mjsSpeech = "Producto registrado en la base de datos"; 
+        speechMessage(mjsSpeech);
+        
         
         // Limpiar el formulario después de enviar
         formProduct.reset();
@@ -127,6 +138,10 @@ document.querySelector("[data-prodUrl]").addEventListener("input", (e) => {
     updateErrorMessages(); // Actualiza los mensajes de error
     toggleSubmitButton(); // Verifica el estado del botón
 });
+
+document.querySelector(".bttn_clean").addEventListener("click", cleanForm); 
+    
+    
 
 
 

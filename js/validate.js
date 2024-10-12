@@ -1,7 +1,6 @@
-// validate.js
 
 export function validateName(name) {
-    const nameRegex = /^[a-zA-Z0-9\-\/ ']{3,12}$/; // Regex para validar el nombre
+    const nameRegex = /^[a-z A-Z 0-9\-\/ ']{3,13}$/; // Regex para validar el nombre
     const errorMessage = document.getElementById('nameError');
 
     // Verifica si el nombre es válido
@@ -43,8 +42,11 @@ export function validateUrl(url) {
     return true; // Sin errores
 }
 
+
+
 // Función para validar el formulario completo
 export function validateForm() {
+
     const productName = document.querySelector("[data-prodName]").value;
     const productPrice = Number(document.querySelector("[data-prodPrice]").value);
     const productUrl = document.querySelector("[data-prodUrl]").value;
@@ -55,3 +57,14 @@ export function validateForm() {
 
     return isNameValid && isPriceValid && isUrlValid; // Retorna true si no hay errores, false si hay errores
 }
+
+export function cleanForm() {
+
+    document.querySelector("[data-prodName]").value = '';
+    document.querySelector("[data-prodPrice]").value = ''; // Elimina el valor directamente
+    document.querySelector("[data-prodUrl]").value = '';
+
+}
+
+
+

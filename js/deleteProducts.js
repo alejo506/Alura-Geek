@@ -1,8 +1,9 @@
 import { conexionDB } from './conexionDB.js';  // Importar el módulo de conexión a la base de datos
 import { renderProducts } from './getProducts.js'; // Importar la función que renderiza los productos
-// import Swal from 'sweetalert2'; // Importar SweetAlert2 (si usas módulos)
+import { speechMessage } from './speech.js';
 
-export async function handleDeleteButtonClick(productId, currntPage) {
+
+export async function handleDeleteButtonClick(productId) {
     try {
         // Confirmar eliminación del producto con SweetAlert2
         const confirmDelete = await Swal.fire({
@@ -27,12 +28,15 @@ export async function handleDeleteButtonClick(productId, currntPage) {
         if (wasDeleted) {
             // Mostrar un mensaje de éxito con SweetAlert2
             // Aquí podrías renderizar los productos actualizados
-            renderProducts(currntPage); // Actualizar la lista de productos
+            renderProducts(); // Actualizar la lista de productos
             await Swal.fire(
                 '¡Eliminado!',
                 'El producto ha sido eliminado con éxito.',
                 'success'
             );
+
+            const mjsSpeech = "Producto eliminado de la base de datos"; 
+            speechMessage(mjsSpeech);
             
         } else {
             // Mostrar un mensaje de error si no se eliminó

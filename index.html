@@ -24,29 +24,38 @@
     <main class="main">
 
         <form action="" class="product-form" aria-labelledby="add-product-title" method="POST" role="form" data-form>
-            <h2 id="add-product-title" class="product-form__title title">ADD PRODUCTS:</h2>
+            <h2 id="add-product-title" class="product-form__title title">AGREGAR PRODUCTO:</h2>
 
-            <input type="text" name="product-name" placeholder="Name..." class="product-form__input" 
-                 aria-label="Product Name" data-prodName>
+            <div class="input-container">
+                <i class="fa-brands fa-product-hunt fa-lg"></i>
+                <input type="text" name="product-name" placeholder="Producto..." class="product-form__input" 
+                     aria-label="Product Name" data-prodName>
+            </div>
 
-            <input type="text" name="product-price" placeholder="Price..." class="product-form__input" 
-                 aria-label="Product Price" data-prodPrice>
+            <div class="input-container">
+                <i class="fa-solid fa-dollar-sign fa-xl"></i>
+                <input type="text" name="product-price" placeholder="Precio..." class="product-form__input" 
+                    aria-label="Product Price" data-prodPrice>
+            </div>
 
-            <input type="text" name="product-image" placeholder="Image-URL..." class="product-form__input" 
-               aria-label="Product Image URL" data-prodUrl>
+            <div class="input-container">
+                <i class="fa-solid fa-image fa-lg"></i>
+                <input type="text" name="product-image" placeholder="Imagen-URL..." class="product-form__input" 
+                aria-label="Product Image URL" data-prodUrl>
+            </div>
 
             <div class="button_pair">
                 <button type="submit" id="submitBtn" class="bttn_send bttn_base" aria-label="Send Product">
-                    Send
+                    Enviar
                 </button>
 
-                <button type="reset" class="bttn_clear bttn_base" aria-label="Clear Form" >
-                    Clear
+                <button type="reset" class="bttn_clean bttn_base" aria-label="Clear Form" >
+                    Limpiar
                 </button>
             </div>
 
             <section class="validationSection">
-                <span id="nameError" class="error"><i class="fa-normal fa-asterisk"></i> El nombre del producto debe tener hasta 12 caracteres y solo contener letras, números, -, / o '.</span><br>
+                <span id="nameError" class="error"><i class="fa-normal fa-asterisk"></i> El nombre del producto debe tener mínimo 3 caracteres y hasta un máximo de 12 caracteres y solo contener letras, números, -, /, '.</span><br>
                 <span id="priceError" class="error"><i class="fa-normal fa-asterisk"></i> El precio del producto debe ser un número entero positivo.</span><br>
                 <span id="urlError" class="error"><i class="fa-normal fa-asterisk"></i> Por favor, introduce una URL válida.</span><br>
             </section>
@@ -56,10 +65,10 @@
 
         <section aria-labelledby="product-list-title" class="my-products">
 
-            <h2 id="product-list-title" class="product-list__title title">MY PRODUCTS:</h2>
+            <h2 id="product-list-title" class="product-list__title title">MIS PRODUCTOS:</h2>
             <div class="input-search">
                 <i class="fas fa-search"></i>
-                <input id="input-filter" type="search" placeholder="Find your product" data-search autocomplete="off">
+                <input id="input-filter" type="search" placeholder="Buscar productos..." data-search autocomplete="off">
             </div>
             <ul class="product-list" data-list>
                 <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
@@ -101,12 +110,11 @@
 
     </main>
     <footer class="footer-content">
-        <p>Developed by Alejandro Corrales M.</p>
+        <p>Desarrollado por Alejandro Corrales M.</p>
         <nav>
             <ul class="footer-link">
                 <li class="footer-link__item"><a href="#about"><i class="fa-brands fa-github-alt"></i>GitHub</a></li>
-                <li class="footer-link__item"><a href="#contact"><i class="fa-brands fa-instagram"></i>Instagram</a>
-                </li>
+                <li class="footer-link__item"><a href="#contact"><i class="fa-brands fa-instagram"></i>Instagram</a></li>
                 <li class="footer-link__item"><a href="#privacy"><i class="fa-brands fa-linkedin"></i>LinkedIn</a></li>
             </ul>
         </nav>

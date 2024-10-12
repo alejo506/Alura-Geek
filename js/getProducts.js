@@ -50,7 +50,7 @@ export async function renderProducts(visiblePage=1) {
             event.preventDefault();  // Prevenir la acción predeterminada
 
             // Llamar a la función de eliminación y verificar si se eliminó correctamente
-            const wasDeleted = await handleDeleteButtonClick(productItem.id, currentPage);
+            const wasDeleted = await handleDeleteButtonClick(productItem.id);
             if (wasDeleted) {
                 // Eliminar la tarjeta del DOM si la eliminación fue exitosa
                 productCard.remove();
@@ -68,6 +68,12 @@ export async function renderProducts(visiblePage=1) {
         currentPage = newPage;
         renderProducts(currentPage); // Actualizar la lista de productos con la nueva página
     });
+
+}
+
+// Función para obtener el valor actual de currentPage
+export function getCurrentPage() {
+    return currentPage;
 }
 
 // Llamar a la función para renderizar los productos en la primera página
