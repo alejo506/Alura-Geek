@@ -1,6 +1,12 @@
 import { conexionDB } from "./conexionDB.js";
 import { createPagination } from "./pagination.js";
 import { handleDeleteButtonClick } from "./deleteProducts.js"; // Importar la función
+import { loadProductData } from "./updateProduct.js";
+
+
+
+
+
 
 const ulList = document.querySelector("[data-list]");
 const itemsPerPage = 6; // Número de productos por página
@@ -64,7 +70,7 @@ export async function renderProducts(visiblePage=1) {
 
         // Añadir evento de clic al botón de eliminar para pasar el productId a la función de eliminar
         const deleteButton = productCard.querySelector(".delete-button");
-
+       
         deleteButton.addEventListener("click", async (event) => {
             event.preventDefault();  // Prevenir la acción predeterminada
 
@@ -77,6 +83,16 @@ export async function renderProducts(visiblePage=1) {
             } else {
                 console.error("Error al eliminar el producto.");
             }
+        });
+
+        const updateButtonCard = productCard.querySelector(".update-button");
+        
+        const updateButtonForm =  document.getElementById("updateBtn");
+        updateButtonForm.classList.add('disabled');
+
+        updateButtonCard.addEventListener("click", async  (event) => {
+            event.preventDefault(); 
+            await loadProductData(productItem.id, updateButtonForm);
         });
 
         ulList.appendChild(productCard); // Añadir la tarjeta del producto a la lista

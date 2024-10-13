@@ -10,7 +10,7 @@ const submitBtn = document.querySelector(".bttn_send"); // Selecciona el botón 
 
 // Inicialmente deshabilitar el botón
 submitBtn.classList.add('disabled'); // Añadir clase deshabilitada
-submitBtn.style.pointerEvents = 'none'; // Deshabilitar eventos del puntero
+
 
 // Función para enviar el producto
 async function sendProduct(e) {

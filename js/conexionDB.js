@@ -96,10 +96,59 @@ export async function deleteProduct(productId) {
     }
 }
 
+
+// ! 5. Actualizar un producto (PUT)
+
+// ! 6. Obtener un producto por ID (GET)
+async function getProductById(productId) {
+
+    const response = await fetch(`${API_URL}products/${productId}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json" // Tipo de contenido JSON
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error(`Error al obtener el producto: ${response.status}`);
+    }
+
+    return await response.json(); // Retorna los datos del producto
+}
+
+// const ProductoID= await getProductById("2");
+// console.log(ProductoID);
+
+
+async function updateProduct(productId, productName, productPrice, productUrl) {
+    const updatedProduct = {
+        productName: productName,
+        productPrice: productPrice,
+        productUrl: productUrl
+    };
+
+    const response = await fetch(`${API_URL}products/${productId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(updatedProduct)
+    });
+
+    if (!response.ok) {
+        throw new Error(`Error al actualizar el producto: ${response.status}`);
+    }
+
+    return await response.json(); // Retorna el producto actualizado
+}
+
+
 // ! Exportar funciones para ser utilizadas en otras partes de la aplicación
 export const conexionDB = {
     listProducts,   // Función para listar productos
     sendProducts,   // Función para enviar un nuevo producto
     filterProducts, // Función para filtrar productos por nombre
-    deleteProduct   // Función para eliminar un producto
+    deleteProduct,   // Función para eliminar un producto
+    getProductById,
+    updateProduct    // Función para actualizar un producto
 };
