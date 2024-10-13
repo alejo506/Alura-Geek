@@ -9,23 +9,18 @@ const closeModalBtn = document.querySelector('.modal-close-btn');
 // Formulario dentro del modal para actualizar el producto
 const productFormUpdate = document.getElementById('productFormUpdate');
 
+// Variable para verificar si se han hecho cambios en el formulario
+let isFormChanged = false;
+
 // Función para manejar la carga de datos del producto en el modal
 export async function loadProductData(productId) {
     try {
         // Abrir el modal
         modal.style.display = 'block';
+        isFormChanged = false; // Resetea el estado de cambios al abrir el modal
 
-        // Cerrar el modal cuando se hace clic en la "X"
-        closeModalBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-
-        // Cerrar el modal si se hace clic fuera del contenido del modal
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
+        // Limpiar el formulario al abrir el modal
+        cleanForm();
 
         // Obtener los datos del producto por su ID
         const productData = await conexionDB.getProductById(productId);
@@ -37,8 +32,15 @@ export async function loadProductData(productId) {
             document.getElementById("productPriceUpdate").value = productData.productPrice || '';
             document.getElementById("productUrlUpdate").value = productData.productUrl || '';
 
+            // Agregar evento de cambio en los campos para detectar cambios
+            document.querySelectorAll('.modal-input').forEach(input => {
+                input.addEventListener('input', () => {
+                    isFormChanged = true; // Se ha hecho un cambio en el formulario
+                });
+            });
+
             // Agregar evento de submit para actualizar el producto
-            productFormUpdate.addEventListener("submit", async (event) => {
+            productFormUpdate.onsubmit = async (event) => {
                 event.preventDefault();
 
                 // Obtener los valores actualizados de los campos del modal
@@ -66,7 +68,6 @@ export async function loadProductData(productId) {
                     renderProducts(currentPage);
 
                     // Limpiar el formulario y cerrar el modal
-                    cleanForm();
                     modal.style.display = 'none';
 
                     // Notificación de éxito
@@ -87,10 +88,22 @@ export async function loadProductData(productId) {
                         confirmButtonText: 'Aceptar'
                     });
                 }
-            });
+            };
         } else {
             console.error("No se encontraron datos para el producto con ID:", productId);
         }
+
+        // Manejar el cierre del modal
+        closeModalBtn.onclick = () => {
+            handleCloseModal();
+        };
+
+        // Cerrar el modal si se hace clic fuera del contenido del modal
+        window.onclick = (e) => {
+            if (e.target === modal) {
+                handleCloseModal();
+            }
+        };
     } catch (error) {
         console.error("Error al cargar el producto para actualizar:", error);
         await Swal.fire({
@@ -99,5 +112,14 @@ export async function loadProductData(productId) {
             icon: 'error',
             confirmButtonText: 'Aceptar'
         });
+    }
+}
+
+// Función para manejar el cierre del modal
+function handleCloseModal() {
+    if (!isFormChanged || confirm('¿Estás seguro de que deseas cerrar sin guardar los cambios?')) {
+        modal.style.display = 'none';
+        cleanForm(); // Limpiar el formulario al cerrar
+        isFormChanged = false; // Resetear el estado del formulario
     }
 }
