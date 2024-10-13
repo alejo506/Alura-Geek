@@ -69,14 +69,15 @@ export async function renderProducts(visiblePage = 1) {
             event.preventDefault();  // Prevenir la acción predeterminada
 
             // Llamar a la función de eliminación y verificar si se eliminó correctamente
-            const wasDeleted = await handleDeleteButtonClick(productItem.id);
-            if (wasDeleted) {
+            // const wasDeleted = 
+            await handleDeleteButtonClick(productItem.id);
+            // if (wasDeleted) {
                 // Eliminar la tarjeta del DOM si la eliminación fue exitosa
                 productCard.remove();
 
-            } else {
-                console.error("Error al eliminar el producto.");
-            }
+            // } else {
+            //     console.error("Error al eliminar el producto.");
+            // }
         });
         // ! Delete
 
