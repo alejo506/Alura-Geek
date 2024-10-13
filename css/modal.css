@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+.modal-container {
+    display: none; 
+    position: fixed;
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Color de fondo más oscuro */
+}
+
+.modal-content {
+    background-color: #ffffff; /* Fondo blanco */
+    margin: 4% auto;
+    padding: 20px;
+    border-radius: 12px; /* Bordes más redondeados */
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+    animation: fadeIn 0.3s ease; /* Animación al abrir */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-close-btn {
+    float: right;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #9f2500; /* Color del botón de cierre */
+    transition: color 0.3s ease; /* Transición de color */
+}
+
+.modal-close-btn:hover {
+    color: #d32f2f; /* Color al pasar el mouse */
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 20px; /* Aumentar margen inferior para más separación del input */
+    color: #b8860b; /* Color amarillo oscuro para el título */
+    font-size: 1.5em; /* Tamaño de fuente más grande */
+    text-align: center; /* Centrar título */
+    font-family: 'Press Start 2P', system-ui; /* Fuente del título */
+}
+
+.modal-form label {
+    display: block;
+    margin-top: 15px; /* Aumentar margen superior para más separación */
+    margin-bottom: 5px; /* Añadir margen inferior para separar de los inputs */
+    font-weight: bold; /* Texto en negrita */
+    color: #555; /* Color de las etiquetas */
+    font-family: 'IBM Plex Mono', monospace; /* Fuente para etiquetas */
+}
+
+.modal-form input {
+    width: 100%;
+    padding: 10px; /* Mayor padding */
+    margin-top: 5px;
+    margin-bottom: 15px; /* Aumentar margen inferior para separar de otros elementos */
+    border: 1px solid #007bff; /* Color de borde más atractivo */
+    border-radius: 4px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transición para el borde */
+    font-family: 'IBM Plex Mono', monospace; /* Fuente para inputs */
+}
+
+.modal-form input:hover, 
+.modal-form input:focus {
+    border-color: #0056b3; /* Color de borde al pasar el mouse */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra al enfocarse */
+}
+
+.modal-form button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px; /* Aumentar margen superior para separar del último input */
+    background-color: #28a745; /* Color de fondo verde */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s; /* Transición para el botón */
+    font-family: 'IBM Plex Mono', monospace; /* Fuente para botón */
+}
+
+.modal-form button[type="submit"]:hover {
+    background-color: #218838; /* Color de fondo verde más oscuro */
+    transform: scale(1.05); /* Escalado al pasar el mouse */
+}

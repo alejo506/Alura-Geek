@@ -1,7 +1,7 @@
 import { conexionDB } from "./conexionDB.js";
 import { validateForm, validateName, validatePrice, validateUrl, cleanForm } from "./validate.js";
 import { getCurrentPage, renderProducts } from "./getProducts.js";
-import { speechMessage } from "./speech.js";
+import { speechMessage } from "./funcionalities/speech.js";
 
 
 

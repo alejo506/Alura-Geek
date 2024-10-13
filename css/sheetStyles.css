@@ -83,6 +83,20 @@ body {
     outline: none;
 }
 
+.input-container {
+    position: relative; /* Posiciona el contenedor relativamente */
+    display: inline-block;
+}
+
+.input-container i {
+    position: absolute;
+    top: 40%;
+    left: 1rem; /* Ajusta esta distancia según el diseño */
+    transform: translateY(-50%); /* Centra verticalmente el ícono */
+    color: var(--add-product-section-color); /* Color del ícono */
+}
+
+
 /* Estilo para contenedor de los botones */
 .button_pair {
     display: flex;
@@ -245,6 +259,11 @@ body {
     padding-right: 0.5rem;
 }
 
+.footer-link__item:hover{
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.08); /* Incremento leve en tamaño */
+}
+
 .paginacion {
     display: inline-block;
 }
@@ -302,11 +321,11 @@ body {
     }
 
     .product-form__input {
-        width: 27rem;
+        width: 23rem;
     }
 
     .bttn_base {
-        width: 11.7rem;
+        width: 10.6rem;
     }
 
 }
@@ -343,23 +362,6 @@ body {
     background-color: #555;
 }
 
-.mensaje__titulo {
-    font: var(--font-weight-bold) 2rem var(--font-family-ibm-plex);
-    color: var(--header-footer-color);
-    line-height: 3rem;
-}
-
-.validationSection {
-    display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
-    border: 0.5rem inset #ff262617;
-    width: 23rem;
-    padding: 1rem;
-    background: #ff000008;
-    color: var(--add-product-section-color);
-}
-
 
 .error {
     color: var(--add-product-section-color);
@@ -373,7 +375,7 @@ body {
 
 .error.bold {
     color: red;
-    font-weight: bold;
+    /* font-weight: bold; */
     /* Peso de fuente negrita cuando hay un error */
 }
 
@@ -384,23 +386,7 @@ body {
     pointer-events: none;
 }
 
-.input-container {
-    position: relative; /* Posiciona el contenedor relativamente */
-    display: inline-block;
-}
-
-.input-container i {
-    position: absolute;
-    top: 40%;
-    left: 10px; /* Ajusta esta distancia según el diseño */
-    transform: translateY(-50%); /* Centra verticalmente el ícono */
-    color: var(--add-product-section-color); /* Color del ícono */
-}
 
 
 
-.footer-link__item:hover{
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    transform: scale(1.08); /* Incremento leve en tamaño */
-}
 

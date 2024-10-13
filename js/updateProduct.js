@@ -2,30 +2,51 @@ import { conexionDB } from "./conexionDB.js"; // Asegúrate de que la ruta sea c
 import { getCurrentPage, renderProducts } from "./getProducts.js";
 import { cleanForm } from "./validate.js";
 
-// Función para manejar la carga de datos del producto
-export async function loadProductData(productId, updateButtonForm) {
+// Obtener el modal y los botones de cierre
+const modal = document.querySelector('.modal-container');
+const closeModalBtn = document.querySelector('.modal-close-btn');
+
+// Formulario dentro del modal para actualizar el producto
+const productFormUpdate = document.getElementById('productFormUpdate');
+
+// Función para manejar la carga de datos del producto en el modal
+export async function loadProductData(productId) {
     try {
+        // Abrir el modal
+        modal.style.display = 'block';
 
-        updateButtonForm.classList.remove('disabled');
+        // Cerrar el modal cuando se hace clic en la "X"
+        closeModalBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
 
-        // Obtener el producto por su ID
+        // Cerrar el modal si se hace clic fuera del contenido del modal
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Obtener los datos del producto por su ID
         const productData = await conexionDB.getProductById(productId);
 
-        // Verificar si se encontraron datos del producto
+        // Verificar si se encontraron los datos del producto
         if (productData) {
-            document.querySelector("[data-prodName]").value = productData.productName || '';
-            document.querySelector("[data-prodPrice]").value = productData.productPrice || '';
-            document.querySelector("[data-prodUrl]").value = productData.productUrl || '';
+            // Cargar los datos en los campos del modal
+            document.getElementById("productNameUpdate").value = productData.productName || '';
+            document.getElementById("productPriceUpdate").value = productData.productPrice || '';
+            document.getElementById("productUrlUpdate").value = productData.productUrl || '';
 
-            // Agregar evento para actualizar el producto cuando se haga clic en el botón de actualizar
-            updateButtonForm.addEventListener("click", async (event) => {
+            // Agregar evento de submit para actualizar el producto
+            productFormUpdate.addEventListener("submit", async (event) => {
                 event.preventDefault();
-                
-                const updatedName = document.querySelector("[data-prodName]").value;
-                const updatedPrice = document.querySelector("[data-prodPrice]").value;
-                const updatedUrl = document.querySelector("[data-prodUrl]").value;
 
-                // Validación simple de campos
+                // Obtener los valores actualizados de los campos del modal
+                const updatedName = document.getElementById("productNameUpdate").value;
+                const updatedPrice = document.getElementById("productPriceUpdate").value;
+                const updatedUrl = document.getElementById("productUrlUpdate").value;
+
+                // Validación simple de los campos
                 if (!updatedName || !updatedPrice || !updatedUrl) {
                     await Swal.fire({
                         title: '¡Error!',
@@ -33,29 +54,32 @@ export async function loadProductData(productId, updateButtonForm) {
                         icon: 'error',
                         confirmButtonText: 'Aceptar'
                     });
-                    return; // Detener la ejecución si hay un error de validación
+                    return; // Detener la ejecución si la validación falla
                 }
 
                 try {
-                    
-                    const updatedProduct = await conexionDB.updateProduct(productId, updatedName, updatedPrice, updatedUrl);
-                    
+                    // Actualizar el producto en la base de datos
+                    await conexionDB.updateProduct(productId, updatedName, updatedPrice, updatedUrl);
+
+                    // Recargar los productos en la página actual
                     const currentPage = getCurrentPage();
                     renderProducts(currentPage);
+
+                    // Limpiar el formulario y cerrar el modal
                     cleanForm();
-                    
-                    // SweetAlert para notificar al usuario sobre la actualización
+                    modal.style.display = 'none';
+
+                    // Notificación de éxito
                     await Swal.fire({
                         title: '¡Éxito!',
                         text: 'El producto se actualizó correctamente.',
                         icon: 'success',
                         confirmButtonText: 'Aceptar'
                     });
-
-                    console.log("Producto actualizado:", updatedProduct);
                 } catch (error) {
                     console.error("Error al actualizar el producto:", error);
-                    // SweetAlert para mostrar el error al actualizar
+
+                    // Notificación de error
                     await Swal.fire({
                         title: '¡Error!',
                         text: 'No se pudo actualizar el producto. Inténtalo de nuevo.',
@@ -66,14 +90,9 @@ export async function loadProductData(productId, updateButtonForm) {
             });
         } else {
             console.error("No se encontraron datos para el producto con ID:", productId);
-            // Log the error but do not show SweetAlert for not found
         }
-
-        console.log("Producto cargado en el formulario", productData);
-        
     } catch (error) {
         console.error("Error al cargar el producto para actualizar:", error);
-        // SweetAlert para mostrar el error de conexión o cualquier otro error
         await Swal.fire({
             title: '¡Error!',
             text: 'Error al cargar los datos del producto. Intenta nuevamente.',

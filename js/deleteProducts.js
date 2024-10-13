@@ -1,6 +1,6 @@
 import { conexionDB } from './conexionDB.js';  // Importar el módulo de conexión a la base de datos
 import { renderProducts } from './getProducts.js'; // Importar la función que renderiza los productos
-import { speechMessage } from './speech.js';
+import { speechMessage } from './funcionalities/speech.js';
 
 
 export async function handleDeleteButtonClick(productId) {

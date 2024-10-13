@@ -11,6 +11,7 @@
     <title>Challange Alura Geek</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/sheetStyles.css">
+    <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
@@ -30,29 +31,29 @@
                 <i class="fa-brands fa-product-hunt fa-lg"></i>
                 <input type="text" name="product-name" placeholder="Producto..." class="product-form__input"
                     aria-label="Product Name" data-prodName>
-                <br>
-                <span id="nameError" class="error"><i class="fa-normal fa-asterisk"></i> Mínimo 3 maximo 13
-                    caracteres,letras, números, - ó '.</span><br>
+                <div id="nameError" class="error" aria-live="polite">
+                    <i class="fa-normal fa-asterisk"></i> Digitar de 3 a 13 caracteres, letras, números, - ó '.
+                </div>
             </div>
-
+            
             <div class="input-container">
                 <i class="fa-solid fa-dollar-sign fa-xl"></i>
                 <input type="text" name="product-price" placeholder="Precio..." class="product-form__input"
                     aria-label="Product Price" data-prodPrice>
-                <br>
-                <span id="priceError" class="error"><i class="fa-normal fa-asterisk"></i> El precio del producto debe
-                    ser un número entero positivo.</span><br>
-
+                <div id="priceError" class="error" aria-live="polite">
+                    <i class="fa-normal fa-asterisk"></i> Debe de ser número entero positivo.
+                </div>
             </div>
-
+            
             <div class="input-container">
                 <i class="fa-solid fa-image fa-lg"></i>
                 <input type="text" name="product-image" placeholder="Imagen-URL..." class="product-form__input"
                     aria-label="Product Image URL" data-prodUrl>
-                <br>
-                <span id="urlError" class="error"><i class="fa-normal fa-asterisk"></i> Por favor, introduce una URL
-                    válida.</span><br>
+                <div id="urlError" class="error" aria-live="polite">
+                    <i class="fa-normal fa-asterisk"></i> Por favor, introduce una URL válida.
+                </div>
             </div>
+            
 
             <div class="button_pair">
                 <button type="submit" id="submitBtn" class="bttn_send bttn_base" aria-label="Send Product">
@@ -63,9 +64,6 @@
                     Limpiar
                 </button>
 
-                <button type="update" id="updateBtn" class="bttn_clean bttn_base" aria-label="Clear Form">
-                    Actualizar
-                </button>
             </div>
 
         </form>
@@ -120,6 +118,31 @@
             </section>
         </section>
 
+
+        <!-- <button class="modal-open-btn">Registrar Producto</button> -->
+
+        <!-- Modal con clases específicas -->
+        <div class="modal-container">
+            <div class="modal-content">
+                <span id="modal-close-btn" class="modal-close-btn">&times;</span>
+                <h2>Actualizar Producto</h2>
+                <form class="modal-form" id="productFormUpdate">
+                    <label for="productName">Nombre del producto:</label>
+                    <input type="text" id="productNameUpdate" name="productNameUpdate" required>
+    
+                    <label for="productPrice">Precio:</label>
+                    <input type="number" id="productPriceUpdate" name="productPriceUpdate" required>
+    
+                    <label for="productUrl">URL de la imagen:</label>
+                    <input type="url" id="productUrlUpdate" name="productUrlUpdate" required>
+    
+                    <button type="submit">Actualizar</button>
+                </form>
+            </div>
+        </div>
+
+
+
     </main>
     <footer class="footer-content">
         <p>Desarrollado por Alejandro Corrales M.</p>
@@ -132,19 +155,17 @@
             </ul>
         </nav>
     </footer>
-    <script src="js/updateProduct.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/conexionDB.js" type="module"></script>
     <script src="js/getProducts.js" type="module"></script>
-    <script src="js/validate.js" type="module"></script>
     <script src="js/postProducts.js" type="module"></script>
     <script src="js/deleteProducts.js" type="module"></script>
     <script src="js/filterProduct.js" type="module"></script>
     <script src="js/pagination.js" type="module"></script>
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="js/validate.js" type="module"></script>
+    <script src="js/updateProduct.js" type="module"></script>
     <script src="js/effects/title.js" type="module"></script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
-    
 
 
 </body>
