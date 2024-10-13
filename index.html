@@ -28,7 +28,12 @@
             <h2 id="add-product-title" class="product-form__title title">AGREGAR PRODUCTO:</h2>
 
             <div class="input-container">
-                <i class="fa-brands fa-product-hunt fa-lg"></i>
+                <lord-icon
+                    src="https://cdn.lordicon.com/jprtoagx.json"
+                    trigger="hover"
+                    colors="primary:#121331,secondary:#848484"
+                    style="width:30px;height:30px">
+                </lord-icon>
                 <input type="text" name="product-name" placeholder="Producto..." class="product-form__input"
                     aria-label="Product Name" data-prodName>
                 <div id="nameError" class="error" aria-live="polite">
@@ -37,7 +42,12 @@
             </div>
             
             <div class="input-container">
-                <i class="fa-solid fa-dollar-sign fa-xl"></i>
+                <lord-icon
+                    src="https://cdn.lordicon.com/bsdkzyjd.json"
+                    trigger="hover"
+                    colors="primary:#121331,secondary:#848484"
+                    style="width:30px;height:30px">
+                </lord-icon>
                 <input type="text" name="product-price" placeholder="Precio..." class="product-form__input"
                     aria-label="Product Price" data-prodPrice>
                 <div id="priceError" class="error" aria-live="polite">
@@ -46,7 +56,12 @@
             </div>
             
             <div class="input-container">
-                <i class="fa-solid fa-image fa-lg"></i>
+                <lord-icon
+                    src="https://cdn.lordicon.com/rszslpey.json"
+                    trigger="hover"
+                    colors="primary:#121331,secondary:#848484"
+                    style="width:30px;height:30px">
+                </lord-icon>
                 <input type="text" name="product-image" placeholder="Imagen-URL..." class="product-form__input"
                     aria-label="Product Image URL" data-prodUrl>
                 <div id="urlError" class="error" aria-live="polite">
@@ -125,7 +140,7 @@
         <div class="modal-container">
             <div class="modal-content">
                 <span id="modal-close-btn" class="modal-close-btn">&times;</span>
-                <h2>Actualizar Producto</h2>
+                <h2>ACTUALIZAR PRODUCTO</h2>
                 <form class="modal-form" id="productFormUpdate">
                     <label for="productName">Nombre del producto:</label>
                     <input type="text" id="productNameUpdate" name="productNameUpdate" required>

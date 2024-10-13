@@ -33,6 +33,7 @@ body {
     height: 3.19rem;
     align-content: center;
     color: #075b07;
+    letter-spacing: 0.2rem;
 }
 
 /* Estilo para el formulario de productos y listado de productos */
@@ -73,7 +74,7 @@ body {
     color: #03318C;
     height: 3.625rem;
     font: var(--font-weight-semibold) 1.5rem var(--font-family-ibm-plex);
-    padding: 0 0 0 2.5rem;
+    padding: 0 0 0 3.5rem;
     transition: border-color 0.3s ease;
 }
 
@@ -88,12 +89,16 @@ body {
     display: inline-block;
 }
 
-.input-container i {
+.input-container lord-icon {
     position: absolute;
-    top: 40%;
+    top: 34%;
     left: 1rem; /* Ajusta esta distancia según el diseño */
     transform: translateY(-50%); /* Centra verticalmente el ícono */
     color: var(--add-product-section-color); /* Color del ícono */
+}
+
+.input-container lord-icon:hover {
+    
 }
 
 
@@ -368,7 +373,8 @@ body {
     /* Color para los mensajes de error */
     font-family: var(--font-weight-normal) var(--font-size-small) var(--font-family-ibm-plex);
     /* Aplicando la variable de fuente aquí */
-    margin-left: 1rem;
+    margin: 0.5rem 0 0 0.3rem;
+    
 
 
 }
