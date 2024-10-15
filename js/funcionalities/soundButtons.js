@@ -1,4 +1,4 @@
-export function playSound(playSound){
+export function playSound(playSound) {
 
   playSound = new Audio(`./sound/${playSound}.mp3`);
 

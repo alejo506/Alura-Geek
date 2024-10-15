@@ -74,7 +74,7 @@ export async function loadProductData(productId) {
 
                     // Limpiar el formulario y cerrar el modal
                     modal.style.display = 'none';
-                    
+
                     speechMessage("El producto ha sido actualizado")
                     // Notificación de éxito
                     await Swal.fire({

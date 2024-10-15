@@ -5,14 +5,12 @@ import { speechMessage } from "./funcionalities/speech.js";
 import { playSound } from "./funcionalities/soundButtons.js";
 
 
-
 const formProduct = document.querySelector("[data-form]");
 const submitBtn = document.querySelector(".bttn_send"); // Selecciona el botón de envío
 // const soundSend = new Audio('./sound/send_message.mp3');
 
 // Inicialmente deshabilitar el botón
 submitBtn.classList.add('disabled'); // Añadir clase deshabilitada
-
 
 // Función para enviar el producto
 async function sendProduct(e) {
@@ -30,7 +28,6 @@ async function sendProduct(e) {
     try {
         // Enviar el producto a la base de datos
         await conexionDB.sendProducts(productName, productPrice, productUrl);
-        
 
         // Mostrar alerta de éxito si se envió correctamente
         Swal.fire({
@@ -46,16 +43,15 @@ async function sendProduct(e) {
         playSound('send_message')
 
         // Pagina actual
-        const page =  getCurrentPage();
+        const page = getCurrentPage();
 
-        
+
         renderProducts(page);
 
         // Speech System message
-        const mjsSpeech = "Producto registrado en la base de datos"; 
+        const mjsSpeech = "Producto registrado en la base de datos";
         speechMessage(mjsSpeech);
-        
-        
+
         // Limpiar el formulario después de enviar
         formProduct.reset();
 
@@ -67,7 +63,7 @@ async function sendProduct(e) {
 
     } catch (error) {
         console.error(error);
-        
+
         // Mostrar alerta de error si hubo un problema al enviar
         Swal.fire({
             title: 'Error!',
@@ -127,7 +123,6 @@ function updateErrorMessages() {
 // Escucha el evento submit del formulario
 formProduct.addEventListener("submit", e => sendProduct(e));
 
-
 // Agregar validaciones en tiempo real
 document.querySelector("[data-prodName]").addEventListener("input", (e) => {
     validateName(e.target.value); // Valida el nombre al escribir
@@ -153,8 +148,8 @@ document.querySelector(".bttn_clean").addEventListener("click", (event) => {
     cleanForm(); // Llama a la función para limpiar el formulario
     playSound('clean');
 });
-    
-    
+
+
 
 
 

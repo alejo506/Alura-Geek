@@ -6,6 +6,7 @@ import { loadProductData } from "./updateProduct.js";
 const ulList = document.querySelector("[data-list]");
 const itemsPerPage = 6; // Número de productos por página
 let currentPage = 1; // Página actual
+const itemsQuantity = document.querySelector("[data-itemsQuantity]");
 
 // Función para crear una tarjeta de producto
 export default function createProductCard(productName, productPrice, productUrl, productId) {
@@ -100,7 +101,15 @@ export async function renderProducts(visiblePage = 1) {
         renderProducts(currentPage); // Actualizar la lista de productos con la nueva página
     });
 
+
+    
+    // Productos en Stock
+    const totalItemsQuantity = data.totalItems;
+
+    itemsQuantity.innerHTML = `<h3 class="stockQuantity" data-itemsQuantity>En stock: <span>${totalItemsQuantity}</span></h3>`;
+
 }
+
 
 // Función para obtener el valor actual de currentPage
 export function getCurrentPage() {

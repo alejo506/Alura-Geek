@@ -26,7 +26,7 @@ export function createPagination(totalItems, itemsPerPage, currentPage, onPageCh
         pageLink.className = "page";
         pageLink.innerText = i;
         pageLink.setAttribute('data-page', i);
-        
+
         // Agregar evento de clic
         pageLink.addEventListener('click', (event) => {
             event.preventDefault();

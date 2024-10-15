@@ -1,5 +1,5 @@
 
-export function speechMessage(mjsSpeech){
+export function speechMessage(mjsSpeech) {
 
     const messageSpeech = new SpeechSynthesisUtterance();
     messageSpeech.text = mjsSpeech;

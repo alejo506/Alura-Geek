@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/sheetStyles.css">
     <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/title.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
@@ -20,19 +21,21 @@
 <body>
     <header class="header header__content">
         <img src="img/hearts.svg" alt="Three hearts icon representing customer satisfaction" loading="lazy">
-        <h1 class="product-header__title title" id="myTitle">AluraGeek</h1>
+        <h1 class="product-header__title title" id="myTitle"></h1>
+
     </header>
     <main class="main">
 
         <form action="" class="product-form" aria-labelledby="add-product-title" method="POST" role="form" data-form>
+
+
             <h2 id="add-product-title" class="product-form__title title">AGREGAR PRODUCTO:</h2>
 
+            <h3 class="stockQuantity" data-itemsQuantity> <span></span></h3>
+
             <div class="input-container">
-                <lord-icon
-                    src="https://cdn.lordicon.com/jprtoagx.json"
-                    trigger="hover"
-                    colors="primary:#121331,secondary:#848484"
-                    style="width:30px;height:30px">
+                <lord-icon src="https://cdn.lordicon.com/jprtoagx.json" trigger="hover"
+                    colors="primary:#121331,secondary:#848484" style="width:30px;height:30px">
                 </lord-icon>
                 <input type="text" name="product-name" placeholder="Producto..." class="product-form__input"
                     aria-label="Product Name" data-prodName>
@@ -40,13 +43,10 @@
                     <i class="fa-normal fa-asterisk"></i> Digitar de 3 a 13 caracteres, letras, números, - ó '.
                 </div>
             </div>
-            
+
             <div class="input-container">
-                <lord-icon
-                    src="https://cdn.lordicon.com/bsdkzyjd.json"
-                    trigger="hover"
-                    colors="primary:#121331,secondary:#848484"
-                    style="width:30px;height:30px">
+                <lord-icon src="https://cdn.lordicon.com/bsdkzyjd.json" trigger="hover"
+                    colors="primary:#121331,secondary:#848484" style="width:30px;height:30px">
                 </lord-icon>
                 <input type="text" name="product-price" placeholder="Precio..." class="product-form__input"
                     aria-label="Product Price" data-prodPrice>
@@ -54,13 +54,10 @@
                     <i class="fa-normal fa-asterisk"></i> Debe de ser número entero positivo.
                 </div>
             </div>
-            
+
             <div class="input-container">
-                <lord-icon
-                    src="https://cdn.lordicon.com/rszslpey.json"
-                    trigger="hover"
-                    colors="primary:#121331,secondary:#848484"
-                    style="width:30px;height:30px">
+                <lord-icon src="https://cdn.lordicon.com/rszslpey.json" trigger="hover"
+                    colors="primary:#121331,secondary:#848484" style="width:30px;height:30px">
                 </lord-icon>
                 <input type="text" name="product-image" placeholder="Imagen-URL..." class="product-form__input"
                     aria-label="Product Image URL" data-prodUrl>
@@ -68,7 +65,7 @@
                     <i class="fa-normal fa-asterisk"></i> Por favor, introduce una URL válida.
                 </div>
             </div>
-            
+
 
             <div class="button_pair">
                 <button type="submit" id="submitBtn" class="bttn_send bttn_base" aria-label="Send Product">
@@ -134,40 +131,37 @@
             </section>
         </section>
 
-
-        <!-- <button class="modal-open-btn">Registrar Producto</button> -->
-
         <!-- Modal con clases específicas -->
         <div class="modal-container">
             <div class="modal-content">
                 <span id="modal-close-btn" class="modal-close-btn">&times;</span>
                 <h2>ACTUALIZAR PRODUCTO</h2>
                 <form class="modal-form" id="productFormUpdate">
-                    <label for="productName">Nombre del producto:</label>
+                    <label for="productNameUpdate">Nombre del producto:</label>
                     <input type="text" id="productNameUpdate" name="productNameUpdate" required>
-    
-                    <label for="productPrice">Precio:</label>
+
+                    <label for="productPriceUpdate">Precio:</label>
                     <input type="number" id="productPriceUpdate" name="productPriceUpdate" required>
-    
-                    <label for="productUrl">URL de la imagen:</label>
+
+                    <label for="productUrlUpdate">URL de la imagen:</label>
                     <input type="url" id="productUrlUpdate" name="productUrlUpdate" required>
-    
+
                     <button type="submit">Actualizar</button>
                 </form>
             </div>
         </div>
-
-
 
     </main>
     <footer class="footer-content">
         <p>Desarrollado por Alejandro Corrales M.</p>
         <nav>
             <ul class="footer-link">
-                <li class="footer-link__item"><a href="#about"><i class="fa-brands fa-github-alt"></i>GitHub</a></li>
-                <li class="footer-link__item"><a href="#contact"><i class="fa-brands fa-instagram"></i>Instagram</a>
-                </li>
-                <li class="footer-link__item"><a href="#privacy"><i class="fa-brands fa-linkedin"></i>LinkedIn</a></li>
+                <li class="footer-link__item"><a href="https://github.com/" target="_blank"><i
+                            class="fa-brands fa-github-alt"></i>GitHub</a></li>
+                <li class="footer-link__item"><a href="https://www.instagram.com/?hl=es" target="_blank"><i
+                            class="fa-brands fa-instagram"></i>Instagram</a></li>
+                <li class="footer-link__item"><a href="https://cr.linkedin.com/" target="_blank"><i
+                            class="fa-brands fa-linkedin"></i>LinkedIn</a></li>
             </ul>
         </nav>
     </footer>
@@ -183,7 +177,6 @@
     <script src="js/updateProduct.js" type="module"></script>
     <script src="js/funcionalities/soundButtons.js" type="module"></script>
     <script src="js/effects/title.js" type="module"></script>
-
 
 </body>
 

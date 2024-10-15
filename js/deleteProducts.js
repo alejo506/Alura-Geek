@@ -3,7 +3,6 @@ import { renderProducts } from './getProducts.js'; // Importar la función que r
 import { speechMessage } from './funcionalities/speech.js';
 import { playSound } from './funcionalities/soundButtons.js';
 
-
 export async function handleDeleteButtonClick(productId) {
     try {
         // Confirmar eliminación del producto con SweetAlert2
@@ -27,7 +26,7 @@ export async function handleDeleteButtonClick(productId) {
 
         // Audio
         playSound('eliminate');
-        
+
         // Verificar si la eliminación fue exitosa
         if (wasDeleted) {
             // Mostrar un mensaje de éxito con SweetAlert2

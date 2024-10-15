@@ -28,9 +28,7 @@ async function listProducts(offset, limit) {
 
     // Obtiene el total de productos
     const totalItems = await getTotalProducts();
-    console.log(totalItems)
-    
- 
+
     // Retorna los productos y el total de productos
     return {
         products: data, // Lista de productos
@@ -99,7 +97,7 @@ export async function deleteProduct(productId) {
 
 // ! 5. Actualizar un producto (PUT)
 
-// ! 6. Obtener un producto por ID (GET)
+// Obtener un producto por ID (GET)
 async function getProductById(productId) {
 
     const response = await fetch(`${API_URL}products/${productId}`, {

@@ -24,7 +24,7 @@ const renderAllProducts = async (page = 1) => {
     try {
         const { products } = await conexionDB.listProducts(page, itemsPerPage);
         renderProducts(products);
-       
+
     } catch (error) {
         console.error("Error al renderizar todos los productos:", error);
     }
@@ -33,15 +33,15 @@ const renderAllProducts = async (page = 1) => {
 const filterProductsByName = async () => {
     try {
         const prodFilter = searchInput.value.toLowerCase();
-        
+
         if (!prodFilter) {
             paginationContainer.style.display = 'block';
             return renderAllProducts(currentPage);
         }
-        
+
         // Llama a la función de la base de datos para filtrar productos
         const searchProduct = await conexionDB.filterProducts(prodFilter);
-        
+
         // Verifica si la respuesta es 404 (productos no encontrados)
         if (!Array.isArray(searchProduct) || searchProduct.length === 0) {
             console.log("No se encontraron productos para este filtro.");
@@ -49,10 +49,10 @@ const filterProductsByName = async () => {
             renderProducts([]); // Renderiza un mensaje de que no hay productos
             return;
         }
-        
+
         paginationContainer.style.display = 'none';
         renderProducts(searchProduct);
-        
+
     } catch (error) {
         console.error("Error al filtrar los productos:", error);
     }
