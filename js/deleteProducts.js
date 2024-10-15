@@ -3,6 +3,7 @@ import { renderProducts } from './getProducts.js'; // Importar la función que r
 import { speechMessage } from './funcionalities/speech.js';
 import { playSound } from './funcionalities/soundButtons.js';
 
+
 export async function handleDeleteButtonClick(productId) {
     try {
         // Confirmar eliminación del producto con SweetAlert2
@@ -17,6 +18,7 @@ export async function handleDeleteButtonClick(productId) {
             cancelButtonText: 'Cancelar'
         });
 
+
         if (!confirmDelete.isConfirmed) {
             return; // Si el usuario cancela, no hacer nada
         }
@@ -29,9 +31,9 @@ export async function handleDeleteButtonClick(productId) {
 
         // Verificar si la eliminación fue exitosa
         if (wasDeleted) {
-            // Mostrar un mensaje de éxito con SweetAlert2
-            // Aquí podrías renderizar los productos actualizados
+
             renderProducts(); // Actualizar la lista de productos
+
             await Swal.fire(
                 '¡Eliminado!',
                 'El producto ha sido eliminado con éxito.',

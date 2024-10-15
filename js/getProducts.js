@@ -6,7 +6,7 @@ import { loadProductData } from "./updateProduct.js";
 const ulList = document.querySelector("[data-list]");
 const itemsPerPage = 6; // Número de productos por página
 let currentPage = 1; // Página actual
-const itemsQuantity = document.querySelector("[data-itemsQuantity]");
+const itemsQuantity = document.querySelector("[data-itemsQuantity]"); // Número de productos
 
 // Función para crear una tarjeta de producto
 export default function createProductCard(productName, productPrice, productUrl, productId) {
@@ -86,9 +86,12 @@ ulList.addEventListener('click', async (event) => {
         const deleteButton = event.target.closest('.delete-button');
         const productId = deleteButton.dataset.id;
 
-        // Llamar a la función de eliminación y verificar si se eliminó correctamente
-        await handleDeleteButtonClick(productId);
-        deleteButton.closest('li').remove(); // Eliminar la tarjeta del DOM si la eliminación fue exitosa
+        // Llama a la función de eliminación y espera el resultado
+        const isDeleted = await handleDeleteButtonClick(productId);
+        
+        if (isDeleted) {
+            deleteButton.closest('li').remove(); // Eliminar la tarjeta del DOM si fue confirmada la eliminación
+        }
     }
 
     // Manejar el evento de actualizar
