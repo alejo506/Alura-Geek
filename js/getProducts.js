@@ -1,6 +1,6 @@
 import { conexionDB } from "./conexionDB.js";
 import { createPagination } from "./pagination.js";
-import { handleDeleteButtonClick } from "./deleteProducts.js"; // Importar la función
+import { handleDeleteButtonClick } from "./deleteProducts.js";
 import { loadProductData } from "./updateProduct.js";
 
 const ulList = document.querySelector("[data-list]");

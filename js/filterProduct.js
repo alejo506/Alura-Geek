@@ -1,5 +1,5 @@
 import { conexionDB } from "./conexionDB.js";
-import createProductCard from "./getProducts.js"; // Seguimos importando la función de creación de tarjetas
+import createProductCard from "./getProducts.js"; 
 
 const itemsPerPage = 6;
 let currentPage = 1;
