@@ -1,4 +1,13 @@
+// Selección del elemento de paginación en el DOM
 const paginationElement = document.querySelector("[data-pagination]");
+
+/**
+ * Función para crear la paginación de productos.
+ * @param {number} totalItems - Total de productos disponibles para paginar.
+ * @param {number} itemsPerPage - Cantidad de productos que se mostrarán por página.
+ * @param {number} currentPage - Número de la página actualmente visible.
+ * @param {function} onPageChange - Callback que se llama al cambiar de página, recibe como argumento el nuevo número de página.
+ */
 
 // Función para crear la paginación
 export function createPagination(totalItems, itemsPerPage, currentPage, onPageChange) {

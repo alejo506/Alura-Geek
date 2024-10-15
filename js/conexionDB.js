@@ -1,19 +1,36 @@
+/**
+ * @file conexionDB.js
+ * @description Este módulo se encarga de la conexión a la API de productos y proporciona
+ * funciones para gestionar productos en la base de datos. Permite realizar operaciones
+ * como listar, enviar, filtrar, eliminar y actualizar productos.
+ *
+ * @module conexionDB
+ * @const {string} API_URL - URL base para la API de productos.
+ */
 
-// ! Configuración de la API
-// const API_URL = "http://localhost:3001/"; // URL base para la API de productos
-
+/** Configuración de la API */
 const API_URL = "https://67099631af1a3998baa1e796.mockapi.io/products_geek/";
 
+/**
+ * Obtiene el total de productos disponibles en la API.
+ *
+ * @async
+ * @returns {number} - Total de productos.
+ */
 async function getTotalProducts() {
     const response = await fetch(`${API_URL}products`);
     const data = await response.json();
     return data.length; // Devuelve el conteo total de productos
 }
 
-
-// ! 1. Obtener productos (GET)
-// offset = 1
-// limit = 6
+/**
+ * Lista los productos con paginación.
+ *
+ * @async
+ * @param {number} offset - Número de página actual.
+ * @param {number} limit - Número de productos a mostrar por página.
+ * @returns {Object} - Objeto que contiene la lista de productos y el total de productos.
+ */
 async function listProducts(offset, limit) {
     // Envía una solicitud para obtener productos con paginación
     const response = await fetch(`${API_URL}products?page=${offset}&limit=${limit}`, {
@@ -36,9 +53,16 @@ async function listProducts(offset, limit) {
     };
 }
 
-
-
-// ! 2. Enviar un nuevo producto (POST)
+/**
+ * Envía un nuevo producto a la API.
+ *
+ * @async
+ * @param {string} productName - Nombre del producto.
+ * @param {number} productPrice - Precio del producto.
+ * @param {string} productUrl - URL de la imagen del producto.
+ * @returns {Object} - Objeto que representa el producto creado.
+ * @throws {Error} - Lanza un error si la solicitud falla.
+ */
 async function sendProducts(productName, productPrice, productUrl) {
     // Crea un nuevo producto en formato JSON
     const newProduct = {
@@ -65,7 +89,13 @@ async function sendProducts(productName, productPrice, productUrl) {
     return await response.json(); // Retorna el producto creado
 }
 
-// ! 3. Filtrar productos por nombre (GET)
+/**
+ * Filtra productos por nombre.
+ *
+ * @async
+ * @param {string} keyWord - Palabra clave para filtrar productos.
+ * @returns {Array} - Lista de productos filtrados.
+ */
 async function filterProducts(keyWord) {
     // Envía una solicitud para buscar productos por nombre
     const response = await fetch(`${API_URL}products?productName=${keyWord}`);
@@ -74,7 +104,13 @@ async function filterProducts(keyWord) {
     return await response.json(); // Retorna la lista de productos filtrados
 }
 
-// ! 4. Eliminar un producto (DELETE)
+/**
+ * Elimina un producto por ID.
+ *
+ * @async
+ * @param {string} productId - ID del producto a eliminar.
+ * @returns {boolean} - Verdadero si se eliminó con éxito, falso si hubo un error.
+ */
 export async function deleteProduct(productId) {
     // Envía una solicitud para eliminar un producto por ID
     const response = await fetch(`${API_URL}products/${productId}`, {
@@ -94,12 +130,15 @@ export async function deleteProduct(productId) {
     }
 }
 
-
-// ! 5. Actualizar un producto (PUT)
-
-// Obtener un producto por ID (GET)
+/**
+ * Obtiene un producto por ID.
+ *
+ * @async
+ * @param {string} productId - ID del producto a obtener.
+ * @returns {Object} - Datos del producto.
+ * @throws {Error} - Lanza un error si la solicitud falla.
+ */
 async function getProductById(productId) {
-
     const response = await fetch(`${API_URL}products/${productId}`, {
         method: "GET",
         headers: {
@@ -114,10 +153,17 @@ async function getProductById(productId) {
     return await response.json(); // Retorna los datos del producto
 }
 
-// const ProductoID= await getProductById("2");
-// console.log(ProductoID);
-
-
+/**
+ * Actualiza un producto existente.
+ *
+ * @async
+ * @param {string} productId - ID del producto a actualizar.
+ * @param {string} productName - Nuevo nombre del producto.
+ * @param {number} productPrice - Nuevo precio del producto.
+ * @param {string} productUrl - Nueva URL de la imagen del producto.
+ * @returns {Object} - Objeto que representa el producto actualizado.
+ * @throws {Error} - Lanza un error si la solicitud falla.
+ */
 async function updateProduct(productId, productName, productPrice, productUrl) {
     const updatedProduct = {
         productName: productName,
@@ -140,13 +186,12 @@ async function updateProduct(productId, productName, productPrice, productUrl) {
     return await response.json(); // Retorna el producto actualizado
 }
 
-
 // ! Exportar funciones para ser utilizadas en otras partes de la aplicación
 export const conexionDB = {
     listProducts,   // Función para listar productos
     sendProducts,   // Función para enviar un nuevo producto
     filterProducts, // Función para filtrar productos por nombre
     deleteProduct,   // Función para eliminar un producto
-    getProductById,
+    getProductById,  // Función para obtener un producto por su id
     updateProduct    // Función para actualizar un producto
 };

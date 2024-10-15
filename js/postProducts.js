@@ -7,10 +7,9 @@ import { playSound } from "./funcionalities/soundButtons.js";
 
 const formProduct = document.querySelector("[data-form]");
 const submitBtn = document.querySelector(".bttn_send"); // Selecciona el botón de envío
-// const soundSend = new Audio('./sound/send_message.mp3');
 
 // Inicialmente deshabilitar el botón
-submitBtn.classList.add('disabled'); // Añadir clase deshabilitada
+submitBtn.classList.add('disabled'); 
 
 // Función para enviar el producto
 async function sendProduct(e) {
@@ -34,7 +33,7 @@ async function sendProduct(e) {
             title: '¡Éxito!',
             text: 'El producto se ha añadido correctamente.',
             icon: 'success',
-            // confirmButtonText: 'Aceptar',
+            confirmButtonText: 'Aceptar',
             timer: 2000, // Duración en milisegundos (3 segundos)
             timerProgressBar: true
         });
@@ -131,22 +130,22 @@ document.querySelector("[data-prodName]").addEventListener("input", (e) => {
 });
 
 document.querySelector("[data-prodPrice]").addEventListener("input", (e) => {
-    validatePrice(Number(e.target.value)); // Valida el precio al escribir
-    updateErrorMessages(); // Actualiza los mensajes de error
-    toggleSubmitButton(); // Verifica el estado del botón
+    validatePrice(Number(e.target.value)); 
+    updateErrorMessages(); 
+    toggleSubmitButton(); 
 });
 
 document.querySelector("[data-prodUrl]").addEventListener("input", (e) => {
-    validateUrl(e.target.value); // Valida la URL al escribir
-    updateErrorMessages(); // Actualiza los mensajes de error
-    toggleSubmitButton(); // Verifica el estado del botón
+    validateUrl(e.target.value); 
+    updateErrorMessages(); 
+    toggleSubmitButton(); 
 });
 
 // Evento para el botón de limpiar
 document.querySelector(".bttn_clean").addEventListener("click", (event) => {
-    event.preventDefault(); // Prevenir el comportamiento por defecto del botón, si es necesario
+    event.preventDefault(); 
     cleanForm(); // Llama a la función para limpiar el formulario
-    playSound('clean');
+    playSound('clean'); // Reproduce sonido
 });
 
 

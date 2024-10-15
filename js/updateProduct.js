@@ -1,38 +1,41 @@
-import { conexionDB } from "./conexionDB.js"; // Asegúrate de que la ruta sea correcta
-import { playSound } from "./funcionalities/soundButtons.js";
-import { speechMessage } from "./funcionalities/speech.js";
-import { getCurrentPage, renderProducts } from "./getProducts.js";
-import { cleanForm } from "./validate.js";
+import { conexionDB } from "./conexionDB.js"; // Importar la conexión a la base de datos
+import { playSound } from "./funcionalities/soundButtons.js"; // Importar función para reproducir sonidos
+import { speechMessage } from "./funcionalities/speech.js"; // Importar función para mensajes de voz
+import { getCurrentPage, renderProducts } from "./getProducts.js"; // Importar funciones para obtener y renderizar productos
+import { cleanForm } from "./validate.js"; // Importar función para limpiar el formulario
 
 // Obtener el modal y los botones de cierre
-const modal = document.querySelector('.modal-container');
-const closeModalBtn = document.querySelector('.modal-close-btn');
+const modal = document.querySelector('.modal-container'); // Seleccionar el contenedor del modal
+const closeModalBtn = document.querySelector('.modal-close-btn'); // Seleccionar el botón de cerrar modal
 
 // Formulario dentro del modal para actualizar el producto
-const productFormUpdate = document.getElementById('productFormUpdate');
+const productFormUpdate = document.getElementById('productFormUpdate'); // Seleccionar el formulario de actualización de producto
 
 // Variable para verificar si se han hecho cambios en el formulario
-let isFormChanged = false;
+let isFormChanged = false; // Inicializar el estado de cambios en el formulario
 
-// Función para manejar la carga de datos del producto en el modal
+/**
+ * Función para manejar la carga de datos del producto en el modal
+ * @param {string} productId - ID del producto que se desea actualizar.
+ */
 export async function loadProductData(productId) {
     try {
         // Abrir el modal
-        modal.style.display = 'block';
+        modal.style.display = 'block'; // Mostrar el modal
         isFormChanged = false; // Resetea el estado de cambios al abrir el modal
 
         // Limpiar el formulario al abrir el modal
-        cleanForm();
+        cleanForm(); // Llamar a la función para limpiar el formulario
 
         // Obtener los datos del producto por su ID
-        const productData = await conexionDB.getProductById(productId);
+        const productData = await conexionDB.getProductById(productId); // Obtener datos del producto desde la base de datos
 
         // Verificar si se encontraron los datos del producto
         if (productData) {
             // Cargar los datos en los campos del modal
-            document.getElementById("productNameUpdate").value = productData.productName || '';
-            document.getElementById("productPriceUpdate").value = productData.productPrice || '';
-            document.getElementById("productUrlUpdate").value = productData.productUrl || '';
+            document.getElementById("productNameUpdate").value = productData.productName || ''; // Cargar nombre del producto
+            document.getElementById("productPriceUpdate").value = productData.productPrice || ''; // Cargar precio del producto
+            document.getElementById("productUrlUpdate").value = productData.productUrl || ''; // Cargar URL del producto
 
             // Agregar evento de cambio en los campos para detectar cambios
             document.querySelectorAll('.modal-input').forEach(input => {
@@ -43,18 +46,18 @@ export async function loadProductData(productId) {
 
             // Agregar evento de submit para actualizar el producto
             productFormUpdate.onsubmit = async (event) => {
-                event.preventDefault();
+                event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
 
                 // Obtener los valores actualizados de los campos del modal
-                const updatedName = document.getElementById("productNameUpdate").value;
-                const updatedPrice = document.getElementById("productPriceUpdate").value;
-                const updatedUrl = document.getElementById("productUrlUpdate").value;
+                const updatedName = document.getElementById("productNameUpdate").value; // Obtener el nuevo nombre del producto
+                const updatedPrice = document.getElementById("productPriceUpdate").value; // Obtener el nuevo precio del producto
+                const updatedUrl = document.getElementById("productUrlUpdate").value; // Obtener la nueva URL del producto
 
                 // Validación simple de los campos
                 if (!updatedName || !updatedPrice || !updatedUrl) {
                     await Swal.fire({
                         title: '¡Error!',
-                        text: 'Todos los campos son obligatorios.',
+                        text: 'Todos los campos son obligatorios.', // Mensaje de error si faltan campos
                         icon: 'error',
                         confirmButtonText: 'Aceptar'
                     });
@@ -63,68 +66,73 @@ export async function loadProductData(productId) {
 
                 try {
                     // Actualizar el producto en la base de datos
-                    await conexionDB.updateProduct(productId, updatedName, updatedPrice, updatedUrl);
+                    await conexionDB.updateProduct(productId, updatedName, updatedPrice, updatedUrl); // Llamar a la función para actualizar el producto
 
-                    // Audio
-                    playSound('send_message')
+                    // Reproducir sonido de mensaje enviado
+                    playSound('send_message'); // Reproducir sonido para indicar acción exitosa
 
                     // Recargar los productos en la página actual
-                    const currentPage = getCurrentPage();
-                    renderProducts(currentPage);
+                    const currentPage = getCurrentPage(); // Obtener la página actual
+                    renderProducts(currentPage); // Renderizar los productos de la página actual
 
                     // Limpiar el formulario y cerrar el modal
-                    modal.style.display = 'none';
+                    modal.style.display = 'none'; // Cerrar el modal
 
-                    speechMessage("El producto ha sido actualizado")
+                    // Mensaje de voz confirmando la actualización
+                    speechMessage("El producto ha sido actualizado"); // Mensaje de voz para notificación
+
                     // Notificación de éxito
                     await Swal.fire({
                         title: '¡Éxito!',
-                        text: 'El producto se actualizó correctamente.',
+                        text: 'El producto se actualizó correctamente.', // Mensaje de éxito
                         icon: 'success',
                         confirmButtonText: 'Aceptar'
                     });
                 } catch (error) {
-                    console.error("Error al actualizar el producto:", error);
+                    console.error("Error al actualizar el producto:", error); // Log de error en consola
 
                     // Notificación de error
                     await Swal.fire({
                         title: '¡Error!',
-                        text: 'No se pudo actualizar el producto. Inténtalo de nuevo.',
+                        text: 'No se pudo actualizar el producto. Inténtalo de nuevo.', // Mensaje de error
                         icon: 'error',
                         confirmButtonText: 'Aceptar'
                     });
                 }
             };
         } else {
-            console.error("No se encontraron datos para el producto con ID:", productId);
+            console.error("No se encontraron datos para el producto con ID:", productId); // Log de error si no se encuentra el producto
         }
 
         // Manejar el cierre del modal
         closeModalBtn.onclick = () => {
-            handleCloseModal();
+            handleCloseModal(); // Llamar a la función para cerrar el modal
         };
 
         // Cerrar el modal si se hace clic fuera del contenido del modal
         window.onclick = (e) => {
             if (e.target === modal) {
-                handleCloseModal();
+                handleCloseModal(); // Llamar a la función para cerrar el modal
             }
         };
     } catch (error) {
-        console.error("Error al cargar el producto para actualizar:", error);
+        console.error("Error al cargar el producto para actualizar:", error); // Log de error si falla la carga
         await Swal.fire({
             title: '¡Error!',
-            text: 'Error al cargar los datos del producto. Intenta nuevamente.',
+            text: 'Error al cargar los datos del producto. Intenta nuevamente.', // Mensaje de error
             icon: 'error',
             confirmButtonText: 'Aceptar'
         });
     }
 }
 
-// Función para manejar el cierre del modal
+/**
+ * Función para manejar el cierre del modal
+ */
 function handleCloseModal() {
+    // Confirmar si hay cambios sin guardar antes de cerrar
     if (!isFormChanged || confirm('¿Estás seguro de que deseas cerrar sin guardar los cambios?')) {
-        modal.style.display = 'none';
+        modal.style.display = 'none'; // Cerrar el modal
         cleanForm(); // Limpiar el formulario al cerrar
         isFormChanged = false; // Resetear el estado del formulario
     }
