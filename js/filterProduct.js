@@ -1,6 +1,5 @@
 import { conexionDB } from "./conexionDB.js";
-import createProductCard from "./getProducts.js";
-// import { createPagination } from "./pagination.js";
+import createProductCard from "./getProducts.js"; // Seguimos importando la función de creación de tarjetas
 
 const itemsPerPage = 6;
 let currentPage = 1;
@@ -13,7 +12,7 @@ const renderProducts = (products) => {
 
     if (Array.isArray(products) && products.length) {
         products.forEach(product => {
-            filterList.appendChild(createProductCard(product.productName, product.productPrice, product.productUrl));
+            filterList.appendChild(createProductCard(product.productName, product.productPrice, product.productUrl, product.id)); // Asegúrate de que 'product.id' esté presente
         });
     } else {
         filterList.innerHTML = `<h2 class="mensaje__Error-Titulo">No se encontraron elementos.</h2>`;
@@ -42,7 +41,6 @@ const filterProductsByName = async () => {
         // Llama a la función de la base de datos para filtrar productos
         const searchProduct = await conexionDB.filterProducts(prodFilter);
 
-        // Verifica si la respuesta es 404 (productos no encontrados)
         if (!Array.isArray(searchProduct) || searchProduct.length === 0) {
             console.log("No se encontraron productos para este filtro.");
             paginationContainer.style.display = 'none';

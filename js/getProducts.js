@@ -62,36 +62,6 @@ export async function renderProducts(visiblePage = 1) {
             productItem.id // Asegúrate de pasar el ID del producto
         );
 
-        // ! Delete
-        // Añadir evento de clic al botón de eliminar para pasar el productId a la función de eliminar
-        const deleteButton = productCard.querySelector(".delete-button");
-
-        deleteButton.addEventListener("click", async (event) => {
-            event.preventDefault();  // Prevenir la acción predeterminada
-
-            // Llamar a la función de eliminación y verificar si se eliminó correctamente
-            // const wasDeleted = 
-            await handleDeleteButtonClick(productItem.id);
-            // if (wasDeleted) {
-                // Eliminar la tarjeta del DOM si la eliminación fue exitosa
-                productCard.remove();
-
-            // } else {
-            //     console.error("Error al eliminar el producto.");
-            // }
-        });
-        // ! Delete
-
-
-        // ! Update
-        const updateButtonCard = productCard.querySelector(".update-button");
-
-        updateButtonCard.addEventListener("click", async (event) => {
-            event.preventDefault();
-            await loadProductData(productItem.id);
-        });
-        // ! Update
-
         ulList.appendChild(productCard); // Añadir la tarjeta del producto a la lista
     });
 
@@ -101,22 +71,39 @@ export async function renderProducts(visiblePage = 1) {
         renderProducts(currentPage); // Actualizar la lista de productos con la nueva página
     });
 
-
-    
     // Productos en Stock
     const totalItemsQuantity = data.totalItems;
 
     itemsQuantity.innerHTML = `<h3 class="stockQuantity" data-itemsQuantity>En stock: <span>${totalItemsQuantity}</span></h3>`;
-
 }
 
+// Delegación de eventos en el contenedor principal (ulList)
+ulList.addEventListener('click', async (event) => {
+    event.preventDefault();
+
+    // Manejar el evento de eliminar
+    if (event.target.closest('.delete-button')) {
+        const deleteButton = event.target.closest('.delete-button');
+        const productId = deleteButton.dataset.id;
+
+        // Llamar a la función de eliminación y verificar si se eliminó correctamente
+        await handleDeleteButtonClick(productId);
+        deleteButton.closest('li').remove(); // Eliminar la tarjeta del DOM si la eliminación fue exitosa
+    }
+
+    // Manejar el evento de actualizar
+    if (event.target.closest('.update-button')) {
+        const updateButton = event.target.closest('.update-button');
+        const productId = updateButton.dataset.id;
+
+        await loadProductData(productId); // Cargar los datos del producto para actualizar
+    }
+});
 
 // Función para obtener el valor actual de currentPage
 export function getCurrentPage() {
     return currentPage;
 }
-
-
 
 // Llamar a la función para renderizar los productos en la primera página
 renderProducts(currentPage);
