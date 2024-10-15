@@ -11,12 +11,12 @@ const paginationContainer = document.querySelector(".paginacion");
 const renderProducts = (products) => {
     filterList.innerHTML = ""; // Limpia la lista de productos
 
-    if (products.length) {
+    if (Array.isArray(products) && products.length) {
         products.forEach(product => {
             filterList.appendChild(createProductCard(product.productName, product.productPrice, product.productUrl));
         });
     } else {
-        filterList.innerHTML = `<h2 class="mensaje__titulo">No se encontraron elementos.</h2>`;
+        filterList.innerHTML = `<h2 class="mensaje__Error-Titulo">No se encontraron elementos.</h2>`;
     }
 };
 
@@ -33,13 +33,26 @@ const renderAllProducts = async (page = 1) => {
 const filterProductsByName = async () => {
     try {
         const prodFilter = searchInput.value.toLowerCase();
+        
         if (!prodFilter) {
             paginationContainer.style.display = 'block';
             return renderAllProducts(currentPage);
         }
+        
+        // Llama a la función de la base de datos para filtrar productos
         const searchProduct = await conexionDB.filterProducts(prodFilter);
+        
+        // Verifica si la respuesta es 404 (productos no encontrados)
+        if (!Array.isArray(searchProduct) || searchProduct.length === 0) {
+            console.log("No se encontraron productos para este filtro.");
+            paginationContainer.style.display = 'none';
+            renderProducts([]); // Renderiza un mensaje de que no hay productos
+            return;
+        }
+        
         paginationContainer.style.display = 'none';
         renderProducts(searchProduct);
+        
     } catch (error) {
         console.error("Error al filtrar los productos:", error);
     }

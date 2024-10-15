@@ -1,4 +1,6 @@
 import { conexionDB } from "./conexionDB.js"; // Asegúrate de que la ruta sea correcta
+import { playSound } from "./funcionalities/soundButtons.js";
+import { speechMessage } from "./funcionalities/speech.js";
 import { getCurrentPage, renderProducts } from "./getProducts.js";
 import { cleanForm } from "./validate.js";
 
@@ -63,13 +65,17 @@ export async function loadProductData(productId) {
                     // Actualizar el producto en la base de datos
                     await conexionDB.updateProduct(productId, updatedName, updatedPrice, updatedUrl);
 
+                    // Audio
+                    playSound('send_message')
+
                     // Recargar los productos en la página actual
                     const currentPage = getCurrentPage();
                     renderProducts(currentPage);
 
                     // Limpiar el formulario y cerrar el modal
                     modal.style.display = 'none';
-
+                    
+                    speechMessage("El producto ha sido actualizado")
                     // Notificación de éxito
                     await Swal.fire({
                         title: '¡Éxito!',

@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 .modal-container {
-    display: none; 
+    display: none;
     position: fixed;
-    z-index: 1000; 
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
@@ -64,12 +64,12 @@
     margin-top: 5px;
     margin-bottom: 15px; /* Aumentar margen inferior para separar de otros elementos */
     border: 1px solid #007bff; /* Color de borde más atractivo */
-    border-radius: 4px;
+    border-radius: 30px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transición para el borde */
     font-family: 'IBM Plex Mono', monospace; /* Fuente para inputs */
 }
 
-.modal-form input:hover, 
+.modal-form input:hover,
 .modal-form input:focus {
     border-color: #0056b3; /* Color de borde al pasar el mouse */
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra al enfocarse */
@@ -77,18 +77,21 @@
 
 .modal-form button[type="submit"] {
     width: 100%;
-    padding: 10px;
-    margin-top: 20px; /* Aumentar margen superior para separar del último input */
-    background-color: #28a745; /* Color de fondo verde */
-    color: white;
-    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #28a745;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s; /* Transición para el botón */
-    font-family: 'IBM Plex Mono', monospace; /* Fuente para botón */
+    font-family: 'IBM Plex Mono', monospace;
+    box-shadow: rgba(0, 0, 0, 0.377) 0.625rem 0.625rem 0.5rem, #d4d6e0 0.125rem 0.125rem 0.625rem inset, #22b321 -0.25rem -0.25rem 0.0625rem inset;
+    font: var(--font-family-ibm-plex);
+    color: white;
+    letter-spacing: 0.075rem;
+    transition: 0.1s ease-in-out;
 }
 
-.modal-form button[type="submit"]:hover {
-    background-color: #218838; /* Color de fondo verde más oscuro */
-    transform: scale(1.05); /* Escalado al pasar el mouse */
+
+.modal-form button[type="submit"]:active {
+    box-shadow: rgba(0, 0, 0, 0.377) 0 0 0, inset 0.03125rem 0.03125rem 0.25rem #000000;
+    transform: translateY(0.5px);
 }

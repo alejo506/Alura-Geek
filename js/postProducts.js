@@ -2,11 +2,13 @@ import { conexionDB } from "./conexionDB.js";
 import { validateForm, validateName, validatePrice, validateUrl, cleanForm } from "./validate.js";
 import { getCurrentPage, renderProducts } from "./getProducts.js";
 import { speechMessage } from "./funcionalities/speech.js";
+import { playSound } from "./funcionalities/soundButtons.js";
 
 
 
 const formProduct = document.querySelector("[data-form]");
 const submitBtn = document.querySelector(".bttn_send"); // Selecciona el botón de envío
+// const soundSend = new Audio('./sound/send_message.mp3');
 
 // Inicialmente deshabilitar el botón
 submitBtn.classList.add('disabled'); // Añadir clase deshabilitada
@@ -29,6 +31,7 @@ async function sendProduct(e) {
         // Enviar el producto a la base de datos
         await conexionDB.sendProducts(productName, productPrice, productUrl);
         
+
         // Mostrar alerta de éxito si se envió correctamente
         Swal.fire({
             title: '¡Éxito!',
@@ -39,6 +42,10 @@ async function sendProduct(e) {
             timerProgressBar: true
         });
 
+        // Audio
+        playSound('send_message')
+
+        // Pagina actual
         const page =  getCurrentPage();
 
         
@@ -120,6 +127,7 @@ function updateErrorMessages() {
 // Escucha el evento submit del formulario
 formProduct.addEventListener("submit", e => sendProduct(e));
 
+
 // Agregar validaciones en tiempo real
 document.querySelector("[data-prodName]").addEventListener("input", (e) => {
     validateName(e.target.value); // Valida el nombre al escribir
@@ -139,7 +147,12 @@ document.querySelector("[data-prodUrl]").addEventListener("input", (e) => {
     toggleSubmitButton(); // Verifica el estado del botón
 });
 
-document.querySelector(".bttn_clean").addEventListener("click", cleanForm); 
+// Evento para el botón de limpiar
+document.querySelector(".bttn_clean").addEventListener("click", (event) => {
+    event.preventDefault(); // Prevenir el comportamiento por defecto del botón, si es necesario
+    cleanForm(); // Llama a la función para limpiar el formulario
+    playSound('clean');
+});
     
     
 
