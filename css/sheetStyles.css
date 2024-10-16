@@ -14,7 +14,7 @@
     /* Color Variables */
     --header-footer-color: #ffc6d5;
     --product-card-color: #f1f1f1;
-    --add-product-section-color: #03318C;
+    --add-product-section-color: #0e9390;
 
     /* Font Family Variables */
     --font-family-press-start: 'Press Start 2P', system-ui;
@@ -36,7 +36,7 @@ body {
     font: var(--font-weight-normal) var(--font-size-large) var(--font-family-press-start);
     height: 3.19rem;
     align-content: center;
-    color: #075b07;
+    color: #4273a2;
     letter-spacing: 0.2rem;
     line-height: 1.5;
 }
@@ -137,7 +137,7 @@ body {
 /* Botones */
 .bttn_send {
     background-color: var(--add-product-section-color);
-    box-shadow: rgba(0, 0, 0, 0.377) 0.625rem 0.625rem 0.5rem, #2c4bfb 0.125rem 0.125rem 0.625rem inset, #0256d4 -0.25rem -0.25rem 0.0625rem inset;
+    box-shadow: rgba(0, 0, 0, 0.377) 0.625rem 0.625rem 0.5rem, #2cf4fb 0.125rem 0.125rem 0.625rem inset, #029895 -0.25rem -0.25rem 0.0625rem inset;
 }
 
 .bttn_clean {
@@ -158,7 +158,7 @@ body {
     flex-direction: row;
     border: 0.1875rem solid var(--product-card-color);
     border-radius: 1.875rem;
-    color: green;
+    color: #4273a2;
     font: var(--font-weight-semibold) 1.5rem var(--font-family-ibm-plex);
     padding: 0 1rem; 
     align-items: center;
@@ -303,18 +303,18 @@ body {
 }
 
 .paginacion a.activo {
-    background-color: #075b07;
+    background-color: #4273a2;
     color: white;
 }
 
 .paginacion a:hover:not(.activo) {
-    background-color: #075b07;
+    background-color: #4273a2;
     color: #FFFFFF;
 }
 
 .paginacion a:active {
     box-shadow: rgba(0, 0, 0, 0.377) 0 0 0, inset 0.03125rem 0.03125rem 0.25rem #000000,
-        #05d402 -0.2rem -0.2rem 0.5rem inset;
+        #04a0c6 -0.2rem -0.2rem 0.5rem inset;
     transform: translateY(0.03125rem);
 }
 

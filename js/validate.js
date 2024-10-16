@@ -26,7 +26,7 @@ export function validatePrice(price) {
     const errorMessage = document.getElementById('priceError');
 
     // Verifica si el precio es un número entero positivo
-    if (!Number.isInteger(price) || price < 0 || price === "") {
+    if (!Number.isInteger(price) || price < 0 || price > 99999 || price === "") {
         errorMessage.classList.add('bold'); // Añadir negrita si hay error
         return false; // Hay un error
     }
