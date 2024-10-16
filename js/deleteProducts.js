@@ -37,7 +37,6 @@ export async function handleDeleteButtonClick(productId) {
         if (wasDeleted) {
             renderProducts(getCurrentPage()); // Actualiza la lista de productos en la interfaz
 
-            // Muestra un mensaje de éxito al usuario
             await Swal.fire(
                 '¡Eliminado!', // Título del mensaje de éxito
                 'El producto ha sido eliminado con éxito.', // Mensaje informativo
