@@ -1,7 +1,8 @@
 import { conexionDB } from './conexionDB.js';  // Importa el módulo que contiene funciones para la conexión a la base de datos
-import { renderProducts } from './getProducts.js'; // Importa la función encargada de renderizar los productos en la interfaz
+import { getCurrentPage, renderProducts } from './getProducts.js'; // Importa la función encargada de renderizar los productos en la interfaz
 import { speechMessage } from './funcionalities/speech.js'; // Importa la función para emitir mensajes de voz
 import { playSound } from './funcionalities/soundButtons.js'; // Importa la función para reproducir sonidos de los botones
+
 
 /**
  * Maneja el clic del botón de eliminación de un producto.
@@ -34,7 +35,7 @@ export async function handleDeleteButtonClick(productId) {
 
         // Verifica si la eliminación fue exitosa
         if (wasDeleted) {
-            renderProducts(); // Actualiza la lista de productos en la interfaz
+            renderProducts(getCurrentPage()); // Actualiza la lista de productos en la interfaz
 
             // Muestra un mensaje de éxito al usuario
             await Swal.fire(

@@ -77,7 +77,7 @@ export async function renderProducts(visiblePage = 1) {
         ulList.appendChild(productCard); // Añade la tarjeta del producto a la lista
     });
 
-    // Crea la paginación fuera del bucle para evitar crearla múltiples veces
+    // ! Crea la paginación fuera del bucle para evitar crearla múltiples veces
     createPagination(data.totalItems, itemsPerPage, visiblePage, (newPage) => {
         currentPage = newPage; // Actualiza la página actual
         renderProducts(currentPage); // Renderiza los productos de la nueva página
@@ -92,7 +92,7 @@ export async function renderProducts(visiblePage = 1) {
 ulList.addEventListener('click', async (event) => {
     event.preventDefault(); // Evita el comportamiento por defecto del evento
 
-    // Manejar el evento de eliminación
+    // ! Manejar el evento de eliminación
     if (event.target.closest('.delete-button')) {
         const deleteButton = event.target.closest('.delete-button'); // Encuentra el botón de eliminar
         const productId = deleteButton.dataset.id; // Obtiene el ID del producto
@@ -103,9 +103,18 @@ ulList.addEventListener('click', async (event) => {
         if (isDeleted) {
             deleteButton.closest('li').remove(); // Elimina la tarjeta del DOM si fue confirmada la eliminación
         }
+
+         // Verifica si quedan productos en la página actual
+         const remainingProducts = ulList.querySelectorAll('.product-list__item'); // Busca los productos restantes
+
+         // Si ya no quedan productos, vuelve a la página anterior
+         if (remainingProducts.length === 0 && currentPage > 1) {
+             currentPage--; // Decrementa la página actual
+             renderProducts(currentPage); // Renderiza la página anterior
+         }
     }
 
-    // Manejar el evento de actualización
+    // ! Manejar el evento de actualización
     if (event.target.closest('.update-button')) {
         const updateButton = event.target.closest('.update-button'); // Encuentra el botón de actualizar
         const productId = updateButton.dataset.id; // Obtiene el ID del producto
