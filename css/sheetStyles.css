@@ -47,7 +47,6 @@ body {
     align-content: center;
     color: var(--add-product-section-color);
     line-height: 1.5;
-    align-self: flex-start;
 }
 
 .stockQuantity span {
@@ -358,9 +357,6 @@ body {
         font-size: 2rem;
     }
 
-    .stockQuantity{
-        align-self: center;
-    }
 }
 
 /* Personaliza la barra de desplazamiento */
