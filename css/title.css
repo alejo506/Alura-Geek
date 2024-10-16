@@ -3,7 +3,7 @@
 /* Titulo del producto */
 .product-header__title {
     font-family: 'Press Start 2P', system-ui;
-    font-size: 2rem;
+    font-size: 0.5rem;
 }
 
 /* Animación del título del producto */

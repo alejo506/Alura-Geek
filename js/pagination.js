@@ -8,8 +8,6 @@ const paginationElement = document.querySelector("[data-pagination]");
  * @param {number} currentPage - Número de la página actualmente visible.
  * @param {function} onPageChange - Callback que se llama al cambiar de página, recibe como argumento el nuevo número de página.
  */
-
-// Función para crear la paginación
 export function createPagination(totalItems, itemsPerPage, currentPage, onPageChange) {
     const totalPages = Math.ceil(totalItems / itemsPerPage);
 
@@ -20,10 +18,10 @@ export function createPagination(totalItems, itemsPerPage, currentPage, onPageCh
     const prevLink = document.createElement('a');
     prevLink.className = "prev";
     prevLink.innerHTML = "&laquo;";
+    prevLink.href = "#previous"; // Agrega href
     prevLink.addEventListener('click', (event) => {
         event.preventDefault();
         if (currentPage > 1) {
-            console.log("Página anterior: ", currentPage - 1);
             onPageChange(currentPage - 1);
         }
     });
@@ -34,12 +32,12 @@ export function createPagination(totalItems, itemsPerPage, currentPage, onPageCh
         const pageLink = document.createElement('a');
         pageLink.className = "page";
         pageLink.innerText = i;
+        pageLink.href = `#page${i}`; // Agrega href con un valor único
         pageLink.setAttribute('data-page', i);
 
-        // Agregar evento de clic
+        // Evento de clic
         pageLink.addEventListener('click', (event) => {
             event.preventDefault();
-            console.log("Página seleccionada: ", i);
             onPageChange(i);
         });
 
@@ -55,10 +53,10 @@ export function createPagination(totalItems, itemsPerPage, currentPage, onPageCh
     const nextLink = document.createElement('a');
     nextLink.className = "next";
     nextLink.innerHTML = "&raquo;";
+    nextLink.href = "#next"; // Agrega href
     nextLink.addEventListener('click', (event) => {
         event.preventDefault();
         if (currentPage < totalPages) {
-            console.log("Página siguiente: ", currentPage + 1);
             onPageChange(currentPage + 1);
         }
     });

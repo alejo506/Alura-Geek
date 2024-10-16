@@ -10,16 +10,16 @@
     <meta name="author" content="AluraGeek Team">
     <title>Challange Alura Geek</title>
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/title.css">
     <link rel="stylesheet" href="css/sheetStyles.css">
     <link rel="stylesheet" href="css/modal.css">
-    <link rel="stylesheet" href="css/title.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
     <header class="header header__content">
-        <img src="img/hearts.svg" alt="Three hearts icon representing customer satisfaction" loading="lazy">
-        <h1 class="product-header__title title" id="myTitle"></h1>
+        <img class="product-header__img" src="img/hearts.svg" alt="Three hearts icon representing customer satisfaction" loading="lazy">
+        <h1 class="product-header__title" id="myTitle"></h1>
 
     </header>
     <main class="main">
@@ -88,44 +88,14 @@
                 <input id="input-filter" type="search" placeholder="Buscar productos..." data-search autocomplete="off">
             </div>
             <ul class="product-list" data-list>
-                <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
-                    <img src="img/productos-geek.png" alt="Product 1 - Description of product"
-                        class="product-list__image" itemprop="image">
-                    <section>
-                        <h3 class="product-list__name" itemprop="name">Product Name 1</h3>
-                        <p class="card-footer" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                            <span itemprop="price" content="USD">$19.99</span>
-                            <a class="delete-button" data-id>
-                                <lord-icon src="https://cdn.lordicon.com/hwjcdycb.json" trigger="morph"
-                                    state="morph-trash-in" colors="primary:#911710,secondary:#c7166f"
-                                    style="width:25px;height:25px">
-                                </lord-icon>
-                            </a>
-                        </p>
-                    </section>
-                </li>
-
-                <li class="product-list__item" itemscope itemtype="http://schema.org/Product">
-                    <img src="https://media.istockphoto.com/id/1130019159/es/foto/robots-de-padre-e-hijo-en-monocromo-blanco.jpg?s=1024x1024&w=is&k=20&c=9IYA9GBXJeK0x0VeMFgAJV0vl8U-O2i5m0rP21x2LAg="
-                        alt="Product 1 - Description of product" class="product-list__image" itemprop="image">
-                    <section class="card-footer-section">
-                        <h3 class="product-list__name" itemprop="name">ProductName</h3>
-                        <hr class="card-divider">
-                        <p class="card-footer" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                            <span itemprop="price" content="USD">1000</span>
-                            <button type="button" class="delete-button" data-id="${productId}">
-                                <i class="fas fa-trash-can"></i>
-                            </button>
-                        </p>
-                    </section>
-                </li>
+                
             </ul>
             <section class="paginacion" data-pagination>
-                <a href="#" class="prev">&laquo;</a>
-                <a href="#" class="page" data-page>1</a>
-                <a href="#" class="page activo" data-page>2</a>
-                <a href="#" class="page" data-page>3</a>
-                <a href="#" class="next">&raquo;</a>
+                <!-- <a href="/page/1" class="prev">&laquo;</a>
+                <a href="/page/1" class="page" data-page>1</a>
+                <a href="/page/2" class="page activo" data-page>2</a>
+                <a href="/page/3" class="page" data-page>3</a>
+                <a href="/page/next" class="next">&raquo;</a> -->
             </section>
         </section>
 
@@ -174,7 +144,6 @@
     <script src="js/validate.js" type="module"></script>
     <script src="js/updateProduct.js" type="module"></script>
     <script src="js/funcionalities/soundButtons.js" type="module"></script>
-    <script src="js/effects/title.js" type="module"></script>
 
 </body>
 

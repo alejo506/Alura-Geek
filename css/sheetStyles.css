@@ -22,11 +22,14 @@
 }
 
 body {
+    background: linear-gradient(rgba(255, 255, 255, 0.890), rgba(240, 233, 233, 0.890)), 
+                url('../img/humo.png');
     background-color: #f0e9e942;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
+
 
 /* ! GLOBAL */
 .title {
@@ -44,6 +47,7 @@ body {
     align-content: center;
     color: var(--add-product-section-color);
     line-height: 1.5;
+    align-self: flex-start;
 }
 
 .stockQuantity span {
@@ -71,8 +75,10 @@ body {
 }
 
 /* ! ADD PRODUCTS SECTION */
+
 .product-header__title {
     color: var(--header-footer-color);
+    font-size: 1rem;
 }
 
 .product-form__title {
@@ -347,6 +353,14 @@ body {
         background-color: #ded6d642;
         margin: 0 1.25rem;
     }
+
+    .product-header__title {
+        font-size: 2rem;
+    }
+
+    .stockQuantity{
+        align-self: center;
+    }
 }
 
 /* Personaliza la barra de desplazamiento */
@@ -376,7 +390,7 @@ body {
 }
 
 .error.bold {
-    color: red;
+    color: rgb(206, 5, 5);
 }
 
 .disabled {

@@ -29,21 +29,21 @@ export default function createProductCard(productName, productPrice, productUrl,
             <section class="card-footer" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                 <span itemprop="price" content="USD">$${productPrice}</span>
                 <section>
-                    <button type="button" class="update-button" data-id="${productId}"> <!-- Botón de actualizar -->
+                    <button type="button" class="update-button" data-id="${productId}" aria-label="Update"> <!-- Botón de actualizar -->
                         <lord-icon
                             src="https://cdn.lordicon.com/exymduqj.json"
                             trigger="hover"
                             stroke="bold"
-                            colors="primary:#242424,secondary:#848484"
+                            colors="primary:#242424"
                             style="width:25px;height:25px">
                         </lord-icon>
                     </button>
-                    <button type="button" class="delete-button" data-id="${productId}"> <!-- Botón de eliminar -->
+                    <button type="button" class="delete-button" data-id="${productId}" aria-label="Delete"> <!-- Botón de eliminar -->
                         <lord-icon
                             src="https://cdn.lordicon.com/vlnvqvew.json"
                             trigger="hover"
                             stroke="bold"
-                            colors="primary:#848484,secondary:#000000"
+                            colors="primary:#848484"
                             style="width:25px;height:25px">
                         </lord-icon>
                     </button>
