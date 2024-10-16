@@ -22,8 +22,8 @@
 }
 
 body {
-    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(240, 233, 233, 0.8)), 
-                url('../img/humo.png');
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(240, 233, 233, 0.9)), 
+                url('../img/broken.png');
     background-color: #f0e9e942;
     background-size: cover;
     background-position: center;
@@ -229,6 +229,7 @@ body {
 
 .product-list__item h3 {
     overflow: auto;
+    font-weight: 500;
 }
 
 .mensaje__Error-Titulo {
@@ -318,6 +319,16 @@ body {
 }
 
 @media (min-width: 834px) {
+
+    body {
+        background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(240, 233, 233, 0.8)), 
+                    url('../img/humo.png');
+        background-color: #f0e9e942;
+        /* background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat; */
+    }
+
     .main {
         display: flex;
         flex-direction: row-reverse;
