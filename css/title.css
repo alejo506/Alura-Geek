@@ -12,7 +12,7 @@
     width: 100%;
     height: 100%;
     line-height: 3rem; 
-    animation: abomination1 7.5s linear 1;
+    animation: abomination1 4s linear 1;
     animation-fill-mode: forwards;
 }
 
@@ -34,15 +34,15 @@
         content: "ALURA";
     }
     62.5% {
-        content: "ALURA G";
+        content: "ALURA_G";
     }
     75% {
-        content: "ALURA GE";
+        content: "ALURA_GE";
     }
     87.5% {
-        content: "ALURA GEE";
+        content: "ALURA_GEE";
     }
     100% {
-        content: "ALURA GEEK";
+        content: "ALURA_GEEK";
     }
 }
