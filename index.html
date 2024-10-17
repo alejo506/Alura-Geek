@@ -83,16 +83,23 @@
         <section aria-labelledby="product-list-title" class="my-products">
 
             <h2 id="product-list-title" class="product-list__title title">MIS PRODUCTOS:</h2>
-            <div class="input-search">
-                <i class="fas fa-search"></i>
-                <input id="input-filter" type="search" placeholder="Buscar productos..." data-search autocomplete="off">
+
+            <div class="input-container input-search">
+                <lord-icon
+                    src="https://cdn.lordicon.com/wjyqkiew.json"
+                    trigger="hover"
+                    colors="primary:#121331,secondary:#3080e8"
+                    style="width:30px;height:30px">
+                </lord-icon>
+                <input type="search" name="product-filter" placeholder="Buscar productos..." class="input-filter" data-search autocomplete="off"
+                    aria-label="Filter Products" data-prodUrl>
             </div>
+
             <ul class="product-list" data-list>
                 
             </ul>
-            <section class="paginacion" data-pagination>
-        <div id="loading" style="display: none;">Cargando...</div>
 
+            <section class="paginacion" data-pagination>
                 <!-- <a href="/page/1" class="prev">&laquo;</a>
                 <a href="/page/1" class="page" data-page>1</a>
                 <a href="/page/2" class="page activo" data-page>2</a>
