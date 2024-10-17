@@ -13,8 +13,8 @@
 
     /* Color Variables */
     --header-footer-color: #ffc6d5;
-    --product-card-color: #f1f1f1;
     --add-product-section-color: #0e9390;
+    --transparent: transparent;
 
     /* Font Family Variables */
     --font-family-press-start: 'Press Start 2P', system-ui;
@@ -70,7 +70,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 1rem;
-    background-image: linear-gradient(180deg, #5512b2, #ded6d642);
+    background-image: linear-gradient(180deg, #5512b2, #ded6d600);
 }
 
 /* ! ADD PRODUCTS SECTION */
@@ -84,11 +84,15 @@ body {
     color: var(--add-product-section-color);
 }
 
+input, button, a{
+    background-color: var(--transparent);
+}
+
 /* Estilo para los campos de entrada del formulario */
 .product-form__input {
     border: 0.1875rem solid var(--add-product-section-color);
     border-radius: 1.875rem;
-    color: #03318C;
+    color: var(--add-product-section-color);
     height: 3.625rem; 
     font: var(--font-weight-semibold) 1.5rem var(--font-family-ibm-plex);
     padding: 0 0 0 3.5rem; 
@@ -136,13 +140,13 @@ body {
 
 /* Botones */
 .bttn_send {
-    background-color: var(--add-product-section-color);
-    box-shadow: rgba(0, 0, 0, 0.377) 0.625rem 0.625rem 0.5rem, #2cf4fb 0.125rem 0.125rem 0.625rem inset, #029895 -0.25rem -0.25rem 0.0625rem inset;
+    background-color: #0e939080;
+    box-shadow: rgba(0, 0, 0, 0.377) 0.625rem 0.625rem 0.5rem, #2cf4fb85 0.125rem 0.125rem 0.625rem inset, #02989582 -0.25rem -0.25rem 0.0625rem inset;
 }
 
 .bttn_clean {
-    background-color: #FFFFFF;
-    box-shadow: rgba(0, 0, 0, 0.377) 0.625rem 0.625rem 0.5rem, #a8a6a4 0.09375rem 0.09375rem 0.0625rem inset, #545251 -0.2rem -0.2rem 0.5rem inset;
+    background-color: #ffffff63;
+    box-shadow: rgba(0, 0, 0, 0.377) 0.625rem 0.625rem 0.5rem, #a8a6a478 0.09375rem 0.09375rem 0.0625rem inset, #54525173 -0.2rem -0.2rem 0.5rem inset;
     color: #000000;
 }
 
@@ -156,7 +160,7 @@ body {
 .input-search {
     display: flex;
     flex-direction: row;
-    border: 0.1875rem solid var(--product-card-color);
+    border: 0.1875rem solid #4273a2;;
     border-radius: 1.875rem;
     color: #4273a2;
     font: var(--font-weight-semibold) 1.5rem var(--font-family-ibm-plex);
@@ -164,7 +168,6 @@ body {
     align-items: center;
     gap: 0.5rem;
     margin-bottom: 1rem;
-    background-color: #FFFFFF;
     transition: border-color 0.3s ease;
 }
 
@@ -192,7 +195,7 @@ body {
     gap: 0.4rem;
     justify-content: space-between;
     font: var(--font-size-medium) var(--font-family-ibm-plex);
-    background-color: var(--product-card-color);
+    background-color:--transparent;
     color: #141313;
 }
 
@@ -251,7 +254,7 @@ body {
     border: 0.1rem #ded6d6;
     padding: 1rem;
     color: var(--header-footer-color);
-    background-image: linear-gradient(360deg, #5512b2, #ded6d642);
+    background-image: linear-gradient(360deg, #5512b2, #ded6d600);
 }
 
 .footer-content p {
@@ -296,25 +299,24 @@ body {
     font-family: var(--font-family-ibm-plex);
     margin: 0.5rem;
     transition: 0.1s ease-in-out;
-    background-color: #FFFFFF;
     box-shadow: rgba(0, 0, 0, 0.377) 0.625rem 0.625rem 0.5rem,
         #a8a6a4 0.094rem 0.094rem 0.0625rem inset, 
         #545251c7 -0.2rem -0.2rem 0.5rem inset;
 }
 
 .paginacion a.activo {
-    background-color: #4273a2;
+    background-color: #4274a284;
     color: white;
 }
 
 .paginacion a:hover:not(.activo) {
-    background-color: #4273a2;
+    background-color: #4274a284;
     color: #FFFFFF;
 }
 
 .paginacion a:active {
     box-shadow: rgba(0, 0, 0, 0.377) 0 0 0, inset 0.03125rem 0.03125rem 0.25rem #000000,
-        #04a0c6 -0.2rem -0.2rem 0.5rem inset;
+        #049fc697 -0.2rem -0.2rem 0.5rem inset;
     transform: translateY(0.03125rem);
 }
 
@@ -402,7 +404,15 @@ body {
 
 .disabled {
     box-shadow: rgba(0, 0, 0, 0.2) 0.625rem 0.625rem 0.5rem, #b0b0b0 0.125rem 0.125rem 0.625rem inset, #808080 -0.25rem -0.25rem 0.0625rem inset;
-    background-color: #d3d3d3;
+    background-color: #e9e9e930;
     color: #2e2e2e;
     pointer-events: none;
 }
+
+/* Auto rellenado de inputs */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px rgba(255, 255, 255, 0) ; /* Cambia a--transparente */
+    box-shadow: 0 0 0 30px rgba(255, 255, 255, 0) inset; /* Cambia a--transparente */
+    -webkit-text-fill-color: rgb(129, 129, 129); /* Color del texto */
+}
+
