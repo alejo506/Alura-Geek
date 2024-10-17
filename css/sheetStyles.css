@@ -82,15 +82,16 @@ body {
     color: var(--add-product-section-color);
 }
 
-input, button, a{
-    background-color: var(--transparent);
+input{
+    background-color: #ffffffab;
+    color: rgb(129, 129, 129);
+
 }
 
 /* Estilo para los campos de entrada del formulario */
 .product-form__input {
     border: 0.1875rem solid var(--add-product-section-color);
     border-radius: 1.875rem;
-    color: var(--add-product-section-color);
     height: 3.625rem; 
     font: var(--font-weight-semibold) 1.5rem var(--font-family-ibm-plex);
     padding: 0 0 0 3.5rem; 
@@ -143,9 +144,9 @@ input, button, a{
 }
 
 .bttn_clean {
-    background-color: #ffffff63;
+    background-color: #ffffffab;
     box-shadow: rgba(0, 0, 0, 0.377) 0.625rem 0.625rem 0.5rem, #a8a6a478 0.09375rem 0.09375rem 0.0625rem inset, #54525173 -0.2rem -0.2rem 0.5rem inset;
-    color: #000000;
+    color: #636363;
 }
 
 .bttn_send:active,
@@ -158,7 +159,7 @@ input, button, a{
 .input-search {
     display: flex;
     flex-direction: row;
-    border: 0.1875rem solid #4273a2;;
+    border: 0.1875rem solid #4273a2;
     border-radius: 1.875rem;
     color: #4273a2;
     font: var(--font-weight-semibold) 1.5rem var(--font-family-ibm-plex);
@@ -193,8 +194,8 @@ input, button, a{
     gap: 0.4rem;
     justify-content: space-between;
     font: var(--font-size-medium) var(--font-family-ibm-plex);
-    background-color:--transparent;
-    color: #141313;
+    background-color: #ffffff78;
+    color: #0252a0d4;
 }
 
 .product-list__item:hover{
@@ -271,6 +272,7 @@ input, button, a{
 }
 
 .footer-link__item a {
+    color: darksalmon;
     font-size: var(--font-size-medium);
     font-family: var(--font-family-ibm-plex);
     font-weight: var(--font-weight-normal);
@@ -297,18 +299,18 @@ input, button, a{
     font-family: var(--font-family-ibm-plex);
     margin: 0.5rem;
     transition: 0.1s ease-in-out;
-    box-shadow: rgba(0, 0, 0, 0.377) 0.625rem 0.625rem 0.5rem,
+    box-shadow: rgba(0, 0, 0, 0.29) 0.625rem 0.625rem 0.5rem,
         #a8a6a4 0.094rem 0.094rem 0.0625rem inset, 
         #545251c7 -0.2rem -0.2rem 0.5rem inset;
 }
 
 .paginacion a.activo {
-    background-color: #4274a284;
+    background-color: #0252a0d4;
     color: white;
 }
 
 .paginacion a:hover:not(.activo) {
-    background-color: #4274a284;
+    background-color: #0252a0d4;
     color: #FFFFFF;
 }
 
@@ -324,9 +326,9 @@ input, button, a{
         background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(240, 233, 233, 0.8)), 
                     url('../img/humo.png');
         background-color: #f0e9e942;
-        /* background-size: cover;
+        background-size: cover;
         background-position: center;
-        background-repeat: no-repeat; */
+        background-repeat: no-repeat; 
     }
 
     .main {
@@ -397,13 +399,14 @@ input, button, a{
 }
 
 .error.bold {
-    color: rgb(206, 5, 5);
+    color:  rgb(180 11 11 / 84%);
 }
 
 .disabled {
     box-shadow: rgba(0, 0, 0, 0.2) 0.625rem 0.625rem 0.5rem, #b0b0b0 0.125rem 0.125rem 0.625rem inset, #808080 -0.25rem -0.25rem 0.0625rem inset;
-    background-color: #e9e9e930;
-    color: #2e2e2e;
+    background-color: #5857577a;
+    color: #e6e6e6;
+    ;
     pointer-events: none;
 }
 
