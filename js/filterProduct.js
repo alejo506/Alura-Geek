@@ -15,7 +15,7 @@
 
 /** Importaciones necesarias */
 import { conexionDB } from "./conexionDB.js";
-import createProductCard from "./getProducts.js"; 
+import createProductCard from "./getProducts.js";
 
 /** Configuraciones iniciales */
 const itemsPerPage = 6;
@@ -23,6 +23,7 @@ let currentPage = 1;
 const filterList = document.querySelector("[data-list]");
 const searchInput = document.querySelector("[data-search]");
 const paginationContainer = document.querySelector(".paginacion");
+
 
 /**
  * Renderiza una lista de productos en el DOM.
@@ -98,6 +99,20 @@ const filterProductsByName = async () => {
     }, 300); // Tiempo de espera de 300ms para ejecutar la búsqueda
 };
 
-// Añadir el evento al input de búsqueda
-searchInput.addEventListener('input', filterProductsByName);
+const icon = document.querySelector('#search-icon');
 
+// Añadir el evento al input de búsqueda
+searchInput.addEventListener('input',  (event) => {
+    event.preventDefault();
+    filterProductsByName();
+    //Cuando se escribe se ejecuta la animacion del icono
+    icon.setAttribute('trigger', 'loop'); // Activar animación
+    
+
+});
+
+
+// Cuando el input pierde el foco, volvemos a la configuración original
+searchInput.addEventListener('blur', () => {
+    icon.setAttribute('trigger', 'hover'); // Restablecer a hover
+});

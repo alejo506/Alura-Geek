@@ -96,7 +96,7 @@ input{
 }
 
 input:focus{
-    border-color: rgb(129, 129, 129); ;
+    border-color: rgb(129, 129, 129);
 }
 
 /* Estilo para los campos de entrada del formulario */

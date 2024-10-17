@@ -150,6 +150,3 @@ document.querySelector(".bttn_clean").addEventListener("click", (event) => {
 });
 
 
-
-
-

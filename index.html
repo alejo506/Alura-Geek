@@ -18,7 +18,8 @@
 
 <body>
     <header class="header header__content">
-        <img class="product-header__img" src="img/hearts.svg" alt="Three hearts icon representing customer satisfaction" loading="lazy">
+        <img class="product-header__img" src="img/hearts.svg" alt="Three hearts icon representing customer satisfaction"
+            loading="lazy">
         <h1 class="product-header__title" id="myTitle"></h1>
 
     </header>
@@ -32,7 +33,7 @@
             <h3 class="stockQuantity" data-itemsQuantity> <span></span></h3>
 
             <div class="input-container">
-                <lord-icon src="https://cdn.lordicon.com/jprtoagx.json" trigger="hover"
+                <lord-icon id="productName-icon" src="https://cdn.lordicon.com/jprtoagx.json" trigger="hover"
                     colors="primary:#121331,secondary:#848484" style="width:30px;height:30px">
                 </lord-icon>
                 <input type="text" name="product-name" placeholder="Producto..." class="product-form__input"
@@ -43,7 +44,7 @@
             </div>
 
             <div class="input-container">
-                <lord-icon src="https://cdn.lordicon.com/bsdkzyjd.json" trigger="hover"
+                <lord-icon id="productPrice-icon" src="https://cdn.lordicon.com/bsdkzyjd.json" trigger="hover"
                     colors="primary:#121331,secondary:#848484" style="width:30px;height:30px">
                 </lord-icon>
                 <input type="text" name="product-price" placeholder="Precio..." class="product-form__input"
@@ -54,7 +55,7 @@
             </div>
 
             <div class="input-container">
-                <lord-icon src="https://cdn.lordicon.com/rszslpey.json" trigger="hover"
+                <lord-icon id="productUrl-icon" src="https://cdn.lordicon.com/rszslpey.json" trigger="hover"
                     colors="primary:#121331,secondary:#848484" style="width:30px;height:30px">
                 </lord-icon>
                 <input type="text" name="product-image" placeholder="Imagen-URL..." class="product-form__input"
@@ -85,18 +86,15 @@
             <h2 id="product-list-title" class="product-list__title title">MIS PRODUCTOS:</h2>
 
             <div class="input-container input-search">
-                <lord-icon
-                    src="https://cdn.lordicon.com/wjyqkiew.json"
-                    trigger="hover"
-                    colors="primary:#121331,secondary:#3080e8"
-                    style="width:30px;height:30px">
+                <lord-icon id="search-icon" src="https://cdn.lordicon.com/wjyqkiew.json" trigger="hover"
+                    colors="primary:#121331,secondary:#3080e8" style="width:30px;height:30px">
                 </lord-icon>
-                <input type="search" name="product-filter" placeholder="Buscar productos..." class="input-filter" data-search autocomplete="off"
-                    aria-label="Filter Products" data-prodUrl>
+                <input type="search" name="product-filter" placeholder="Buscar productos..." class="input-filter"
+                    data-search autocomplete="off" aria-label="Filter Products" data-prodUrl>
             </div>
 
             <ul class="product-list" data-list>
-                
+
             </ul>
 
             <section class="paginacion" data-pagination>
