@@ -195,7 +195,12 @@ input{
     justify-content: space-between;
     font: var(--font-size-medium) var(--font-family-ibm-plex);
     background-color: #ffffff78;
-    color: #0252a0d4;
+    color: rgb(129, 129, 129);
+}
+
+.product-list__item h3 {
+    overflow: auto;
+    font-weight: 500;
 }
 
 .product-list__item:hover{
@@ -229,10 +234,6 @@ input{
     width: 100%;
 }
 
-.product-list__item h3 {
-    overflow: auto;
-    font-weight: 500;
-}
 
 .mensaje__Error-Titulo {
     font: var(--font-weight-bold) var(--font-size-large) var(--font-family-press-start);
@@ -363,7 +364,6 @@ input{
         width: 0.125rem;
         height: auto;
         background-color: #ded6d642;
-        margin: 0 1.25rem;
     }
 
     .product-header__title {
@@ -392,13 +392,15 @@ input{
     background-color: #555;
 }
 
+/* Estilo básico del error */
 .error {
-    color: var(--add-product-section-color);
-    font-family: var(--font-weight-normal) var(--font-size-small) var(--font-family-ibm-plex);
-    margin: 0.5rem 0 0 0.3rem;
+    opacity: 0; /* Oculto por defecto */
+    transition: opacity 0.5s ease; /* Transición suave */
 }
 
-.error.bold {
+/* Estilo para mostrar el error */
+.error.show {
+    opacity: 1; /* Visible */
     color:  rgb(180 11 11 / 84%);
 }
 
@@ -416,4 +418,5 @@ input:-webkit-autofill {
     box-shadow: 0 0 0 30px rgba(255, 255, 255, 0) inset; /* Cambia a--transparente */
     -webkit-text-fill-color: rgb(129, 129, 129); /* Color del texto */
 }
+
 

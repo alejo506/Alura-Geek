@@ -77,7 +77,7 @@ async function sendProduct(e) {
 function clearErrors() {
     const errors = document.querySelectorAll('.error');
     errors.forEach(error => {
-        error.classList.remove('bold'); // Remover la clase de negrita
+        error.classList.remove('error'); // Remover la clase de negrita
     });
 }
 
@@ -93,31 +93,32 @@ function toggleSubmitButton() {
 }
 
 // Función para actualizar el estado de los mensajes de error
+
 function updateErrorMessages() {
-    // Comprobar y actualizar cada mensaje de error
-    if (!validateName(document.querySelector("[data-prodName]").value)) {
-        document.getElementById('nameError').classList.add('bold');
+    const productName = document.querySelector("[data-prodName]").value;
+    const productPrice = document.querySelector("[data-prodPrice]").value;
+    const productUrl = document.querySelector("[data-prodUrl]").value;
 
-    } else {
-        document.getElementById('nameError').classList.remove('bold');
+    // Validar el nombre del producto
+    // Validar el nombre del producto
+document.getElementById('nameError').classList[
+    productName === "" || validateName(productName) ? 'remove' : 'add'
+]('show');
 
-    }
+// Validar el precio del producto
+document.getElementById('priceError').classList[
+    productPrice === "" || validatePrice(Number(productPrice)) ? 'remove' : 'add'
+]('show');
 
-    if (!validatePrice(Number(document.querySelector("[data-prodPrice]").value))) {
-        document.getElementById('priceError').classList.add('bold');
+// Validar la URL del producto
+document.getElementById('urlError').classList[
+    productUrl === "" || validateUrl(productUrl) ? 'remove' : 'add'
+]('show');
 
-    } else {
-        document.getElementById('priceError').classList.remove('bold');
-
-    }
-
-    if (!validateUrl(document.querySelector("[data-prodUrl]").value)) {
-        document.getElementById('urlError').classList.add('bold');
-
-    } else {
-        document.getElementById('urlError').classList.remove('bold');
-    }
 }
+
+
+
 
 // Escucha el evento submit del formulario
 formProduct.addEventListener("submit", e => sendProduct(e));
