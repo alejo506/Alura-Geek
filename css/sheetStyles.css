@@ -22,7 +22,7 @@
 }
 
 body {
-    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(240, 233, 233, 0.9)), 
+    background: linear-gradient(rgba(255, 255, 255, 0.97), rgba(240, 233, 233, 0.97)), 
                 url('../img/broken.png');
     background-color: #f0e9e942;
     background-size: cover;
@@ -34,7 +34,6 @@ body {
 /* ! GLOBAL */
 .title {
     font: var(--font-weight-normal) var(--font-size-large) var(--font-family-press-start);
-    height: 3.19rem;
     align-content: center;
     color: #4273a2;
     letter-spacing: 0.2rem;
@@ -43,7 +42,6 @@ body {
 
 .stockQuantity {
     font: var(--font-weight-normal) var(--font-size-large) var(--font-family-ibm-plex);
-    height: 3.19rem;
     align-content: center;
     color: var(--add-product-section-color);
     line-height: 1.5;
