@@ -13,24 +13,43 @@
     <link rel="stylesheet" href="css/title.css">
     <link rel="stylesheet" href="css/sheetStyles.css">
     <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/speaker.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
-    <header class="header header__content">
-        <img class="product-header__img" src="img/hearts.svg" alt="Three hearts icon representing customer satisfaction"
-            loading="lazy">
-        <h1 class="product-header__title" id="myTitle"></h1>
+    <header>
+        <div class="header header__content">
+            <img class="product-header__img" src="img/hearts.svg" alt="Three hearts icon representing customer satisfaction"
+                loading="lazy">
+            <h1 class="product-header__title" id="myTitle"></h1>
+        </div>
+      
+        <div class="toggle-container">
+            <input id="checkboxInput" type="checkbox" />
+            <label class="toggleSwitch" for="checkboxInput">
+                <div class="speaker">
+                    <img src="img/normal-speaker.svg" alt="Speaker">
+                </div>
+                <div class="mute-speaker">
+                    <img src="img/muted-speaker.svg" alt="Muted speaker">
+                </div>
+            </label>
+            <span class="tooltiptext">Activar síntesis de Voz</span> <!-- Tooltip -->
+        </div>
+
 
     </header>
     <main class="main">
 
+
         <form action="" class="product-form" aria-labelledby="add-product-title" method="POST" role="form" data-form>
-
-
+            
             <h2 id="add-product-title" class="product-form__title title">AGREGAR PRODUCTO:</h2>
-
+            
             <h3 class="stockQuantity" data-itemsQuantity> <span></span></h3>
+            
+
 
             <div class="input-container">
                 <lord-icon id="productName-icon" src="https://cdn.lordicon.com/jprtoagx.json" trigger="hover"
@@ -89,7 +108,7 @@
                 <lord-icon id="search-icon" src="https://cdn.lordicon.com/wjyqkiew.json" trigger="hover"
                     colors="primary:#121331,secondary:#3080e8" style="width:30px;height:30px">
                 </lord-icon>
-                <input type="search" name="product-filter" placeholder="Buscar productos..." class="input-filter"
+                <input type="search" name="product-filter" placeholder="Buscar..." class="input-filter"
                     data-search autocomplete="off" aria-label="Filter Products" data-prodUrl>
             </div>
 
@@ -142,6 +161,8 @@
             </ul>
         </nav>
     </footer>
+    
+    <!-- <script src="js/funcionalities/speech.js" type="module"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script src="js/conexionDB.js" type="module"></script>

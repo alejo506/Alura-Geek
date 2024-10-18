@@ -11,7 +11,11 @@ const submitBtn = document.querySelector(".bttn_send"); // Selecciona el botón 
 // Inicialmente deshabilitar el botón
 submitBtn.classList.add('disabled'); 
 
-// Función para enviar el producto
+/**
+ * Función para enviar el producto a la base de datos.
+ * @param {Event} e - Evento que previene el comportamiento predeterminado del formulario.
+ * @returns {void}
+ */
 async function sendProduct(e) {
     e.preventDefault(); // Prevenir el envío del formulario
 
@@ -20,6 +24,7 @@ async function sendProduct(e) {
         return; // Detiene la función si hay errores de validación
     }
 
+    // Captura los valores del formulario
     const productName = document.querySelector("[data-prodName]").value;
     const productPrice = Number(document.querySelector("[data-prodPrice]").value);
     const productUrl = document.querySelector("[data-prodUrl]").value;
@@ -28,36 +33,34 @@ async function sendProduct(e) {
         // Enviar el producto a la base de datos
         await conexionDB.sendProducts(productName, productPrice, productUrl);
 
+        // Reproduce un sonido indicando éxito
+        playSound('send_message'); 
+        
         // Mostrar alerta de éxito si se envió correctamente
         Swal.fire({
             title: '¡Éxito!',
             text: 'El producto se ha añadido correctamente.',
             icon: 'success',
             confirmButtonText: 'Aceptar',
-            timer: 2000, // Duración en milisegundos (3 segundos)
+            timer: 2000, // Duración en milisegundos (2 segundos)
             timerProgressBar: true
         });
 
-        // Audio
-        playSound('send_message')
-
-        // Pagina actual
+        // Obtener la página actual y volver a renderizar productos
         const page = getCurrentPage();
-
-
         renderProducts(page);
 
-        // Speech System message
+        // Mensaje de voz confirmando la acción
         const mjsSpeech = "Producto registrado en la base de datos";
         speechMessage(mjsSpeech);
 
         // Limpiar el formulario después de enviar
         formProduct.reset();
 
-        // Limpia los mensajes de error después de un envío exitoso
+        // Limpiar los mensajes de error después del envío
         clearErrors();
 
-        // Deshabilitar el botón después de un envío exitoso
+        // Deshabilitar el botón después del envío
         toggleSubmitButton();
 
     } catch (error) {
@@ -73,7 +76,11 @@ async function sendProduct(e) {
     }
 }
 
-// Función para limpiar los errores
+/**
+ * Función para limpiar los mensajes de error del formulario.
+ * Elimina la clase 'error' de todos los elementos con errores.
+ * @returns {void}
+ */
 function clearErrors() {
     const errors = document.querySelectorAll('.error');
     errors.forEach(error => {
@@ -81,7 +88,11 @@ function clearErrors() {
     });
 }
 
-// Función para verificar y actualizar el estado del botón de envío
+/**
+ * Función para habilitar o deshabilitar el botón de envío basado en la validación del formulario.
+ * Cambia el estilo y los eventos del botón según su estado.
+ * @returns {void}
+ */
 function toggleSubmitButton() {
     if (validateForm()) {
         submitBtn.classList.remove('disabled'); // Remover la clase deshabilitada
@@ -92,61 +103,50 @@ function toggleSubmitButton() {
     }
 }
 
-// Función para actualizar el estado de los mensajes de error
-
+/**
+ * Función para actualizar los mensajes de error en los campos.
+ * Recorre los campos del formulario y muestra/oculta los mensajes de error según la validación.
+ * @returns {void}
+ */
 function updateErrorMessages() {
-    const productName = document.querySelector("[data-prodName]").value;
-    const productPrice = document.querySelector("[data-prodPrice]").value;
-    const productUrl = document.querySelector("[data-prodUrl]").value;
+    const fields = [
+        { value: document.querySelector("[data-prodName]").value, validate: validateName, errorId: 'nameError' },
+        { value: document.querySelector("[data-prodPrice]").value, validate: (v) => validatePrice(Number(v)), errorId: 'priceError' },
+        { value: document.querySelector("[data-prodUrl]").value, validate: validateUrl, errorId: 'urlError' }
+    ];
 
-    // Validar el nombre del producto
-    // Validar el nombre del producto
-document.getElementById('nameError').classList[
-    productName === "" || validateName(productName) ? 'remove' : 'add'
-]('show');
-
-// Validar el precio del producto
-document.getElementById('priceError').classList[
-    productPrice === "" || validatePrice(Number(productPrice)) ? 'remove' : 'add'
-]('show');
-
-// Validar la URL del producto
-document.getElementById('urlError').classList[
-    productUrl === "" || validateUrl(productUrl) ? 'remove' : 'add'
-]('show');
-
+    fields.forEach(({ value, validate, errorId }) => {
+        document.getElementById(errorId).classList[
+            value === "" || validate(value) ? 'remove' : 'add'
+        ]('show'); // Agregar o remover la clase 'show' para mostrar u ocultar el error
+    });
 }
 
-
-
-
 // Escucha el evento submit del formulario
-formProduct.addEventListener("submit", e => sendProduct(e));
+formProduct.addEventListener("submit", sendProduct);
 
-// Agregar validaciones en tiempo real
-document.querySelector("[data-prodName]").addEventListener("input", (e) => {
-    validateName(e.target.value); // Valida el nombre al escribir
-    updateErrorMessages(); // Actualiza los mensajes de error
-    toggleSubmitButton(); // Verifica el estado del botón
-});
+/**
+ * Función genérica para validar los campos del formulario en tiempo real.
+ * @param {string} selector - Selector del campo a validar.
+ * @param {Function} validateFunction - Función de validación que se aplicará al campo.
+ * @returns {void}
+ */
+const handleInput = (selector, validateFunction) => {
+    document.querySelector(selector).addEventListener("input", (e) => {
+        validateFunction(e.target.value); // Llama a la función de validación correspondiente
+        updateErrorMessages(); // Actualiza los mensajes de error
+        toggleSubmitButton(); // Verifica el estado del botón
+    });
+};
 
-document.querySelector("[data-prodPrice]").addEventListener("input", (e) => {
-    validatePrice(Number(e.target.value)); 
-    updateErrorMessages(); 
-    toggleSubmitButton(); 
-});
+// Agregar validaciones en tiempo real para los campos
+handleInput("[data-prodName]", validateName);
+handleInput("[data-prodPrice]", (value) => validatePrice(Number(value)));
+handleInput("[data-prodUrl]", validateUrl);
 
-document.querySelector("[data-prodUrl]").addEventListener("input", (e) => {
-    validateUrl(e.target.value); 
-    updateErrorMessages(); 
-    toggleSubmitButton(); 
-});
-
-// Evento para el botón de limpiar
+// Evento para el botón de limpiar el formulario
 document.querySelector(".bttn_clean").addEventListener("click", (event) => {
-    event.preventDefault(); 
-    cleanForm(); // Llama a la función para limpiar el formulario
-    playSound('clean'); // Reproduce sonido
+    event.preventDefault(); // Prevenir el comportamiento por defecto del botón
+    cleanForm(); // Limpiar el formulario
+    playSound('clean'); // Reproducir sonido de limpieza
 });
-
-

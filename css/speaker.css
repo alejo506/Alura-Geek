@@ -1,0 +1,123 @@
+/* ! The switch - the box around the speaker*/
+.toggleSwitch {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(39, 39, 39);
+    border-radius: 50%;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.13);
+    overflow: hidden;
+  }
+  
+  /* Hide default HTML checkbox */
+  #checkboxInput {
+    display: none;
+  }
+  
+  .bell {
+    width: 18px;
+  }
+  
+  .bell path {
+    fill: white;
+  }
+  
+  .speaker {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition-duration: 0.3s;
+
+  }
+  
+  .speaker img {
+    width: 18px;
+    margin-left: 15px;
+    margin-top: 15px;
+  }
+  
+  .mute-speaker {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    z-index: 3;
+    transition-duration: 0.3s;
+  }
+  
+  .mute-speaker img {
+    width: 18px;
+    margin-left: 15px;
+    margin-top: 15px;
+  }
+  
+  #checkboxInput:checked + .toggleSwitch .speaker {
+    opacity: 0;
+    transition-duration: 0.3s;
+  }
+  
+  #checkboxInput:checked + .toggleSwitch .mute-speaker {
+    opacity: 1;
+    transition-duration: 0.3s;
+    background-color: rgba(215, 17, 17, 0.947);;
+  }
+  
+  #checkboxInput:active + .toggleSwitch {
+    transform: scale(0.7);
+  }
+  
+  #checkboxInput:hover + .toggleSwitch {
+    background-color: rgb(61, 61, 61);
+  }
+
+
+
+
+
+
+
+
+  /* ! Tooltip container */
+.toggle-container {
+  position: relative;
+  display: inline-block;
+  margin-left: 2rem;
+}
+
+/* Tooltip text */
+.tooltiptext {
+  visibility: hidden;
+  width: 8rem;
+  background-color: rgba(0, 0, 0, 0.354);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 10%; /* Mostrar el tooltip arriba del toggle */
+  left: 90%;
+  margin-left: 10px; /* Centrar el tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+  /* top: -50px; */
+}
+
+/* Mostrar el tooltip cuando se pasa el mouse por encima del toggle */
+.toggleSwitch:hover + .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+  

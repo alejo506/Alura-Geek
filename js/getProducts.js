@@ -60,32 +60,32 @@ export default function createProductCard(productName, productPrice, productUrl,
  * @param {number} visiblePage - Página a mostrar (por defecto es 1).
  */
 export async function renderProducts(visiblePage = 1) {
-    // Obtiene los productos para la página solicitada desde la base de datos
-    const data = await conexionDB.listProducts(visiblePage, itemsPerPage);
+    try {
+        const data = await conexionDB.listProducts(visiblePage, itemsPerPage);
+        
+        ulList.innerHTML = ""; // Limpia la lista
 
-    ulList.innerHTML = ""; // Limpia la lista antes de renderizar nuevos productos
+        data.products.forEach(productItem => {
+            const productCard = createProductCard(
+                productItem.productName,
+                productItem.productPrice,
+                productItem.productUrl,
+                productItem.id // Asegúrate de pasar el ID del producto
+            );
 
-    // Renderiza cada producto en la lista
-    data.products.forEach(productItem => {
-        const productCard = createProductCard(
-            productItem.productName,
-            productItem.productPrice,
-            productItem.productUrl,
-            productItem.id // Asegúrate de pasar el ID del producto
-        );
+            ulList.appendChild(productCard); // Añade la tarjeta
+        });
 
-        ulList.appendChild(productCard); // Añade la tarjeta del producto a la lista
-    });
+        createPagination(data.totalItems, itemsPerPage, visiblePage, (newPage) => {
+            currentPage = newPage;
+            renderProducts(currentPage);
+        });
 
-    // ! Crea la paginación fuera del bucle para evitar crearla múltiples veces
-    createPagination(data.totalItems, itemsPerPage, visiblePage, (newPage) => {
-        currentPage = newPage; // Actualiza la página actual
-        renderProducts(currentPage); // Renderiza los productos de la nueva página
-    });
-
-    // Actualiza la cantidad total de productos en stock
-    const totalItemsQuantity = data.totalItems;
-    itemsQuantity.innerHTML = `<h3 class="stockQuantity" data-itemsQuantity>En stock: <span>${totalItemsQuantity}</span></h3>`;
+        const totalItemsQuantity = data.totalItems;
+        itemsQuantity.innerHTML = `<h3 class="stockQuantity" data-itemsQuantity>En stock: <span>${totalItemsQuantity}</span></h3>`;
+    } catch (error) {
+        console.error("Error al renderizar productos:", error);
+    }
 }
 
 // Delegación de eventos en el contenedor principal (ulList)

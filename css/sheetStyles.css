@@ -22,8 +22,8 @@
 }
 
 body {
-    /* background: linear-gradient(rgba(255, 255, 255, 0.97), rgba(240, 233, 233, 0.97)), 
-                url('../img/broken.png'); */
+    background: linear-gradient(rgba(255, 255, 255, 0.97), rgba(240, 233, 233, 0.97)), 
+                url('../img/broken.png');
     background-color: #f0e9e942;
     background-size: cover;
     /* background-position: center; */
@@ -40,16 +40,6 @@ body {
     line-height: 1.5;
 }
 
-.stockQuantity {
-    font: var(--font-weight-normal) var(--font-size-large) var(--font-family-ibm-plex);
-    align-content: center;
-    color: var(--add-product-section-color);
-    line-height: 1.5;
-}
-
-.stockQuantity span {
-    font-weight: 700;
-}
 
 /* Estilo para el formulario de productos y listado de productos */
 .product-form,
@@ -57,9 +47,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 3rem 2rem;
+    padding: 2rem;
     gap: 2rem;
 }
+
+
 
 /* ! HEADER SECTION */
 .header__content {
@@ -82,10 +74,27 @@ body {
     color: var(--add-product-section-color);
 }
 
+.speaker-container{
+    display: flex;
+    gap: 2rem;
+}
+
+
+.stockQuantity {
+    font: var(--font-weight-normal) var(--font-size-large) var(--font-family-ibm-plex);
+    align-content: center;
+    color: var(--add-product-section-color);
+    line-height: 1.5;
+}
+
+.stockQuantity span {
+    font-weight: 700;
+}
+
+
 input{
     background-color: #ffffffab;
     color: rgb(129, 129, 129);
-
     border: 0.1875rem solid var(--add-product-section-color);
     border-radius: 1.875rem;
     height: 3.625rem; 
@@ -406,5 +415,3 @@ input:-webkit-autofill {
     box-shadow: 0 0 0 30px rgba(255, 255, 255, 0) inset; /* Cambia a--transparente */
     -webkit-text-fill-color: rgb(129, 129, 129); /* Color del texto */
 }
-
-
