@@ -22,8 +22,8 @@
 }
 
 body {
-    background: linear-gradient(rgba(255, 255, 255, 0.97), rgba(240, 233, 233, 0.97)), 
-                url('../img/broken.png');
+    background: linear-gradient(rgba(255, 255, 255, 0), rgba(240, 233, 233, 0)), 
+                url('../img/dark.svg');
     background-color: #f0e9e942;
     background-size: cover;
     /* background-position: center; */
@@ -35,7 +35,7 @@ body {
 .title {
     font: var(--font-weight-normal) var(--font-size-large) var(--font-family-press-start);
     align-content: center;
-    color: #4273a2;
+    color: #ffffffbd;
     letter-spacing: 0.2rem;
     line-height: 1.5;
 }
@@ -54,6 +54,8 @@ body {
 
 
 /* ! HEADER SECTION */
+
+
 .header__content {
     display: flex;
     height: 6rem;
@@ -67,23 +69,18 @@ body {
 
 .product-header__title {
     color: var(--header-footer-color);
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 .product-form__title {
-    color: var(--add-product-section-color);
-}
-
-.speaker-container{
-    display: flex;
-    gap: 2rem;
+    color: #ffffffbd;
 }
 
 
 .stockQuantity {
     font: var(--font-weight-normal) var(--font-size-large) var(--font-family-ibm-plex);
     align-content: center;
-    color: var(--add-product-section-color);
+    color: #ffffff94;
     line-height: 1.5;
 }
 
@@ -95,7 +92,7 @@ body {
 input{
     background-color: #ffffffab;
     color: rgb(129, 129, 129);
-    border: 0.1875rem solid var(--add-product-section-color);
+    border: 0.1875rem solid #7066e0;
     border-radius: 1.875rem;
     height: 3.625rem; 
     font: var(--font-weight-semibold) 1.5rem var(--font-family-ibm-plex);
@@ -104,8 +101,10 @@ input{
 
 }
 
-input:focus{
-    border-color: rgb(129, 129, 129);
+input:focus {
+    border-color: #7066e0; /* Cambia el color del borde al hacer focus */
+    box-shadow: 0 0 1.5rem #7c70f8; /* Sombreado alrededor del input */
+    outline: none; /* Elimina el contorno predeterminado */
 }
 
 /* Estilo para los campos de entrada del formulario */
@@ -163,10 +162,6 @@ input:focus{
 
 /* ! MY PRODUCTS SECTION */
 
-.input-filter {
-    border-color: #4273a2;
-}
-
 .input-search lord-icon {
     top:50%;
 }
@@ -191,9 +186,12 @@ input:focus{
     gap: 0.4rem;
     justify-content: space-between;
     font: var(--font-size-medium) var(--font-family-ibm-plex);
-    background-color: #ffffff78;
-    color: rgb(129, 129, 129);
+    background-color: #7f4d4d6b;
+        color: #ffffffb3;
+    
 }
+
+
 
 .product-list__item h3 {
     overflow: auto;
@@ -290,7 +288,7 @@ input:focus{
 }
 
 .paginacion a {
-    color: black;
+    color: rgba(247, 247, 248, 0.744);
     float: left;
     padding: 0.5rem 1rem;
     cursor: pointer;
@@ -304,6 +302,7 @@ input:focus{
 
 .paginacion a.activo {
     background-color: #0252a0d4;
+    background-color: #595f73d4;
     color: white;
 }
 
@@ -317,6 +316,30 @@ input:focus{
         #049fc697 -0.2rem -0.2rem 0.5rem inset;
     transform: translateY(0.03125rem);
 }
+
+
+
+/* Estilo básico del error */
+.error {
+    opacity: 0; /* Oculto por defecto */
+    transition: opacity 0.5s ease; /* Transición suave */
+}
+
+/* Estilo para mostrar el error */
+.error.show {
+    opacity: 1; /* Visible */
+    color: hsl(86.37deg 93.92% 50.63% / 90%);
+    margin-top: 0.5rem;
+}
+
+.disabled {
+    box-shadow: rgba(0, 0, 0, 0.2) 0.625rem 0.625rem 0.5rem, #b0b0b0 0.125rem 0.125rem 0.625rem inset, #808080 -0.25rem -0.25rem 0.0625rem inset;
+    background-color: #5857577a;
+    color: #e6e6e6;
+    ;
+    pointer-events: none;
+}
+
 
 @media (min-width: 834px) {
 
@@ -363,8 +386,48 @@ input:focus{
         background-color: #ded6d642;
     }
 
+    .title{
+        color: #4273a2;
+    }
+
     .product-header__title {
         font-size: 2rem;
+    }
+
+    .product-form__title, .stockQuantity{
+        color: var(--add-product-section-color);
+    }
+
+    
+    .product-list__item{
+        background-color: #ffffff78;
+    color: rgb(129, 129, 129);
+    }
+
+    input{
+        border: 0.1875rem solid var(--add-product-section-color);
+    }
+
+    .input-filter {
+        border-color: #4273a2;
+    }
+
+    input:focus {
+        box-shadow: 0 0 1rem #9305f162; /* Sombreado alrededor del input */
+        outline: none; /* Elimina el contorno predeterminado */
+    }
+
+    .paginacion a{
+        color: rgba(0, 0, 0, 0.715);
+    }
+
+    .error.show{
+        opacity: 1;
+        color: rgb(180 11 11 / 84%);
+    }
+
+    .paginacion a.activo {
+        background-color: #0252a0d4;
     }
 
 }
@@ -389,25 +452,6 @@ input:focus{
     background-color: #555;
 }
 
-/* Estilo básico del error */
-.error {
-    opacity: 0; /* Oculto por defecto */
-    transition: opacity 0.5s ease; /* Transición suave */
-}
-
-/* Estilo para mostrar el error */
-.error.show {
-    opacity: 1; /* Visible */
-    color:  rgb(180 11 11 / 84%);
-}
-
-.disabled {
-    box-shadow: rgba(0, 0, 0, 0.2) 0.625rem 0.625rem 0.5rem, #b0b0b0 0.125rem 0.125rem 0.625rem inset, #808080 -0.25rem -0.25rem 0.0625rem inset;
-    background-color: #5857577a;
-    color: #e6e6e6;
-    ;
-    pointer-events: none;
-}
 
 /* Auto rellenado de inputs */
 input:-webkit-autofill {

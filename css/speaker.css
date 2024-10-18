@@ -6,11 +6,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(39, 39, 39);
+    background-color: rgb(69, 78, 185);
     border-radius: 50%;
     cursor: pointer;
     transition-duration: 0.3s;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.13);
+    box-shadow: 2px 2px 15px rgba(253, 38, 242, 0.943);
+    
     overflow: hidden;
   }
   
@@ -78,9 +79,8 @@
   }
   
   #checkboxInput:hover + .toggleSwitch {
-    background-color: rgb(61, 61, 61);
+    background-color: rgb(103, 78, 78);
   }
-
 
 
 
@@ -91,15 +91,18 @@
   /* ! Tooltip container */
 .toggle-container {
   position: relative;
-  display: inline-block;
-  margin-left: 2rem;
+  display: flex;
+  width: 100%;
+  align-self: self-end;
+  justify-content: flex-end;
+
 }
 
 /* Tooltip text */
 .tooltiptext {
   visibility: hidden;
-  width: 8rem;
-  background-color: rgba(0, 0, 0, 0.354);
+  width: 9rem;
+  background-color: rgba(255, 255, 255, 0.523);
   color: #fff;
   text-align: center;
   border-radius: 6px;
@@ -108,9 +111,10 @@
   z-index: 1;
   bottom: 10%; /* Mostrar el tooltip arriba del toggle */
   left: 90%;
-  margin-left: 10px; /* Centrar el tooltip */
+  margin-left: -140px; /* Centrar el tooltip */
   opacity: 0;
   transition: opacity 0.3s;
+  letter-spacing: 0.1rem;
   /* top: -50px; */
 }
 

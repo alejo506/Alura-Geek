@@ -24,26 +24,13 @@
                 loading="lazy">
             <h1 class="product-header__title" id="myTitle"></h1>
         </div>
-      
-        <div class="toggle-container">
-            <input id="checkboxInput" type="checkbox" />
-            <label class="toggleSwitch" for="checkboxInput">
-                <div class="speaker">
-                    <img src="img/normal-speaker.svg" alt="Speaker">
-                </div>
-                <div class="mute-speaker">
-                    <img src="img/muted-speaker.svg" alt="Muted speaker">
-                </div>
-            </label>
-            <span class="tooltiptext">Activar síntesis de Voz</span> <!-- Tooltip -->
-        </div>
 
-
-    </header>
-    <main class="main">
-
-
-        <form action="" class="product-form" aria-labelledby="add-product-title" method="POST" role="form" data-form>
+    
+</header>
+<main class="main">
+    
+    
+    <form action="" class="product-form" aria-labelledby="add-product-title" method="POST" role="form" data-form>
             
             <h2 id="add-product-title" class="product-form__title title">AGREGAR PRODUCTO:</h2>
             
@@ -101,8 +88,20 @@
         <div class="main-divider"></div>
 
         <section aria-labelledby="product-list-title" class="my-products">
-
+            
             <h2 id="product-list-title" class="product-list__title title">MIS PRODUCTOS:</h2>
+            <div class="toggle-container">
+                <input id="checkboxInput" type="checkbox" />
+                <label class="toggleSwitch" for="checkboxInput">
+                    <div class="speaker">
+                        <img src="img/normal-speaker.svg" alt="Speaker">
+                    </div>
+                    <div class="mute-speaker">
+                        <img src="img/muted-speaker.svg" alt="Muted speaker">
+                    </div>
+                </label>
+                <span class="tooltiptext">Activar síntesis de Voz</span> <!-- Tooltip -->
+            </div>
 
             <div class="input-container input-search">
                 <lord-icon id="search-icon" src="https://cdn.lordicon.com/wjyqkiew.json" trigger="hover"
