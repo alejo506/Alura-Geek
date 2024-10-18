@@ -301,19 +301,18 @@ input:focus {
 }
 
 .paginacion a.activo {
-    background-color: #0252a0d4;
-    background-color: #595f73d4;
+    background-color: #a0050263;
     color: white;
 }
 
 .paginacion a:hover:not(.activo) {
-    background-color: #0252a0d4;
+    background-color: #50219172;
     color: #FFFFFF;
 }
 
 .paginacion a:active {
-    box-shadow: rgba(0, 0, 0, 0.377) 0 0 0, inset 0.03125rem 0.03125rem 0.25rem #000000,
-        #049fc697 -0.2rem -0.2rem 0.5rem inset;
+    box-shadow: rgba(255, 255, 255, 0.632) 0 0 0, inset 0.03125rem 0.03125rem 0.25rem #000000,
+        #c6044e39 -0.2rem -0.2rem 0.5rem inset;
     transform: translateY(0.03125rem);
 }
 
@@ -421,15 +420,12 @@ input:focus {
         color: rgba(0, 0, 0, 0.715);
     }
 
+
+    
     .error.show{
         opacity: 1;
         color: rgb(180 11 11 / 84%);
     }
-
-    .paginacion a.activo {
-        background-color: #0252a0d4;
-    }
-
 }
 
 /* Personaliza la barra de desplazamiento */
