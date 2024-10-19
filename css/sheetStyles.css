@@ -352,6 +352,7 @@ input:focus {
     background-color: #5857577a;
     color: #e6e6e6;
     pointer-events: none;
+    cursor: not-allowed;
 }
 
 

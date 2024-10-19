@@ -193,5 +193,6 @@ document.querySelector(".bttn_clean").addEventListener("click", (event) => {
     event.preventDefault(); // Prevenir el comportamiento por defecto del botón
     cleanForm(); // Limpiar el formulario
     submitBtn.classList.add('disabled'); 
+    submitBtn.setAttribute('disabled', true);
     playSound('clean'); // Reproducir sonido de limpieza
 });
