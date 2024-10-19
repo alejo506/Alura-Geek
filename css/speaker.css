@@ -92,30 +92,30 @@
 .toggle-container {
   position: relative;
   display: flex;
+  justify-content: space-evenly;
   width: 100%;
-  align-self: self-end;
-  justify-content: flex-end;
-
 }
+
+
 
 /* Tooltip text */
 .tooltiptext {
   visibility: hidden;
   width: 9rem;
-  background-color: rgba(255, 255, 255, 0.523);
+  background-color: rgba(34, 33, 33, 0.516);
   color: #fff;
   text-align: center;
   border-radius: 6px;
   padding: 5px;
   position: absolute;
   z-index: 1;
-  bottom: 10%; /* Mostrar el tooltip arriba del toggle */
-  left: 90%;
-  margin-left: -140px; /* Centrar el tooltip */
+
+  /* margin-left:90px;  */
+  top: -70%;  /* Centra verticalmente el tooltip con el botón */
+
   opacity: 0;
   transition: opacity 0.3s;
   letter-spacing: 0.1rem;
-  /* top: -50px; */
 }
 
 /* Mostrar el tooltip cuando se pasa el mouse por encima del toggle */

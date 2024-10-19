@@ -8,6 +8,8 @@
         content="Add your products easily with AluraGeek. A user-friendly platform for managing your product inventory.">
     <meta name="keywords" content="AluraGeek, product management, inventory, add products, user-friendly">
     <meta name="author" content="AluraGeek Team">
+    <link rel="shortcut icon" href="img/eyeglasses.png" type="image/x-icon">
+    <link rel="icon" href="img/eyeglasses.png" type="image/x-icon">
     <title>Challange Alura Geek</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/title.css">
@@ -20,27 +22,25 @@
 <body>
     <header>
         <div class="header header__content">
-            <img class="product-header__img" src="img/hearts.svg" alt="Three hearts icon representing customer satisfaction"
-                loading="lazy">
+            <img class="product-header__img" src="img/hearts.svg"
+                alt="Three hearts icon representing customer satisfaction" loading="lazy">
             <h1 class="product-header__title" id="myTitle"></h1>
         </div>
 
-    
-</header>
-<main class="main">
-    
-    
-    <form action="" class="product-form" aria-labelledby="add-product-title" method="POST" role="form" data-form>
-            
-            <h2 id="add-product-title" class="product-form__title title">AGREGAR PRODUCTO:</h2>
-            
-            <h3 class="stockQuantity" data-itemsQuantity> <span></span></h3>
-            
 
+    </header>
+    <main class="main">
+
+
+        <form action="" class="product-form" aria-labelledby="add-product-title" method="POST" role="form" data-form>
+
+            <h2 id="add-product-title" class="product-form__title title">AGREGAR PRODUCTO:</h2>
+
+            <!-- <h3 class="stockQuantity" data-itemsQuantity> <span></span></h3> -->
 
             <div class="input-container">
-                <lord-icon id="productName-icon" src="https://cdn.lordicon.com/jprtoagx.json" trigger="hover"
-                    colors="primary:#121331,secondary:#848484" style="width:30px;height:30px">
+                <lord-icon id="productName-icon" src="https://cdn.lordicon.com/jprtoagx.json" trigger
+                    colors="primary:#1b1091,secondary:#848484" style="width:30px;height:30px">
                 </lord-icon>
                 <input type="text" name="product-name" placeholder="Producto..." class="product-form__input"
                     aria-label="Product Name" data-prodName>
@@ -50,19 +50,19 @@
             </div>
 
             <div class="input-container">
-                <lord-icon id="productPrice-icon" src="https://cdn.lordicon.com/bsdkzyjd.json" trigger="hover"
-                    colors="primary:#121331,secondary:#848484" style="width:30px;height:30px">
+                <lord-icon id="productPrice-icon" src="https://cdn.lordicon.com/bsdkzyjd.json" trigger
+                    colors="primary:#1b1091,secondary:#848484" style="width:30px;height:30px">
                 </lord-icon>
                 <input type="text" name="product-price" placeholder="Precio..." class="product-form__input"
                     aria-label="Product Price" data-prodPrice>
                 <div id="priceError" class="error" aria-live="polite">
-                    <i class="fa-normal fa-asterisk"></i> Debe de ser número entero positivo, y menor a 99999.
+                    <i class="fa-normal fa-asterisk"></i> Digitar número entero positivo, y menor a 99999.
                 </div>
             </div>
 
             <div class="input-container">
-                <lord-icon id="productUrl-icon" src="https://cdn.lordicon.com/rszslpey.json" trigger="hover"
-                    colors="primary:#121331,secondary:#848484" style="width:30px;height:30px">
+                <lord-icon id="productUrl-icon" src="https://cdn.lordicon.com/rszslpey.json" trigger
+                    colors="primary:#1b1091,secondary:#848484" style="width:30px;height:30px">
                 </lord-icon>
                 <input type="text" name="product-image" placeholder="Imagen-URL..." class="product-form__input"
                     aria-label="Product Image URL" data-prodUrl>
@@ -88,9 +88,13 @@
         <div class="main-divider"></div>
 
         <section aria-labelledby="product-list-title" class="my-products">
-            
+
             <h2 id="product-list-title" class="product-list__title title">MIS PRODUCTOS:</h2>
+           
             <div class="toggle-container">
+
+                <h3 class="stockQuantity" data-itemsQuantity> <span></span></h3>
+
                 <input id="checkboxInput" type="checkbox" />
                 <label class="toggleSwitch" for="checkboxInput">
                     <div class="speaker">
@@ -104,16 +108,29 @@
             </div>
 
             <div class="input-container input-search">
-                <lord-icon id="search-icon" src="https://cdn.lordicon.com/wjyqkiew.json" trigger="hover"
+                <lord-icon id="search-icon" src="https://cdn.lordicon.com/wjyqkiew.json" trigger="hover" 
                     colors="primary:#121331,secondary:#3080e8" style="width:30px;height:30px">
                 </lord-icon>
-                <input type="search" name="product-filter" placeholder="Buscar..." class="input-filter"
-                    data-search autocomplete="off" aria-label="Filter Products" data-prodUrl>
+                <input type="search" name="product-filter" placeholder="Buscar..." class="input-filter" data-search
+                 aria-label="Filter Products" data-prodUrl>
             </div>
 
-            <ul class="product-list" data-list>
+            <div id="loadingSpinner" class="loading-spinner">
+                <!-- Aquí puedes usar un icono de carga o un simple texto -->
+                <lord-icon
+                    src="https://cdn.lordicon.com/jxhgzthg.json"
+                    trigger="loop"
+                    stroke="bold"
+                    state="loop-cycle"
+                    colors="primary:#a866ee,secondary:#86c716"
+                    style="width:90px;height:90px">
+                </lord-icon>
+            </div>
+
+            <ul class="product-list" id="product-list" data-list>
 
             </ul>
+
 
             <section class="paginacion" data-pagination>
                 <!-- <a href="/page/1" class="prev">&laquo;</a>
@@ -160,10 +177,11 @@
             </ul>
         </nav>
     </footer>
-    
+
     <!-- <script src="js/funcionalities/speech.js" type="module"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
+    <script src="js/funcionalities/soundButtons.js" type="module"></script>
     <script src="js/conexionDB.js" type="module"></script>
     <script src="js/getProducts.js" type="module"></script>
     <script src="js/postProducts.js" type="module"></script>
@@ -172,7 +190,6 @@
     <script src="js/pagination.js" type="module"></script>
     <script src="js/validate.js" type="module"></script>
     <script src="js/updateProduct.js" type="module"></script>
-    <script src="js/funcionalities/soundButtons.js" type="module"></script>
 
 </body>
 

@@ -34,7 +34,7 @@ export default function createProductCard(productName, productPrice, productUrl,
                             src="https://cdn.lordicon.com/exymduqj.json"
                             trigger="hover"
                             stroke="bold"
-                            colors="primary:#242424"
+                            colors="primary:#c675e3,secondary:#848484"
                             style="width:25px;height:25px">
                         </lord-icon>
                     </button>
@@ -61,8 +61,17 @@ export default function createProductCard(productName, productPrice, productUrl,
  */
 export async function renderProducts(visiblePage = 1) {
     try {
+        // Añade la clase "hidden" para ocultar la lista de productos
+        ulList.classList.add("hidden");
+
+        // Muestra el spinner
+        loadingSpinner.style.display = "block";
+
         const data = await conexionDB.listProducts(visiblePage, itemsPerPage);
-        
+
+        // Oculta el spinner una vez cargados los productos
+        loadingSpinner.style.display = "none";
+
         ulList.innerHTML = ""; // Limpia la lista
 
         data.products.forEach(productItem => {
@@ -76,6 +85,9 @@ export async function renderProducts(visiblePage = 1) {
             ulList.appendChild(productCard); // Añade la tarjeta
         });
 
+        // Quita la clase "hidden" para mostrar la lista de productos
+        ulList.classList.remove("hidden");
+
         createPagination(data.totalItems, itemsPerPage, visiblePage, (newPage) => {
             currentPage = newPage;
             renderProducts(currentPage);
@@ -83,7 +95,10 @@ export async function renderProducts(visiblePage = 1) {
 
         const totalItemsQuantity = data.totalItems;
         itemsQuantity.innerHTML = `<h3 class="stockQuantity" data-itemsQuantity>En stock: <span>${totalItemsQuantity}</span></h3>`;
+
     } catch (error) {
+        // Oculta el spinner en caso de error también
+        loadingSpinner.style.display = "none";
         console.error("Error al renderizar productos:", error);
     }
 }
@@ -99,19 +114,19 @@ ulList.addEventListener('click', async (event) => {
 
         // Llama a la función de eliminación y espera el resultado
         const isDeleted = await handleDeleteButtonClick(productId);
-        
+
         if (isDeleted) {
             deleteButton.closest('li').remove(); // Elimina la tarjeta del DOM si fue confirmada la eliminación
         }
 
-         // Verifica si quedan productos en la página actual
-         const remainingProducts = ulList.querySelectorAll('.product-list__item'); // Busca los productos restantes
+        // Verifica si quedan productos en la página actual
+        const remainingProducts = ulList.querySelectorAll('.product-list__item'); // Busca los productos restantes
 
-         // Si ya no quedan productos, vuelve a la página anterior
-         if (remainingProducts.length === 0 && currentPage > 1) {
-             currentPage--; // Decrementa la página actual
-             renderProducts(currentPage); // Renderiza la página anterior
-         }
+        // Si ya no quedan productos, vuelve a la página anterior
+        if (remainingProducts.length === 0 && currentPage > 1) {
+            currentPage--; // Decrementa la página actual
+            renderProducts(currentPage); // Renderiza la página anterior
+        }
     }
 
     // ! Manejar el evento de actualización

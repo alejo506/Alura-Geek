@@ -24,6 +24,10 @@ const filterList = document.querySelector("[data-list]");
 const searchInput = document.querySelector("[data-search]");
 const paginationContainer = document.querySelector(".paginacion");
 
+// Inicialmente deshabilitar el autocompletado del buscador
+searchInput.setAttribute('autocomplete', 'off');
+
+
 
 /**
  * Renderiza una lista de productos en el DOM.
@@ -107,8 +111,6 @@ searchInput.addEventListener('input',  (event) => {
     filterProductsByName();
     //Cuando se escribe se ejecuta la animacion del icono
     icon.setAttribute('trigger', 'loop'); // Activar animación
-    
-
 });
 
 
