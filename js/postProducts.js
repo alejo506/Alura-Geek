@@ -141,7 +141,7 @@ formProduct.addEventListener("submit", (e) => {
 
     // Hacer scroll
     setTimeout(() => {
-        document.querySelector(".product-list__title")?.scrollIntoView({ behavior: 'smooth' });
+        document.querySelector(".product-list")?.scrollIntoView({ behavior: 'smooth' });
     }, 2000);
 });
 
